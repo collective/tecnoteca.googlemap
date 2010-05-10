@@ -1,0 +1,74 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="tecnoteca.googlemap">
+<body>
+	
+	<!-- Categories HTML -->		
+	<metal:block define-macro="Categories">
+		<tal:block tal:repeat="catloop categories">
+			<div tal:define="category python:catloop.getObject()">
+				<tal:if tal:condition="python: category.getCustomIcon() != None and category.getCustomIcon() != ''">					
+					<img class="TTMapIcon" tal:replace="structure python:category.getCustomIcon().tag(css_class='TTMapIcon')" />
+				</tal:if>
+				<tal:if tal:condition="python: not (category.getCustomIcon() != None and category.getCustomIcon() != '') and (category.getCategoryIcon() != None and category.getCategoryIcon() != '')">
+					<img class="TTMapIcon" tal:attributes="src python:category.getCategoryIcon(); alt python:category.Title()" />
+				</tal:if>
+				<input type="checkbox" class="TTMapCheckbox" tal:attributes="id python:category.getUniqueId()+'box'; onclick python:'boxclick(this,\''+category.getUniqueId()+'\');;'"/>
+				<tal:block tal:content="python:category.Title()"></tal:block>
+				<br>
+			</div>
+		</tal:block>
+	</metal:block>	
+	
+	<!-- MacroCategories HTML -->		
+	<metal:block define-macro="MacroCategories">
+		<tal:block tal:repeat="catcontloop catcontainers">
+			<div tal:define="catcontainer python:catcontloop.getObject()">				
+				<div class="TTMapCatContainter" tal:content="python:catcontainer.Title()"></div>
+				<div tal:define="categories python:catcontainer.getFolderContents(contentFilter=contentFilterCategories)" class="TTMapSubcategories">
+					<div metal:use-macro="here/TTGoogleMapMacro/macros/Categories"></div>
+				</div>
+			</div>
+		</tal:block>
+	</metal:block>
+	
+	<!-- Polylines HTML -->		
+	<metal:block define-macro="Polylines">
+		<tal:block tal:repeat="polyloop polylines">
+			<div tal:define="polyline python:polyloop.getObject()">					
+				<input type="checkbox" class="TTMapCheckbox" tal:attributes="checked python:polyline.getDefaultActive() and 'checked' or None; onclick python:'polylineClick(this,'+str(repeat['polyloop'].number())+')'" />
+				<tal:block tal:content="python:polyline.Title()"></tal:block>
+				<br>
+			</div>
+		</tal:block>
+	</metal:block>
+	
+	<!-- Polygons HTML -->		
+	<metal:block define-macro="Polygons">
+		<tal:block tal:repeat="polyloop polygons">
+			<div tal:define="polygon python:polyloop.getObject()">					
+				<input type="checkbox" class="TTMapCheckbox" tal:attributes="checked python:polygon.getDefaultActive() and 'checked' or None; onclick python:'polygonClick(this,'+str(repeat['polyloop'].number())+')'" />
+				<tal:block tal:content="python:polygon.Title()"></tal:block>
+				<br>
+			</div>
+		</tal:block>
+	</metal:block>	
+	
+	<!-- Map JS -->		
+	<metal:block define-macro="MapJS">
+		<!-- google api -->
+		<script tal:define="googlemap_key config/googlemaps_key" tal:attributes="src python:'http://maps.google.com/maps?file=api&amp;v=2&amp;key='+googlemap_key+'&hl='+context.REQUEST.get('LANGUAGE','en')" type="text/javascript"></script>
+		<script src="http://gmaps-utility-library.googlecode.com/svn/trunk/markermanager/release/src/markermanager.js" type="text/javascript"></script>
+		
+		<!-- google functions -->
+		<script type="text/javascript" tal:attributes="src string:${here/portal_url}/googlemap_functions.js"></script>
+		
+		<!-- load panoramio -->
+		<script type="text/javascript" tal:attributes="src string:${here/portal_url}/pano_layer.js"></script>
+		<script type="text/javascript" tal:attributes="src string:${here/portal_url}/pano_maptypecontrol.js"></script>
+	</metal:block>	
+	
+</body>
+</html>

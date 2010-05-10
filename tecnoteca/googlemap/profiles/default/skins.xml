@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<object name="portal_skins">
+	
+	<object name="TTGoogleMapScripts"
+			meta_type="Filesystem Directory View"
+			directory="tecnoteca.googlemap:skins/TTGoogleMapScripts" />
+	
+	<object name="TTGoogleMapImages"
+			meta_type="Filesystem Directory View"
+			directory="tecnoteca.googlemap:skins/TTGoogleMapImages" />
+			
+	<object name="TTGoogleMapViews"
+			meta_type="Filesystem Directory View"
+			directory="tecnoteca.googlemap:skins/TTGoogleMapViews" />
+
+	<object name="TTGoogleMapJS"
+			meta_type="Filesystem Directory View"
+			directory="tecnoteca.googlemap:skins/TTGoogleMapJS" />
+
+	<object name="TTGoogleMapCss"
+			meta_type="Filesystem Directory View"
+			directory="tecnoteca.googlemap:skins/TTGoogleMapCss" />
+			
+	<skin-path name="*">
+		<layer name="TTGoogleMapScripts"
+			   insert-after="custom" />
+		<layer name="TTGoogleMapImages"
+			   insert-after="TTGoogleMapScripts" />
+		<layer name="TTGoogleMapViews"
+			   insert-after="TTGoogleMapImages" />
+		<layer name="TTGoogleMapJS"
+			   insert-after="TTGoogleMapViews" />			   
+		<layer name="TTGoogleMapCss"
+			   insert-after="TTGoogleMapJS" />
+	</skin-path>		
+	
+</object>

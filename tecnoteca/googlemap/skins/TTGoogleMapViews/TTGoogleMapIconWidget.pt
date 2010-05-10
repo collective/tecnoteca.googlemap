@@ -1,0 +1,76 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="tecnoteca.googlemap">
+
+<head>
+    <title></title>
+</head>
+
+<body>
+	<!-- Cat Icon Widget -->
+    <metal:view_macro define-macro="view"
+            tal:define="kssClassesView context/@@kss_field_decorator_view;
+                        getKssClasses nocall:kssClassesView/getKssClassesInlineEditable;">        
+        <span metal:define-macro="selection-field-view"
+            tal:define="kss_class python:getKssClasses(fieldName,
+                              templateId='widgets/selection', macro='selection-field-view');"
+            tal:attributes="class kss_class;
+                            id string:parent-fieldname-$fieldName">
+            <span metal:define-slot="inside" 
+                tal:define="vocab python:field.Vocabulary(context);
+                            value python:accessor();
+                            display python:context.displayValue(vocab, value)">
+                <tal:if tal:condition="python:(context.getCustomIcon()==None or context.getCustomIcon()=='')">
+                	<img tal:attributes="src python:here.portal_url()+'/'+value; alt display; title display" />
+				</tal:if>
+				<tal:else tal:condition="python:not((context.getCustomIcon()==None or context.getCustomIcon()==''))">
+                	<tal:message i18n:translate="Standard icon disabled">Standard icon disabled</tal:message> 
+				</tal:else>
+                <!-- <span tal:replace="structure display" /> -->
+			</span>
+        </span>
+    </metal:view_macro>
+
+    <metal:define define-macro="edit">
+        <metal:use use-macro="field_macro|context/widgets/field/macros/edit">
+            <metal:fill fill-slot="widget_body"
+                        tal:define="vocab python:field.Vocabulary(context);
+                                    vlen python:len(vocab);
+                                    selectionview context/@@at_selection_widget;
+                                    selection python:selectionview.getSelected(vocab, value);
+                                    format python:widget.format">
+
+                    <tal:radios repeat="item vocab">
+						<div style="float:left; width:80px;">
+	                        <input class="noborder blurrable"
+	                               type="radio"
+	                               tal:attributes="name fieldName;
+	                                               id string:${fieldName}_${repeat/item/number};
+	                                               checked python:item in selection and 'checked' or None;
+	                                               value item;"
+	                               />
+							
+							<img tal:attributes="src python:here.portal_url()+'/'+item; alt python:vocab.getValue(item); title python:vocab.getValue(item)" />
+								   
+							<!--
+	                        <label tal:content="python:vocab.getValue(item)"
+	                               i18n:translate=""
+	                               tal:attributes="for string:${fieldName}_${repeat/item/number}" />
+							-->
+						</div>
+                    </tal:radios>
+            </metal:fill>
+
+        </metal:use>
+
+    </metal:define>
+
+    <div metal:define-macro="search">
+        <div metal:use-macro="context/widgets/selection/macros/edit" />
+    </div>
+
+</body>
+
+</html>

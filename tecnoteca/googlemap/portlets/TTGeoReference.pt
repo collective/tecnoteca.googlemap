@@ -1,0 +1,32 @@
+<dl tal:condition="view/getRelatedMarkers" class="portlet" i18n:domain="tecnoteca.googlemap">
+  <dt class="portletHeader">
+    <span class="portletTopLeft"></span>
+    <div i18n:translate="Related Markers">Related Markers</div>
+    <span class="portletTopRight"></span>
+  </dt>
+  <dd class="portletItem">
+  	
+	<ul tal:define="markers view/getRelatedMarkers">
+	    <tal:related tal:repeat="item markers">
+	        <li tal:define="
+	                desc                item/Description;
+	                item_type           item/portal_type;
+	                item_type           item/portal_type;
+	                item_url            item/absolute_url;">
+	            <span>
+	            	<img tal:attributes="src python:here.portal_url()+'/ttgooglemap_marker.png'; alt item/pretty_title_or_id; title item/pretty_title_or_id" />
+	                <a href="" class=""
+	                   tal:attributes="href  item_url;
+	                                   title item/Description;"
+	                   tal:content="item/pretty_title_or_id">
+	                    Related Item
+	                </a>
+	            </span>
+	        </li>
+	    </tal:related>
+    </ul>
+	
+	<span class="portletBottomLeft"></span>
+	<span class="portletBottomRight"></span>
+  </dd>
+</dl>

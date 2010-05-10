@@ -1,0 +1,2 @@
+recursive-include tecnoteca *
+global-exclude *pyc

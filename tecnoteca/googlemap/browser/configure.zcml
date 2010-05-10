@@ -1,0 +1,19 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    i18n_domain="tecnoteca.googlemap">
+
+  <include package="plone.app.contentmenu" />
+
+  <!-- -*- extra stuff goes here -*- -->  
+      
+  <adapter factory=".controlpanel.MapsControlPanelAdapter" />
+  
+  <browser:page
+  	  name="ttgooglemap_controlpanel"      
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      class=".controlpanel.MapsControlPanel"
+      permission="cmf.ManagePortal"
+  />
+  
+</configure>

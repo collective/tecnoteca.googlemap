@@ -1,0 +1,16 @@
+Metadata-Version: 1.0-b1
+Name: tecnoteca.googlemap
+Version: 1.0-b1
+Summary: Tecnoteca GoogleMap Plone Product
+Home-page: http://svn.plone.org/svn/collective/
+Author: Tecnoteca srl
+Author-email: tecnoteca@tecnoteca.com
+License: GPL
+Description: .. contents::
+        
+   README.txt for details
+        
+Platform: Plone 3
+Classifier: Framework :: Plone
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: GNU General Public License (GPL)

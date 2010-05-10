@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<object name="portal_css" meta_type="Stylesheets Registry">
+ <stylesheet title="" cacheable="True" compression="safe" cookable="True"
+    enabled="1" expression="python:object.portal_type in ['TTGoogleMap','TTGoogleMapMarker']" id="TTGoogleMapStyle.css" media="all"
+    rel="stylesheet" rendering="import"/>
+</object>

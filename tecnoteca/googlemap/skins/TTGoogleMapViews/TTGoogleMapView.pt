@@ -1,0 +1,138 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="tecnoteca.googlemap">
+<body>
+
+<div metal:fill-slot="main">
+    <tal:main-macro metal:define-macro="main"
+                    tal:define="kssClassesView context/@@kss_field_decorator_view;
+                                getKssClasses nocall:kssClassesView/getKssClassesInlineEditable;								
+								contentFilterCategories python:{'portal_type':'TTGoogleMapCategory', 'review_state':'published'};
+								catcontainers python:context.getFolderContents(contentFilter={'portal_type':'TTGoogleMapCategoryContainer', 'review_state':'published'});
+								polylines python:context.getFolderContents({'portal_type':'TTGoogleMapPolyline', 'review_state':'published'});
+								polygons python:context.getFolderContents({'portal_type':'TTGoogleMapPolygon', 'review_state':'published'});
+                                categories python:context.getFolderContents(contentFilter=contentFilterCategories);
+								config context/@@ttgooglemap_config">
+
+        <div tal:replace="structure provider:plone.abovecontenttitle" />
+
+        <h1 class="documentFirstHeading"> 
+            <metal:field use-macro="python:here.widget('title', mode='view')">
+            Title
+            </metal:field>
+        </h1>
+    
+        <div tal:replace="structure provider:plone.belowcontenttitle" />
+
+        <p class="documentDescription">
+            <metal:field use-macro="python:here.widget('description', mode='view')">
+            Description
+            </metal:field>
+        </p>
+
+        <div tal:replace="structure provider:plone.abovecontentbody" />
+        
+		
+		
+		
+		
+		<!-- Top text -->
+		<div tal:replace="structure python:context.getText()"></div>
+		
+		
+		<!-- Map HTML  -->
+		<div class="TTMapContainer">
+			<div class="TTMapColLeft">
+				<div id="map" class="TTMap" tal:attributes="style python:'width:'+str(context.getMapWidth())+'px;; height:'+str(context.getMapHeight())+'px;;'"></div>
+			</div>
+			<div class="TTMapColRight" tal:attributes="style string:margin-left:${here/getMapWidth}px;">
+				
+				<tal:if tal:condition="python:len(polygons)>0">
+					<div class="TTMapCollapsiblePanel">
+					  <div class="TTMapCollapsiblePanelTab">
+					  	<div class="TTMapPanelLabel" i18n:translate="Frontend Polygons">Areas</div>
+						<div class="TTMapPanelOpenClose" tal:attributes="style python:context.getOpenBoxes() and 'display:none' or ''; " i18n:translate="Open panel">Open panel</div>
+						<div class="TTMapPanelOpenClose" tal:attributes="style python:not context.getOpenBoxes() and 'display:none' or ''; " i18n:translate="Close panel">Close panel</div>											  
+					  </div>
+					  <div class="TTMapCollapsiblePanelContent">
+						<div metal:use-macro="here/TTGoogleMapMacro/macros/Polygons"></div>
+					  </div>
+					</div>
+					<br/>
+				</tal:if>							
+	
+				<tal:if tal:condition="python:len(polylines)>0">
+					<div class="TTMapCollapsiblePanel">
+					  <div class="TTMapCollapsiblePanelTab">
+					  	<div class="TTMapPanelLabel" i18n:translate="Frontend Polylines">Paths</div>
+						<div class="TTMapPanelOpenClose" tal:attributes="style python:context.getOpenBoxes() and 'display:none' or ''; " i18n:translate="Open panel">Open panel</div>
+						<div class="TTMapPanelOpenClose" tal:attributes="style python:not context.getOpenBoxes() and 'display:none' or ''; " i18n:translate="Close panel">Close panel</div>											  
+					  </div>
+					  <div class="TTMapCollapsiblePanelContent">
+						<div metal:use-macro="here/TTGoogleMapMacro/macros/Polylines"></div>
+					  </div>
+					</div>
+					<br/>
+				</tal:if>							
+														
+				<tal:if tal:condition="python: (len(categories)>0) or (len(catcontainers)>0)">	
+					<div class="TTMapCollapsiblePanel">
+					  <div class="TTMapCollapsiblePanelTab">
+					  	<div class="TTMapPanelLabel" i18n:translate="Frontend Categories">Categories</div>
+						<div class="TTMapPanelOpenClose" tal:attributes="style python:context.getOpenBoxes() and 'display:none' or ''; " i18n:translate="Open panel">Open panel</div>
+						<div class="TTMapPanelOpenClose" tal:attributes="style python:not context.getOpenBoxes() and 'display:none' or ''; " i18n:translate="Close panel">Close panel</div>
+					  </div>
+					  <div class="TTMapCollapsiblePanelContent">
+						<div metal:use-macro="here/TTGoogleMapMacro/macros/Categories"></div>
+						<div metal:use-macro="here/TTGoogleMapMacro/macros/MacroCategories"></div>
+					  </div>		
+					</div>
+					<br/>
+				</tal:if>
+				
+				<tal:if tal:condition="python: (len(categories)>0) or (len(catcontainers)>0)">
+					<div class="TTMapCollapsiblePanel">
+					  <div class="TTMapCollapsiblePanelTab">
+					  	<div class="TTMapPanelLabel" i18n:translate="Frontend Markers">Markers</div>
+						<div class="TTMapPanelOpenClose" tal:attributes="style python:context.getOpenBoxes() and 'display:none' or ''; " i18n:translate="Open panel">Open panel</div>
+						<div class="TTMapPanelOpenClose" tal:attributes="style python:not context.getOpenBoxes() and 'display:none' or ''; " i18n:translate="Close panel">Close panel</div>											  
+					  </div>
+					  <div class="TTMapCollapsiblePanelContent">
+						<div id="side_bar"></div>
+					  </div>
+					</div>
+				</tal:if>
+				
+			</div>
+			<div class="visualClear"></div>
+		</div>		  
+		
+		<noscript i18n:translate="Frontend NoJavascript">
+			JavaScript must be enabled in order for you to use Google Maps.However, it seems JavaScript is either disabled or not supported by your browser. To view Google Maps, enable JavaScript by changing your browser options, and then try again.
+	    </noscript>
+		
+		<!-- load map js -->
+		<div metal:use-macro="here/TTGoogleMapMacro/macros/MapJS"></div>				
+		
+		<!-- print js main -->
+		<div tal:replace="structure python:here.TTGoogleMapMain(context,categories,contentFilterCategories,catcontainers,polylines,polygons)"></div>
+				
+				
+				
+				
+				
+				
+        <div metal:use-macro="here/document_relateditems/macros/relatedItems">
+            show related items if they exist
+        </div>
+		
+		<div tal:replace="structure provider:plone.belowcontentbody" />
+
+    </tal:main-macro>
+</div>
+</body>
+</html>  
