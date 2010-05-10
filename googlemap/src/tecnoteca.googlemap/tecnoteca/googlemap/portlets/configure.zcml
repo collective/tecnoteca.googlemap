@@ -1,0 +1,23 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="tecnoteca.googlemap">
+
+  <!-- Ensure Plone's portlets ZCML has already been processed;
+       without this, we may get a permission lookup error -->
+  <include package="plone.app.portlets" />
+
+	<!-- -*- extra stuff goes here -*- -->
+	
+  <!-- TTGoogleMap Portlet-->
+  <plone:portlet
+        name="portlets.TTGeoReference"
+        interface=".TTGeoReference.ITTGeoReferencePortlet"
+        assignment=".TTGeoReference.Assignment"
+        renderer=".TTGeoReference.Renderer"
+        addview=".TTGeoReference.AddForm"
+        view_permission="zope2.View"
+        edit_permission="cmf.ManagePortal"
+        />
+
+</configure>

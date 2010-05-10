@@ -1,0 +1,83 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="tecnoteca.googlemap">
+  <head><title></title></head>
+  <body>
+
+    <!-- Coordinates Widget -->
+    <metal:view_macro define-macro="view"
+            tal:define="kssClassesView context/@@kss_field_decorator_view;
+                        getKssClasses nocall:kssClassesView/getKssClassesInlineEditable;
+						config context/@@ttgooglemap_config;
+						map_size config/coord_widget_map_size;
+						default_location config/default_location;">
+        <span metal:define-macro="string-field-view"
+            tal:define="kss_class python:getKssClasses(fieldName, templateId='widgets/string', macro='string-field-view');"
+            tal:attributes="class kss_class;
+                            id string:parent-fieldname-$fieldName">
+			
+			<div tal:attributes="class kss_class">
+				<div id="map" class="TTMapCoordinates" tal:attributes="style python:'width:'+str(map_size[0])+'px;; height:'+str(map_size[1])+'px;;'"></div>			
+				
+				<!-- load map js -->
+				<div metal:use-macro="here/TTGoogleMapMacro/macros/MapJS"></div>
+				
+				<!-- print js main (view version) -->
+				<div tal:replace="structure python:here.TTGoogleMapCoordinatesWidgetMain(context,default_location,None)"></div>
+			</div>
+        </span>
+    </metal:view_macro>
+
+    <metal:define define-macro="edit" 
+			tal:define="config context/@@ttgooglemap_config;
+			map_size config/coord_widget_map_size;
+			default_location config/default_location;
+			elementId python:'ttgooglemap_latlong'">
+    	
+		<metal:use use-macro="field_macro | here/widgets/field/macros/edit">
+		<input tal:define="fvalue python:(value!=None and value!='') and value or (default_location[0]+'|'+default_location[1]) "
+			   metal:fill-slot="widget_body"
+		       type="text"
+		       name=""
+		       class="blurrable firstToFocus"
+			   readonly="readonly"
+		       id=""
+		       value=""
+		       size="30"
+		       tal:attributes="name fieldName;
+			   		 		   id elementId;	
+		                       value fvalue;
+		                       size widget/size;
+		                       maxlength widget/maxlength;"
+		       />
+		</metal:use>
+				
+		
+		<div class="field">
+			<div class="formHelp" i18n:translate="Search Address">Search address</div>
+	      	<input type="text" onKeyPress="return disableEnterKey(event)" size="40" id="ttgooglemap_search_address" name="address" value=""/>
+	      	<input type="button" value="Cerca" tal:attributes="onclick python:'searchAddress(document.getElementById(\'ttgooglemap_search_address\').value,\''+elementId+'\');; return false;;'"/>			
+  		</div>
+		
+		<div class="field">
+			<div id="map" class="TTMapCoordinates" tal:attributes="style python:'width:'+str(map_size[0])+'px;; height:'+str(map_size[1])+'px;;'"></div>			
+			
+			<!-- load map js -->
+			<div metal:use-macro="here/TTGoogleMapMacro/macros/MapJS"></div>
+			
+			<!-- print js main (edit version) -->		
+			<div tal:replace="structure python:here.TTGoogleMapCoordinatesWidgetMain(context,default_location,elementId)"></div>
+		</div>
+		
+    </metal:define>
+
+    <div metal:define-macro="search">
+      <div metal:use-macro="here/widgets/string/macros/edit">
+      </div>
+    </div>
+
+  </body>
+
+</html>

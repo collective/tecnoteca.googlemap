@@ -1,0 +1,71 @@
+/*
+** TTGoogleMap style sheet
+*/
+
+/* <dtml-with base_properties> (do not remove this :) */
+/* <dtml-call "REQUEST.set('portal_url', portal_url())"> (not this either :) */
+
+.TTMap {
+	border:1px solid <dtml-var globalBorderColor>;		
+}
+
+.TTMapCoordinates {
+	border:1px solid <dtml-var globalBorderColor>;		
+}
+
+.TTMapContainer {}
+
+.TTMapColLeft {
+	float:left;	
+}
+
+.TTMapColRight {
+	padding-left:12px;	
+}
+
+.TTMapCollapsiblePanel {
+	border: 1px solid <dtml-var globalBorderColor>;
+}
+
+.TTMapCollapsiblePanelTab {
+	padding: 3px 10px;
+	cursor: pointer;
+	background-color:<dtml-var globalBackgroundColor>;
+}
+
+.TTMapCollapsiblePanelContent {
+	padding: 5px 10px 5px;
+}
+
+.TTMapPanelLabel {
+	font-weight: bold;
+	font-variant: small-caps;
+	float:left;
+}
+
+.TTMapPanelOpenClose {
+	text-align:right;
+	color:<dtml-var linkColor>;
+}
+
+.TTMapCatContainter{
+	font-weight: bold;
+	margin-bottom: 5px;
+	margin-top: 10px;
+}
+
+.TTMapSubcategories{
+	padding:7px;
+	border-top: 1px solid <dtml-var globalBorderColor>;
+	background-color: #f0f0f0;
+}
+
+.TTMapIcon {}
+
+.TTMapCheckbox{}
+
+.TTMapMarkerWin {
+    width:300px;
+}
+
+/* </dtml-with> */

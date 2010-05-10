@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<rolemap>
+  <permissions>
+    <!-- -*- extra stuff goes here -*- -->
+    <permission name="tecnoteca.googlemap: Add TTGoogleMapPolygon" acquire="False">
+      <role name="Manager" />
+      <role name="Contributor" />
+    </permission>
+    <permission name="tecnoteca.googlemap: Add TTGoogleMapPolyline" acquire="False">
+      <role name="Manager" />
+      <role name="Contributor" />
+    </permission>
+    <permission name="tecnoteca.googlemap: Add TTGoogleMapMarker" acquire="False">
+      <role name="Manager" />
+      <role name="Contributor" />
+    </permission>
+    <permission name="tecnoteca.googlemap: Add TTGoogleMapCategory" acquire="False">
+      <role name="Manager" />
+      <role name="Contributor" />
+    </permission>
+    <permission name="tecnoteca.googlemap: Add TTGoogleMapCategoryContainer" acquire="False">
+      <role name="Manager" />
+      <role name="Contributor" />
+    </permission>
+    <permission name="tecnoteca.googlemap: Add TTGoogleMap" acquire="False">
+      <role name="Manager" />
+      <role name="Contributor" />
+    </permission>
+  </permissions>
+</rolemap>

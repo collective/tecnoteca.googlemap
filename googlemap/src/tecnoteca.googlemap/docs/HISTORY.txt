@@ -1,0 +1,6 @@
+Changelog
+=========
+
+Tecnoteca Google Map 1.0-b1 - March 16, 2010
+
+    - Initial public release.

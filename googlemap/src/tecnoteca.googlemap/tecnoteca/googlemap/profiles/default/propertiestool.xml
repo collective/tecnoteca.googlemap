@@ -1,0 +1,126 @@
+<?xml version="1.0"?>
+<object name="portal_properties" meta_type="Plone Properties Tool">
+ <object name="ttgooglemap_properties" meta_type="Plone Property Sheet"> 
+  <property name="title">TTGoogleMap Properties</property>
+  <property name="ttgooglemap_api_keys" type="lines">
+  	<element value="http://localhost:8080 | localhost_googlemap_key"/>
+  </property>
+  <property name="ttgooglemap_default_location" type="string">46.10262,13.20933</property>
+  <property name="ttgooglemap_default_map_size" type="string">400,550</property>
+  <property name="ttgooglemap_coord_widget_map_size" type="string">400,400</property>
+  <property name="ttgooglemap_markers" type="lines">
+	<element value="accident.png|accident"/>
+	<element value="airplane-tourism.png|airplane-tourism"/>
+	<element value="ancientmonument.png|ancientmonument"/>
+	<element value="ancienttemple.png|ancienttemple"/>
+	<element value="animals.png|animals"/>
+	<element value="aquarium.png|aquarium"/>
+	<element value="archery.png|archery"/>
+	<element value="arch.png|arch"/>
+	<element value="artgallery.png|artgallery"/>
+	<element value="bankeuro.png|bankeuro"/>
+	<element value="bar.png|bar"/>
+	<element value="beach.png|beach"/>
+	<element value="bicycleparking.png|bicycleparking"/>
+	<element value="bookstore.png|bookstore"/>
+	<element value="bus.png|bus"/>
+	<element value="camping.png|camping"/>
+	<element value="car.png|car"/>
+	<element value="cathedral.png|cathedral"/>
+	<element value="cemetary.png|cemetary"/>
+	<element value="cinema.png|cinema"/>
+	<element value="clothes.png|clothes"/>
+	<element value="cluster3.png|cluster3"/>
+	<element value="coffee.png|coffee"/>
+	<element value="communitycentre.png|communitycentre"/>
+	<element value="company.png|company"/>
+	<element value="computer.png|computer"/>
+	<element value="construction.png|construction"/>
+	<element value="country.png|country"/>
+	<element value="court.png|court"/>
+	<element value="customs.png|customs"/>
+	<element value="cyclingsport.png|cyclingsport"/>
+	<element value="dancinghall.png|dancinghall"/>
+	<element value="daycare.png|daycare"/>
+	<element value="disability.png|disability"/>
+	<element value="dog-offleash.png|dog-offleash"/>
+	<element value="factory.png|factory"/>
+	<element value="family.png|family"/>
+	<element value="farm.png|farm"/>
+	<element value="fastfood.png|fastfood"/>
+	<element value="festival.png|festival"/>
+	<element value="firstaid.png|firstaid"/>
+	<element value="fitnesscenter.png|fitnesscenter"/>
+	<element value="flowers.png|flowers"/>
+	<element value="forest.png|forest"/>
+	<element value="fountain.png|fountain"/>
+	<element value="gazstation.png|gazstation"/>
+	<element value="gym.png|gym"/>
+	<element value="highway.png|highway"/>
+	<element value="home.png|home"/>
+	<element value="hotel.png|hotel"/>
+	<element value="info.png|info"/>
+	<element value="jogging.png|jogging"/>
+	<element value="justice.png|justice"/>
+	<element value="lake.png|lake"/>
+	<element value="library.png|library"/>
+	<element value="lighthouse.png|lighthouse"/>
+	<element value="lock.png|lock"/>
+	<element value="massage.png|massage"/>
+	<element value="mine.png|mine"/>
+	<element value="monument.png|monument"/>
+	<element value="movierental.png|movierental"/>
+	<element value="museum-archeological.png|museum-archeological"/>
+	<element value="museum-art.png|museum-art"/>
+	<element value="museum-crafts.png|museum-crafts"/>
+	<element value="museum-historical.png|museum-historical"/>
+	<element value="museum.png|museum.png"/>
+	<element value="museum-science.png|museum-science"/>
+	<element value="music-classical.png|music-classical"/>
+	<element value="music.png|music"/>
+	<element value="nanny.png|nanny"/>
+	<element value="newsagent.png|newsagent"/>
+	<element value="nursery.png|nursery"/>
+	<element value="olympicsite.png|olympicsite"/>
+	<element value="parking.png|parking"/>
+	<element value="party.png|party"/>
+	<element value="photo.png|photo"/>
+	<element value="picnic.png|picnic"/>
+	<element value="playground.png|playground"/>
+	<element value="police2.png|police2"/>
+	<element value="police.png|police"/>
+	<element value="pool.png|pool"/>
+	<element value="restaurantgourmet.png|restaurantgourmet"/>
+	<element value="restaurant.png|restaurant"/>
+	<element value="sailboat-sport.png|sailboat-sport"/>
+	<element value="school.png|school"/>
+	<element value="sciencecenter.png|sciencecenter"/>
+	<element value="seniorsite.png|seniorsite"/>
+	<element value="sight.png|sight"/>
+	<element value="steamtrain.png|steamtrain"/>
+	<element value="subway.png|subway"/>
+	<element value="suv.png|suv"/>
+	<element value="taxiway.png|taxiway"/>
+	<element value="telephone.png|telephone"/>
+	<element value="theater.png|theater"/>
+	<element value="themepark.png|themepark"/>
+	<element value="toilets.png|toilets"/>
+	<element value="tools.png|tools"/>
+	<element value="toys.png|toys"/>
+	<element value="train.png|train"/>
+	<element value="trash.png|trash"/>
+	<element value="university.png|university"/>
+	<element value="vespa.png|vespa"/>
+	<element value="videogames.png|videogames"/>
+	<element value="video.png|video"/>
+	<element value="water.png|water"/>
+	<element value="wedding.png|wedding"/>
+	<element value="wifi.png|wifi"/>
+	<element value="winery.png|winery"/>
+	<element value="workoffice.png|workoffice"/>
+	<element value="world.png|world"/>
+	<element value="youthhostel.png|youthhostel"/>
+	<element value="zoo.png|zoo"/>
+  </property>  
+ </object>
+</object>

@@ -1,0 +1,43 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:five="http://namespaces.zope.org/five"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:cmf="http://namespaces.zope.org/cmf"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    i18n_domain="tecnoteca.googlemap">
+
+  <five:registerPackage package="." initialize=".initialize" />
+
+  <!-- Include the sub-packages that use their own configure.zcml files. -->
+  <include package=".browser" />
+  <include package=".content" />
+  <include package=".portlets" />
+  <i18n:registerTranslations directory="locales" />
+  
+  <!-- Register the installation GenericSetup extension profile -->
+  <genericsetup:registerProfile
+      name="default"
+      title="Tecnoteca GoogleMap"
+      directory="profiles/default"
+      description="Tecnoteca GoogleMap Plone Product"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+  
+  <!-- -*- extra stuff goes here -*- -->
+  
+  <browser:page
+  	  for="*"
+      name="ttgooglemap_config"
+      class=".browser.config.TTGoogleMapConfig"
+      permission="zope2.View"
+      allowed_interface=".interfaces.config.ITTGoogleMapConfig"
+  />
+       
+  <cmf:registerDirectory name="TTGoogleMapImages" />
+  <cmf:registerDirectory name="TTGoogleMapScripts" />
+  <cmf:registerDirectory name="TTGoogleMapViews" />
+  <cmf:registerDirectory name="TTGoogleMapJS" />
+  <cmf:registerDirectory name="TTGoogleMapCss" />
+
+</configure>
