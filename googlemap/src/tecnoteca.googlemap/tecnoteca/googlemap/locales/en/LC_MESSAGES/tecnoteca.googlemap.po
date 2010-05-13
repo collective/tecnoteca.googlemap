@@ -367,27 +367,22 @@ msgid "Standard icon disabled"
 msgstr "Standard icon disabled (custom icon active)"
 
 #. Default: "TTGoogleMap"
-#, fuzzy
 msgid "TTGoogleMap"
 msgstr "Google Map"
 
 #. Default: "TTGoogleMapCategory"
-#, fuzzy
 msgid "TTGoogleMapCategory"
 msgstr "Google Map Category"
 
 #. Default: "TTGoogleMapCategoryContainer"
-#, fuzzy
 msgid "TTGoogleMapCategoryContainer"
 msgstr "Google Map Category Container"
 
 #. Default: "TTGoogleMapMarker"
-#, fuzzy
 msgid "TTGoogleMapMarker"
 msgstr "Google Map Marker"
 
 #. Default: "TTGoogleMapPolygon"
-#, fuzzy
 msgid "TTGoogleMapPolygon"
 msgstr "Google Map Polygon"
 

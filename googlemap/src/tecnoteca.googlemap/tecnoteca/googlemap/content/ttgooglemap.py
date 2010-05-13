@@ -91,6 +91,7 @@ TTGoogleMapSchema = folder.ATFolderSchema.copy() + atapi.Schema((
             label=_(u"Map Type"),
             description=_(u"Select default map type"),
         ),
+        default="G_NORMAL_MAP",
         required=True,
     ),
 
@@ -217,10 +218,10 @@ class TTGoogleMap(folder.ATFolder):
     
     def defaultWidth(self):
         config = getMultiAdapter((self, self.REQUEST), name="ttgooglemap_config")
-        return config.default_map_size[0]
+        return config.default_map_size[1]
     
     def defaultHeight(self):
         config = getMultiAdapter((self, self.REQUEST), name="ttgooglemap_config")
-        return config.default_map_size[1]
+        return config.default_map_size[0]
 
 atapi.registerType(TTGoogleMap, PROJECTNAME)

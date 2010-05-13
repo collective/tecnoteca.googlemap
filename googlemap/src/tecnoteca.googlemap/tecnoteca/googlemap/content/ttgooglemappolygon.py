@@ -11,6 +11,8 @@ from tecnoteca.googlemap import googlemapMessageFactory as _
 from tecnoteca.googlemap.interfaces import ITTGoogleMapPolygon
 from tecnoteca.googlemap.config import PROJECTNAME
 
+from Products.SmartColorWidget.Widget import SmartColorWidget
+
 TTGoogleMapPolygonSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
 
     # -*- Your Archetypes field definitions here ... -*-
@@ -19,7 +21,7 @@ TTGoogleMapPolygonSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
         'Color',
         languageIndependent = True,
         storage=atapi.AnnotationStorage(),
-        widget=atapi.StringWidget(
+        widget=SmartColorWidget(
             label=_(u"Color"),
             description=_(u"Polygon color"),
         ),
