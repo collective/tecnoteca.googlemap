@@ -1,5 +1,7 @@
 MANIFEST.in
+setup.cfg
 setup.py
+dist/tecnoteca.googlemap-1.0-b1.tar.gz
 docs/CONTRIBUTORS.txt
 docs/HISTORY.txt
 docs/INSTALL.txt
