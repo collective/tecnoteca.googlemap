@@ -29,14 +29,19 @@ class Renderer(base.Renderer):
         
     def getRelatedMarkers(self):
         context = aq_inner(self.context)
+        markers = []
         try:
-            related = context.computeRelatedItems();
-            markers = []
+            related = []            
+            # add direct relations
+            related.extend(context.computeRelatedItems())
+            # add inverse relations
+            related.extend(context.getBRefs())
             for rel in related:
                 if(rel.portal_type == 'TTGoogleMapMarker'):
                     markers.append(rel)
         except:
             pass
+        return markers
     
 class AddForm(base.NullAddForm):
     

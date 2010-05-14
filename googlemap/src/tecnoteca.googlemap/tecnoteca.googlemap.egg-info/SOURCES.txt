@@ -48,6 +48,7 @@ tecnoteca/googlemap/locales/en/LC_MESSAGES/tecnoteca.googlemap.mo
 tecnoteca/googlemap/locales/en/LC_MESSAGES/tecnoteca.googlemap.po
 tecnoteca/googlemap/locales/it/LC_MESSAGES/tecnoteca.googlemap.mo
 tecnoteca/googlemap/locales/it/LC_MESSAGES/tecnoteca.googlemap.po
+tecnoteca/googlemap/portlets/.tmp_TTGeoReference.pt.98460~
 tecnoteca/googlemap/portlets/TTGeoReference.pt
 tecnoteca/googlemap/portlets/TTGeoReference.py
 tecnoteca/googlemap/portlets/__init__.py
