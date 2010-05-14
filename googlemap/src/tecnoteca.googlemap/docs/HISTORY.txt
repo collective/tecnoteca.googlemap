@@ -1,6 +1,8 @@
 Changelog
 =========
 
-Tecnoteca Google Map 1.0-b1 - March 16, 2010
+Tecnoteca Google Map 1.0-b2 - May 14, 2010
+    - Portlet bug fix
 
+Tecnoteca Google Map 1.0-b1 - March 16, 2010
     - Initial public release.
