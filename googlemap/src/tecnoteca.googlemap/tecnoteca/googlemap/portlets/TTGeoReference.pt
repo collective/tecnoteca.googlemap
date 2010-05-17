@@ -1,4 +1,4 @@
-<dl tal:condition="view/getRelatedMarkers" class="portlet" i18n:domain="tecnoteca.googlemap">
+<dl tal:condition="view/getRelatedMarkers" class="portlet portletGoogleMap" i18n:domain="tecnoteca.googlemap">
   <dt class="portletHeader">
     <span class="portletTopLeft"></span>
     <div i18n:translate="Related Markers">Related Markers</div>
