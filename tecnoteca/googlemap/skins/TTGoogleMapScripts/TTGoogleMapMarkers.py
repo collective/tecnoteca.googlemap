@@ -11,7 +11,8 @@ def custom_escape(text):
         text = text.replace('"','\\"')
         text = text.replace('“','&quot;')
         text = text.replace('”','&quot;')
-        text = text.replace("\r\n", "")
+        text = text.replace("\r", "")
+        text = text.replace("\n", "")
         return text     
 
 newline="\n"
