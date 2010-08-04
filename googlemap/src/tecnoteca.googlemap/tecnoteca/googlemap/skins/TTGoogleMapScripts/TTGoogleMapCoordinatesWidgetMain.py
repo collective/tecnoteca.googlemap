@@ -56,7 +56,7 @@ Gload = function() {
          var center = new GLatLng("""+str(latitude)+""", """+str(longitude)+""");
          map.setCenter(center, 15);
          geocoder = new GClientGeocoder();
-         var marker = new GMarker(center, {draggable: true});
+         var marker = new GMarker(center, {draggable:"""+ (coordFieldId!=None and 'true' or 'false') +"""});
          map.addOverlay(marker);
          
          """+ (coordFieldId!=None and edit_mode_listeners or '') +"""

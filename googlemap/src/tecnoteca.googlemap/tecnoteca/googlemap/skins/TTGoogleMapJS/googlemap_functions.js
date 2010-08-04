@@ -19,16 +19,18 @@ function createIcon(imgUrl) {
         icon.iconSize = new GSize(32,37);
     }
     icon.iconAnchor = new GPoint(16,34); // set anchor point
-    icon.shadowSize = new GSize(0, 0); // disable shadow
+    icon.imageMap = [0,0, icon.iconSize.width,0, icon.iconSize.width,icon.iconSize.height, 0,icon.iconSize.height]; // set clickable area
+    icon.shadowSize = new GSize(0, 0); // disable shadow    
     return icon;
 }      
 
 // == Create marker ==
-function createMarker(id,point,name,html,category) {
+function createMarker(id,point,name,html,category,categoryFullName) {
     var marker = new GMarker(point,gicons[category]);
     // === Store the category and name info as a marker properties ===
     marker.myid = id;
     marker.mycategory = category;
+    marker.mycategoryfullname = categoryFullName;
     marker.myname = name;
     GEvent.addListener(marker, "click", function() {
       marker.openInfoWindowHtml(html);
@@ -77,15 +79,22 @@ function myclick(i) {
     GEvent.trigger(gmarkers[i],"click");
 }
 
-// == rebuilds the sidebar to match the markers currently displayed ==
+//== rebuilds the sidebar to match the markers currently displayed ==
 function makeSidebar() {
-	var html = "<table border='0'>";
+	var html = "<ul class='TTMapMarkerList'>";
+	var mem = ""
+	var mc = ""
     for (var i=0; i<gmarkers.length; i++) {
+      var mc = gmarkers[i].mycategory;
+      if((i==0 || mc!=mem) && !gmarkers[i].isHidden()) {
+      	html += '<li class="TTMapMarkerListTitle"><b>'+gmarkers[i].mycategoryfullname+'</b></li>';
+      }
+      mem = mc;
       if (!gmarkers[i].isHidden()) {
-        html += '<tr><td>&bull; </td><td><a href="javascript:myclick(' + i + ')">' + gmarkers[i].myname + '</a></td></tr>';
+        html += '<li class="TTMapMarkerListItem"><a href="javascript:myclick(' + i + ')">' + gmarkers[i].myname + '</a></li>';
       }
     }
-    html += "</table>";
+    html += "</ul>";
     if(document.getElementById("side_bar")) {
     	document.getElementById("side_bar").innerHTML = html;
     }
