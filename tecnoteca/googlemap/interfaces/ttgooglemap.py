@@ -43,6 +43,18 @@ class ITTGoogleMap(Interface):
         required=True,
         description=_(u"Select default map type"),
     )
+#    
+    CatBoxHeight = schema.Int(
+        title=_(u"Cat Box Height"),
+        required=True,
+        description=_(u"Cat box max-height"),
+    )
+#   
+    MarkerBoxHeight = schema.Int(
+        title=_(u"Marker Box Height"),
+        required=True,
+        description=_(u"Marker box max-height"),
+    )
 #
     Panoramio = schema.Bool(
         title=_(u"Panoramio"),

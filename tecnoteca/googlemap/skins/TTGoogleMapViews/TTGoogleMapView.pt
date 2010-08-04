@@ -86,7 +86,7 @@
 						<div class="TTMapPanelOpenClose" tal:attributes="style python:context.getOpenBoxes() and 'display:none' or ''; " i18n:translate="Open panel">Open panel</div>
 						<div class="TTMapPanelOpenClose" tal:attributes="style python:not context.getOpenBoxes() and 'display:none' or ''; " i18n:translate="Close panel">Close panel</div>
 					  </div>
-					  <div class="TTMapCollapsiblePanelContent">
+					  <div class="TTMapCollapsiblePanelContent" tal:attributes="style python:'max-height:'+str(context.getCatBoxHeight())+'px;; overflow:auto;;'">
 						<div metal:use-macro="here/TTGoogleMapMacro/macros/Categories"></div>
 						<div metal:use-macro="here/TTGoogleMapMacro/macros/MacroCategories"></div>
 					  </div>		
@@ -101,7 +101,7 @@
 						<div class="TTMapPanelOpenClose" tal:attributes="style python:context.getOpenBoxes() and 'display:none' or ''; " i18n:translate="Open panel">Open panel</div>
 						<div class="TTMapPanelOpenClose" tal:attributes="style python:not context.getOpenBoxes() and 'display:none' or ''; " i18n:translate="Close panel">Close panel</div>											  
 					  </div>
-					  <div class="TTMapCollapsiblePanelContent">
+					  <div class="TTMapCollapsiblePanelContent" tal:attributes="style python:'max-height:'+str(context.getMarkerBoxHeight())+'px;; overflow:auto;;'">
 						<div id="side_bar"></div>
 					  </div>
 					</div>

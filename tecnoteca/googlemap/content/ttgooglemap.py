@@ -61,7 +61,7 @@ TTGoogleMapSchema = folder.ATFolderSchema.copy() + atapi.Schema((
         storage=atapi.AnnotationStorage(),
         widget=atapi.StringWidget(
             label=_(u"Coordinates"),
-            description=_(u"Coordinates lat long"),
+            description=_(u"Map center coords"),
             macro='TTGoogleMapCoordinatesWidget',
         ),
         required=True,
@@ -94,7 +94,36 @@ TTGoogleMapSchema = folder.ATFolderSchema.copy() + atapi.Schema((
         default="G_NORMAL_MAP",
         required=True,
     ),
-
+    
+    
+    atapi.IntegerField(
+        'CatBoxHeight',
+        storage=atapi.AnnotationStorage(),
+        languageIndependent = True,
+        widget=atapi.IntegerWidget(
+            label=_(u"Cat Box Height"),
+            description=_(u"Cat box max-height"),
+        ),
+        required=True,
+        default_method = 'defaultCatBoxHeight',
+        validators=('isInt'),
+    ),
+    
+    
+    atapi.IntegerField(
+        'MarkerBoxHeight',
+        storage=atapi.AnnotationStorage(),
+        languageIndependent = True,
+        widget=atapi.IntegerWidget(
+            label=_(u"Marker Box Height"),
+            description=_(u"Marker box max-height"),
+        ),
+        required=True,
+        default_method = 'defaultMarkerBoxHeight',
+        validators=('isInt'),
+    ),
+    
+    
 
     atapi.BooleanField(
         'Panoramio',
@@ -223,5 +252,14 @@ class TTGoogleMap(folder.ATFolder):
     def defaultHeight(self):
         config = getMultiAdapter((self, self.REQUEST), name="ttgooglemap_config")
         return config.default_map_size[0]
+    
+    def defaultCatBoxHeight(self):
+        mapHeight = int(self.defaultHeight())
+        return (mapHeight * 35 / 100) # 35% total map height
+    
+    def defaultMarkerBoxHeight(self):
+        mapHeight = int(self.defaultHeight())
+        return (mapHeight * 55 / 100) # 55% total map height
+    
 
 atapi.registerType(TTGoogleMap, PROJECTNAME)
