@@ -220,6 +220,10 @@ class TTGoogleMap(folder.ATFolder):
     ZoomLevel = atapi.ATFieldProperty('ZoomLevel')
 
     MapType = atapi.ATFieldProperty('MapType')
+    
+    CatBoxHeight = atapi.ATFieldProperty('CatBoxHeight')
+    
+    MarkerBoxHeight = atapi.ATFieldProperty('MarkerBoxHeight')
 
     Panoramio = atapi.ATFieldProperty('Panoramio')
 
