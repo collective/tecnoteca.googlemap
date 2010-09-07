@@ -361,6 +361,11 @@ msgstr "Related markers"
 msgid "Search Address"
 msgstr "Search address: "
 
+#: ./skins/TTGoogleMapViews/TTGoogleMapCoordinatesWidget.pt:61
+#. Default: "Search"
+msgid "Search_button"
+msgstr "Search"
+
 #: ./content/ttgooglemapcategory.py:38
 #: ./interfaces/ttgooglemapcategory.py:14
 msgid "Select a custom icon for category"

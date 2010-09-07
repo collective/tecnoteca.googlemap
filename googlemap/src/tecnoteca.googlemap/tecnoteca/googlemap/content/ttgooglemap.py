@@ -12,6 +12,8 @@ from tecnoteca.googlemap import googlemapMessageFactory as _
 from tecnoteca.googlemap.interfaces import ITTGoogleMap
 from tecnoteca.googlemap.config import PROJECTNAME
 
+ 
+
 TTGoogleMapSchema = folder.ATFolderSchema.copy() + atapi.Schema((
 
     # -*- Your Archetypes field definitions here ... -*-
@@ -182,6 +184,18 @@ TTGoogleMapSchema = folder.ATFolderSchema.copy() + atapi.Schema((
         ),
         default=True,
     ),
+    atapi.StringField(
+        'DefaultMarker',
+        storage=atapi.AnnotationStorage(),
+        default_output_type= 'text/x-html-safe',
+        widget=atapi.SelectionWidget (
+            format="select",
+            label=_(u"Default Marker"),
+            description=_(u"A marker to be selected by default on load."),
+        ),
+        vocabulary="getMarkersVocabulary",
+    ),
+
 
 ))
 
@@ -264,6 +278,18 @@ class TTGoogleMap(folder.ATFolder):
     def defaultMarkerBoxHeight(self):
         mapHeight = int(self.defaultHeight())
         return (mapHeight * 55 / 100) # 55% total map height
-    
+
+    def getMarkersVocabulary(self):
+        vocabulary = atapi.DisplayList()
+        vocabulary.add(' ','--')
+        for a_brain in self.getFolderContents(contentFilter={'portal_type':'TTGoogleMapMarker', \
+            'review_state':'published','path':{'depth':2, 'query':'/'.join(self.getPhysicalPath()) }}):
+            vocabulary.add( a_brain.getId + str(a_brain.created.millis()), a_brain.Title)
+
+        return vocabulary
+
+
+
+   
 
 atapi.registerType(TTGoogleMap, PROJECTNAME)

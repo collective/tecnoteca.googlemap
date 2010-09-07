@@ -362,6 +362,11 @@ msgstr "Punti d'interesse associati"
 msgid "Search Address"
 msgstr "Digita qui l'indirizzo: "
 
+#: ./skins/TTGoogleMapViews/TTGoogleMapCoordinatesWidget.pt:61
+#. Default: "Search"
+msgid "Search_button"
+msgstr "Cerca"
+
 #: ./content/ttgooglemapcategory.py:38
 #: ./interfaces/ttgooglemapcategory.py:14
 msgid "Select a custom icon for category"

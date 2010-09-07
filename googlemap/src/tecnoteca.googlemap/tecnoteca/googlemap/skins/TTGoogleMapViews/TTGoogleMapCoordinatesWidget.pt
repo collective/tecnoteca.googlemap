@@ -58,7 +58,7 @@
 		<div class="field">
 			<div class="formHelp" i18n:translate="Search Address">Search address</div>
 	      	<input type="text" onKeyPress="return disableEnterKey(event)" size="40" id="ttgooglemap_search_address" name="address" value=""/>
-	      	<input type="button" value="Cerca" tal:attributes="onclick python:'searchAddress(document.getElementById(\'ttgooglemap_search_address\').value,\''+elementId+'\');; return false;;'"/>			
+	      	<input type="button" i18n:attributes="value Search_button"  value="Search" tal:attributes="onclick python:'searchAddress(document.getElementById(\'ttgooglemap_search_address\').value,\''+elementId+'\');; return false;;'"/>			
   		</div>
 		
 		<div class="field">

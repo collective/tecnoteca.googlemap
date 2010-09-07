@@ -368,6 +368,11 @@ msgstr ""
 msgid "Search Address"
 msgstr ""
 
+#. Default: "Search"
+#: ./skins/TTGoogleMapViews/TTGoogleMapCoordinatesWidget.pt:61
+msgid "Search_button"
+msgstr ""
+
 #: ./content/ttgooglemapcategory.py:38
 #: ./interfaces/ttgooglemapcategory.py:14
 msgid "Select a custom icon for category"
