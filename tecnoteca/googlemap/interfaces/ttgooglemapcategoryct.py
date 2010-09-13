@@ -3,11 +3,16 @@ from zope.interface import Interface
 
 from tecnoteca.googlemap import googlemapMessageFactory as _
 
-
-class ITTGoogleMapCategory(Interface):
-    """Google Map Category"""
+class ITTGoogleMapCategoryCT(Interface):
+    """Google Map Category Content Type"""
 
     # -*- schema definition goes here -*-
+    CType = schema.TextLine(
+        title=_(u"Content type"),
+        required=True,
+        description=_(u"Select content type"),
+    )
+#
     CustomIcon = schema.Bytes(
         title=_(u"Custom icon"),
         required=False,

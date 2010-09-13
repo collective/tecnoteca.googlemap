@@ -95,6 +95,7 @@ class MapsControlPanelAdapter(SchemaAdapterBase):
     default_mapsize = property(get_default_mapsize,set_default_mapsize)
 
     
+   
 
     def get_widget_mapsize(self):
         return getattr(self.context,PROPERTY_COORD_WIDGET_MAP_SIZE,"400,400")

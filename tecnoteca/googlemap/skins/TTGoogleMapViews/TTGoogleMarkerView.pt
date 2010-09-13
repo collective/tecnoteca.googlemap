@@ -17,7 +17,7 @@
 		
 		<!-- if anon user, perform redirect to parent map -->					
 		<tal:block tal:define="googleMap here/TTGoogleMarkerGetParentMap;
-							   redir_url python:googleMap.absolute_url()+'?mk='+context.getUniqueId()" 
+							   redir_url python:googleMap.absolute_url()+'?mk='+context.UID()" 
 				   tal:condition="python:context.portal_membership.isAnonymousUser()">
 			<tal:block tal:define="redir python:request.RESPONSE.redirect(redir_url)" />
 		</tal:block>

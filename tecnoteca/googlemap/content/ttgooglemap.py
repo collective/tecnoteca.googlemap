@@ -11,8 +11,9 @@ from Products.ATContentTypes.content import schemata
 from tecnoteca.googlemap import googlemapMessageFactory as _
 from tecnoteca.googlemap.interfaces import ITTGoogleMap
 from tecnoteca.googlemap.config import PROJECTNAME
+from tecnoteca.googlemap.content.ttgooglemapcoordinates import *
 
-TTGoogleMapSchema = folder.ATFolderSchema.copy() + atapi.Schema((
+TTGoogleMapSchema = folder.ATFolderSchema.copy() + TTGoogleMapCoordinatesSchema.copy() + atapi.Schema((
 
     # -*- Your Archetypes field definitions here ... -*-
 
@@ -52,19 +53,6 @@ TTGoogleMapSchema = folder.ATFolderSchema.copy() + atapi.Schema((
         required=True,
         default_method = 'defaultHeight',
         validators=('isInt'),
-    ),
-
-
-    atapi.TextField(
-        'Coordinates',
-        languageIndependent = True,
-        storage=atapi.AnnotationStorage(),
-        widget=atapi.StringWidget(
-            label=_(u"Coordinates"),
-            description=_(u"Map center coords"),
-            macro='TTGoogleMapCoordinatesWidget',
-        ),
-        required=True,
     ),
 
 
@@ -198,7 +186,7 @@ schemata.finalizeATCTSchema(
 )
 
 
-class TTGoogleMap(folder.ATFolder):
+class TTGoogleMap(folder.ATFolder, TTGoogleMapCoordinates):
     """Google Map Object"""
     implements(ITTGoogleMap)
 
@@ -214,8 +202,6 @@ class TTGoogleMap(folder.ATFolder):
     MapWidth = atapi.ATFieldProperty('MapWidth')
 
     MapHeight = atapi.ATFieldProperty('MapHeight')
-
-    Coordinates = atapi.ATFieldProperty('Coordinates')
 
     ZoomLevel = atapi.ATFieldProperty('ZoomLevel')
 
@@ -234,20 +220,6 @@ class TTGoogleMap(folder.ATFolder):
     OverviewMapControl = atapi.ATFieldProperty('OverviewMapControl')
     
     StartupBoxes = atapi.ATFieldProperty('OpenBoxes')
-    
-    def getLatitude(self):
-        coordinates = self.getCoordinates().split("|")
-        if(len(coordinates)>1):
-            return coordinates[0]
-        else:
-            return None
-    
-    def getLongitude(self):
-        coordinates = self.getCoordinates().split("|")
-        if(len(coordinates)>1):
-            return coordinates[1]
-        else:
-            return None
     
     def defaultWidth(self):
         config = getMultiAdapter((self, self.REQUEST), name="ttgooglemap_config")

@@ -18,6 +18,10 @@
       <role name="Manager" />
       <role name="Contributor" />
     </permission>
+	<permission name="tecnoteca.googlemap: Add TTGoogleMapCategoryCT" acquire="False">
+      <role name="Manager" />
+      <role name="Contributor" />
+    </permission>
     <permission name="tecnoteca.googlemap: Add TTGoogleMapCategoryContainer" acquire="False">
       <role name="Manager" />
       <role name="Contributor" />

@@ -46,6 +46,16 @@
         set_schema="..interfaces.ITTGoogleMapCategory"
         />
   </class>
+  <class class=".ttgooglemapcategoryct.TTGoogleMapCategoryCT">
+    <require
+        permission="zope2.View"
+        interface="..interfaces.ITTGoogleMapCategory"
+        />
+    <require
+        permission="cmf.ModifyPortalContent"
+        set_schema="..interfaces.ITTGoogleMapCategory"
+        />
+  </class>
   <class class=".ttgooglemapcategorycontainer.TTGoogleMapCategoryContainer">
     <require
         permission="zope2.View"

@@ -14,6 +14,7 @@
     <type portal_type="TTGoogleMapPolyline" />
     <type portal_type="TTGoogleMapMarker" />
     <type portal_type="TTGoogleMapCategory" />
+	<type portal_type="TTGoogleMapCategoryCT" />
     <type portal_type="TTGoogleMapCategoryContainer" />
     <type portal_type="TTGoogleMap" />
   </factorytypes>

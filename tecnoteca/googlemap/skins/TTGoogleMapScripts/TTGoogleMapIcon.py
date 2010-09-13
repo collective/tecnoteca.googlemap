@@ -16,5 +16,5 @@ else:
     else:
         output+='icon = createIcon(\'ttgooglemap_marker.png\');'
 if(isGlobalMap):
-    output+='gicons[\''+category.getUniqueId()+'\'] = icon;'
+    output+='gicons[\''+category.UID()+'\'] = icon;'
 return output

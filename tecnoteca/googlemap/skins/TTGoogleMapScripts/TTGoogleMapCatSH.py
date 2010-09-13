@@ -13,8 +13,8 @@ for catloop in categories:
     
     # default active
     if(category.getDefaultActive()):
-        output+="show(\""+category.getUniqueId()+"\");";
+        output+="show(\""+category.UID()+"\");";
     else:
-        output+="hide(\""+category.getUniqueId()+"\");";    
+        output+="hide(\""+category.UID()+"\");";
         
 return output
