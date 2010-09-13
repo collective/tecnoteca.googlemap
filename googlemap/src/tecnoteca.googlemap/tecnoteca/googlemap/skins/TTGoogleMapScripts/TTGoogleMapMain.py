@@ -30,7 +30,7 @@ mapPolygjs = googleMap.TTGoogleMapPolygons(polygons)
 defaultMarker = context.REQUEST.get("mk");
 if defaultMarker is None:
     defaultMarker = googleMap.getDefaultMarker()
-if(defaultMarker!=None and defaultMarker!=""):
+if(defaultMarker!=None and defaultMarker.strip()!=""):
     defaultMarker = 'showMarkerAtStartup(\''+str(defaultMarker)+'\');'
 else:
     defaultMarker = ''
