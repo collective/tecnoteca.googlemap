@@ -53,12 +53,6 @@
 	                               />
 							
 							<img tal:attributes="src python:here.portal_url()+'/'+item; alt python:vocab.getValue(item); title python:vocab.getValue(item)" />
-								   
-							<!--
-	                        <label tal:content="python:vocab.getValue(item)"
-	                               i18n:translate=""
-	                               tal:attributes="for string:${fieldName}_${repeat/item/number}" />
-							-->
 						</div>
                     </tal:radios>
             </metal:fill>

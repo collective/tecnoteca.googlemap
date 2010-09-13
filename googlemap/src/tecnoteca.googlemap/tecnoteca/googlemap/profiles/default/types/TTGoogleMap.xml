@@ -16,6 +16,7 @@
   	<element value="TTGoogleMapPolygon"></element>
   	<element value="TTGoogleMapPolyline"></element>
   	<element value="TTGoogleMapCategory"></element>
+	<element value="TTGoogleMapCategoryCT"></element>
   	<element value="TTGoogleMapCategoryContainer"></element>
   </property>
   <property name="allow_discussion">False</property>

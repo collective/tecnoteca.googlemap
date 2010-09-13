@@ -16,6 +16,8 @@
     meta_type="Factory-based Type Information with dynamic views" />
   <object name="TTGoogleMapCategory"
     meta_type="Factory-based Type Information with dynamic views" />
+  <object name="TTGoogleMapCategoryCT"
+    meta_type="Factory-based Type Information with dynamic views" />
   <object name="TTGoogleMapCategoryContainer"
     meta_type="Factory-based Type Information with dynamic views" />
   <object name="TTGoogleMap"

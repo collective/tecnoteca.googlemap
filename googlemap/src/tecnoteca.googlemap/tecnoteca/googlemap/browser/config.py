@@ -67,7 +67,7 @@ class TTGoogleMapConfig(BrowserView):
         if size is None:
             return 'undefined'        
         split = size.split(',')
-        return (split[0], split[1])
+        return (split[0], split[1])       
 
     @property
     def googlemaps_key(self):

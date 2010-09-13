@@ -20,7 +20,7 @@ function createIcon(imgUrl) {
     }
     icon.iconAnchor = new GPoint(16,34); // set anchor point
     icon.imageMap = [0,0, icon.iconSize.width,0, icon.iconSize.width,icon.iconSize.height, 0,icon.iconSize.height]; // set clickable area
-    icon.shadowSize = new GSize(0, 0); // disable shadow    
+    icon.shadowSize = new GSize(0, 0); // disable shadow
     return icon;
 }      
 
@@ -79,7 +79,7 @@ function myclick(i) {
     GEvent.trigger(gmarkers[i],"click");
 }
 
-//== rebuilds the sidebar to match the markers currently displayed ==
+// == rebuilds the sidebar to match the markers currently displayed ==
 function makeSidebar() {
 	var html = "<ul class='TTMapMarkerList'>";
 	var mem = ""
@@ -185,45 +185,71 @@ function polygonClick(box,i) {
     }
 }
 
+
+// == refresh map position and marker ==
+function refreshPosition(point) {
+	var map = new GMap2(document.getElementById("map"));
+	map.addControl(new GSmallMapControl());
+    map.addControl(new GMapTypeControl());
+	map.clearOverlays()
+    map.setCenter(point,14);
+    var marker = new GMarker(point, {
+        draggable :true
+    });
+    map.addOverlay(marker);
+
+    GEvent.addListener(marker, "dragend", function() {
+        var pt = marker.getPoint();
+        map.panTo(pt);
+        document.getElementById(fieldId).value = pt.lat().toFixed(5) + "|" + pt.lng().toFixed(5);
+    });
+
+    GEvent.addListener(map, "moveend", function() {
+        map.clearOverlays();
+        var center = map.getCenter();
+        var marker = new GMarker(center, {
+            draggable :true
+        });
+        map.addOverlay(marker);
+        document.getElementById(fieldId).value = center.lat().toFixed(5) + "|" + center.lng().toFixed(5);
+
+        GEvent.addListener(marker, "dragend", function() {
+            var pt = marker.getPoint();
+            map.panTo(pt);
+            document.getElementById(fieldId).value = pt.lat().toFixed(5) + "|" + pt.lng().toFixed(5);
+        });
+    });
+}
+
+
+// == disableCoordinates ==
+function disableCoordinates(coordField) {
+	document.getElementById(coordField).value = "0|0";
+	var lat = 0;
+	var long = 0;
+	var point = new GLatLng(lat,long);
+	refreshPosition(point);
+}
+
+
+// == update latlong (marker edit) ==
+function updateMapLatLong(fieldId) {
+	var splitCoords= document.getElementById(fieldId).value.split("|");
+	var lat = splitCoords[0];
+	var long = splitCoords[1];
+	var point = new GLatLng(lat,long);
+	refreshPosition(point);
+}
+
 // == search address (marker edit) ==
 function searchAddress(address, fieldId) {
-    var map = new GMap2(document.getElementById("map"));
-    map.addControl(new GSmallMapControl());
-    map.addControl(new GMapTypeControl());
     if (geocoder) {
         geocoder.getLatLng(address, function(point) {
             if (!point) {
-                alert(address + " not found");
+                alert(Address + " not found");
             } else {
             	document.getElementById(fieldId).value = point.lat().toFixed(5) + "|" + point.lng().toFixed(5); 
-                map.clearOverlays()
-                map.setCenter(point, 14);
-                var marker = new GMarker(point, {
-                    draggable :true
-                });
-                map.addOverlay(marker);
-
-                GEvent.addListener(marker, "dragend", function() {
-                    var pt = marker.getPoint();
-                    map.panTo(pt);
-                    document.getElementById(fieldId).value = pt.lat().toFixed(5) + "|" + pt.lng().toFixed(5);
-                });
-
-                GEvent.addListener(map, "moveend", function() {
-                    map.clearOverlays();
-                    var center = map.getCenter();
-                    var marker = new GMarker(center, {
-                        draggable :true
-                    });
-                    map.addOverlay(marker);
-                    document.getElementById(fieldId).value = center.lat().toFixed(5) + "|" + center.lng().toFixed(5);
-
-                    GEvent.addListener(marker, "dragend", function() {
-                        var pt = marker.getPoint();
-                        map.panTo(pt);
-                        document.getElementById(fieldId).value = pt.lat().toFixed(5) + "|" + pt.lng().toFixed(5);
-                    });
-                });
+            	refreshPosition(point);
             }
         });
     }

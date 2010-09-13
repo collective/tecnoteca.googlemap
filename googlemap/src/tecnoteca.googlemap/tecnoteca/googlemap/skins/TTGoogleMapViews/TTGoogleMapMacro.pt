@@ -15,7 +15,7 @@
 				<tal:if tal:condition="python: not (category.getCustomIcon() != None and category.getCustomIcon() != '') and (category.getCategoryIcon() != None and category.getCategoryIcon() != '')">
 					<img class="TTMapIcon" tal:attributes="src python:category.getCategoryIcon(); alt python:category.Title()" />
 				</tal:if>
-				<input type="checkbox" class="TTMapCheckbox" tal:attributes="id python:category.getUniqueId()+'box'; onclick python:'boxclick(this,\''+category.getUniqueId()+'\');;'"/>
+				<input type="checkbox" class="TTMapCheckbox" tal:attributes="id python:category.UID()+'box'; onclick python:'boxclick(this,\''+category.UID()+'\');;'"/>
 				<tal:block tal:content="python:category.Title()"></tal:block>
 				<br>
 			</div>

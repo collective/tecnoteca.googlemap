@@ -27,11 +27,14 @@ output += newline
 ## loop through categories
 for catloop in categories:
     category = catloop.getObject()
-    markers = category.getFolderContents(contentFilter={'portal_type':'TTGoogleMapMarker', 'review_state':'published'});
+    markers = category.getMarkers()
     
     # loop through markers
-    for markloop in markers:
-        marker = markloop.getObject()
+    for entry in markers:
+        marker = entry.getObject()
+        
+        if not(hasattr(marker, "getLatitude")) or marker.getLatitude() == None or (marker.getLatitude()=="0" and marker.getLongitude()=="0") :
+            return ""
         
         output += newline;
         output += newline;
@@ -67,6 +70,6 @@ for catloop in categories:
             
         # careate marker
         output += newline
-        output += "map.addOverlay(createMarker(\""+marker.getUniqueId()+"\", point, \""+custom_escape(marker.Title())+"\", html, '"+category.getUniqueId()+"', '"+custom_escape(category.pretty_title_or_id())+"'));"
+        output += "map.addOverlay(createMarker(\""+marker.UID()+"\", point, \""+custom_escape(marker.Title())+"\", html, '"+category.UID()+"', '"+custom_escape(category.pretty_title_or_id())+"'));"
         
 return output

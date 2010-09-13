@@ -23,6 +23,11 @@ def initialize(context):
     Here, we call the Archetypes machinery to register our content types
     with Zope and the CMF.
     """
+    
+    from AccessControl import allow_module, allow_class
+    allow_module('tecnoteca.googlemap.content')
+    from tecnoteca.googlemap.content.ttgooglemapcoordinates import TTGoogleMapCoordinates
+    allow_class(TTGoogleMapCoordinates)
 
     # Retrieve the content types that have been registered with Archetypes
     # This happens when the content type is imported and the registerType()

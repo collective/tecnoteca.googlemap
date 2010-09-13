@@ -10,8 +10,9 @@ from Products.ATContentTypes.content import schemata
 from tecnoteca.googlemap import googlemapMessageFactory as _
 from tecnoteca.googlemap.interfaces import ITTGoogleMapMarker
 from tecnoteca.googlemap.config import PROJECTNAME
+from tecnoteca.googlemap.content.ttgooglemapcoordinates import *
 
-TTGoogleMapMarkerSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
+TTGoogleMapMarkerSchema = schemata.ATContentTypeSchema.copy() + TTGoogleMapCoordinatesSchema.copy() + atapi.Schema((
 
     # -*- Your Archetypes field definitions here ... -*-
     
@@ -23,18 +24,6 @@ TTGoogleMapMarkerSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
             label=_(u"Text"),
             description=_(u"Marker text"),
         ),
-    ),
-    
-    atapi.TextField(
-        'Coordinates',
-        languageIndependent = True,
-        storage=atapi.AnnotationStorage(),
-        widget=atapi.StringWidget(
-            label=_(u"Coordinates"),
-            description=_(u"Coordinates lat long"),
-            macro='TTGoogleMapCoordinatesWidget',
-        ),
-        required=True,
     ),
     
 ))
@@ -49,7 +38,7 @@ TTGoogleMapMarkerSchema['description'].widget.visible = {'view':'hidden','edit':
 schemata.finalizeATCTSchema(TTGoogleMapMarkerSchema, moveDiscussion=False)
 
 
-class TTGoogleMapMarker(base.ATCTContent):
+class TTGoogleMapMarker(base.ATCTContent, TTGoogleMapCoordinates):
     """Google Map Marker"""
     implements(ITTGoogleMapMarker)
 
@@ -60,25 +49,6 @@ class TTGoogleMapMarker(base.ATCTContent):
     description = atapi.ATFieldProperty('description')
 
     # -*- Your ATSchema to Python Property Bridges Here ... -*-
-    Text = atapi.ATFieldProperty('Text')
-    
-    Coordinates = atapi.ATFieldProperty('Coordinates')
-    
-    def getUniqueId(self):
-        return ( self.getId() + str(self.created().millis()) )
-    
-    def getLatitude(self):
-        coordinates = self.getCoordinates().split("|")
-        if(len(coordinates)>1):
-            return coordinates[0]
-        else:
-            return None
-    
-    def getLongitude(self):
-        coordinates = self.getCoordinates().split("|")
-        if(len(coordinates)>1):
-            return coordinates[1]
-        else:
-            return None
+    Text = atapi.ATFieldProperty('Text')    
 
 atapi.registerType(TTGoogleMapMarker, PROJECTNAME)

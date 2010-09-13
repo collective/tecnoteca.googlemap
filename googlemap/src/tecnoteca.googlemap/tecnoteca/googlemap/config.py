@@ -16,6 +16,7 @@ ADD_PERMISSIONS = {
     'TTGoogleMapPolyline': 'tecnoteca.googlemap: Add TTGoogleMapPolyline',
     'TTGoogleMapMarker': 'tecnoteca.googlemap: Add TTGoogleMapMarker',
     'TTGoogleMapCategory': 'tecnoteca.googlemap: Add TTGoogleMapCategory',
+    'TTGoogleMapCategoryCT': 'tecnoteca.googlemap: Add TTGoogleMapCategoryCT',
     'TTGoogleMapCategoryContainer': 'tecnoteca.googlemap: Add TTGoogleMapCategoryContainer',
     'TTGoogleMap': 'tecnoteca.googlemap: Add TTGoogleMap',
 }

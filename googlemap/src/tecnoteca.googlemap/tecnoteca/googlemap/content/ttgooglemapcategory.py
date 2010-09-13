@@ -79,15 +79,15 @@ class TTGoogleMapCategory(folder.ATFolder):
     # -*- Your ATSchema to Python Property Bridges Here ... -*-
     CustomIcon = atapi.ATFieldProperty('CustomIcon')
 
-    Icon = atapi.ATFieldProperty('CategoryIcon')
+    CategoryIcon = atapi.ATFieldProperty('CategoryIcon')
 
     DefaultActive = atapi.ATFieldProperty('DefaultActive')
-    
-    def getUniqueId(self):
-        return ( self.getId() + str(self.created().millis()) )
     
     def markerIconVocab(self):
         config = getMultiAdapter((self, self.REQUEST), name="ttgooglemap_config")
         return config.marker_icons
+    
+    def getMarkers(self):
+        return self.getFolderContents(contentFilter={'portal_type':'TTGoogleMapMarker', 'review_state':'published'});
 
 atapi.registerType(TTGoogleMapCategory, PROJECTNAME)

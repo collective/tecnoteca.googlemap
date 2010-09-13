@@ -26,12 +26,6 @@ class ITTGoogleMap(Interface):
         description=_(u"Map height (px)"),
     )
 #
-    Coordinates = schema.TextLine(
-        title=_(u"Coordinates"),
-        required=True,
-        description=_(u"Coordinates lat long"),
-    )
-#
     ZoomLevel = schema.Int(
         title=_(u"Zoom Level"),
         required=True,

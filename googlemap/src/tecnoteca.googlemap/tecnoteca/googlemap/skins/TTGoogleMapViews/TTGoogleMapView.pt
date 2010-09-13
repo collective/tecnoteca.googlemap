@@ -11,7 +11,7 @@
     <tal:main-macro metal:define-macro="main"
                     tal:define="kssClassesView context/@@kss_field_decorator_view;
                                 getKssClasses nocall:kssClassesView/getKssClassesInlineEditable;								
-								contentFilterCategories python:{'portal_type':'TTGoogleMapCategory', 'review_state':'published'};
+								contentFilterCategories python:{'portal_type':('TTGoogleMapCategory','TTGoogleMapCategoryCT'), 'review_state':'published'};
 								catcontainers python:context.getFolderContents(contentFilter={'portal_type':'TTGoogleMapCategoryContainer', 'review_state':'published'});
 								polylines python:context.getFolderContents({'portal_type':'TTGoogleMapPolyline', 'review_state':'published'});
 								polygons python:context.getFolderContents({'portal_type':'TTGoogleMapPolygon', 'review_state':'published'});
@@ -52,7 +52,7 @@
 			<div class="TTMapColRight" tal:attributes="style string:margin-left:${here/getMapWidth}px;">
 				
 				<tal:if tal:condition="python:len(polygons)>0">
-					<div class="TTMapCollapsiblePanel">
+					<div class="TTMapCollapsiblePanel" id="PolygonsPanel">
 					  <div class="TTMapCollapsiblePanelTab">
 					  	<div class="TTMapPanelLabel" i18n:translate="Frontend Polygons">Areas</div>
 						<div class="TTMapPanelOpenClose" tal:attributes="style python:context.getOpenBoxes() and 'display:none' or ''; " i18n:translate="Open panel">Open panel</div>
@@ -66,7 +66,7 @@
 				</tal:if>							
 	
 				<tal:if tal:condition="python:len(polylines)>0">
-					<div class="TTMapCollapsiblePanel">
+					<div class="TTMapCollapsiblePanel" id="PolylinesPanel">
 					  <div class="TTMapCollapsiblePanelTab">
 					  	<div class="TTMapPanelLabel" i18n:translate="Frontend Polylines">Paths</div>
 						<div class="TTMapPanelOpenClose" tal:attributes="style python:context.getOpenBoxes() and 'display:none' or ''; " i18n:translate="Open panel">Open panel</div>
@@ -80,7 +80,7 @@
 				</tal:if>							
 														
 				<tal:if tal:condition="python: (len(categories)>0) or (len(catcontainers)>0)">	
-					<div class="TTMapCollapsiblePanel">
+					<div class="TTMapCollapsiblePanel" id="CategoriesPanel">
 					  <div class="TTMapCollapsiblePanelTab">
 					  	<div class="TTMapPanelLabel" i18n:translate="Frontend Categories">Categories</div>
 						<div class="TTMapPanelOpenClose" tal:attributes="style python:context.getOpenBoxes() and 'display:none' or ''; " i18n:translate="Open panel">Open panel</div>
@@ -95,7 +95,7 @@
 				</tal:if>
 				
 				<tal:if tal:condition="python: (len(categories)>0) or (len(catcontainers)>0)">
-					<div class="TTMapCollapsiblePanel">
+					<div class="TTMapCollapsiblePanel" id="MarkersPanel">
 					  <div class="TTMapCollapsiblePanelTab">
 					  	<div class="TTMapPanelLabel" i18n:translate="Frontend Markers">Markers</div>
 						<div class="TTMapPanelOpenClose" tal:attributes="style python:context.getOpenBoxes() and 'display:none' or ''; " i18n:translate="Open panel">Open panel</div>
