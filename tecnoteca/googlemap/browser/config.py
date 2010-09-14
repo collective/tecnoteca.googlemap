@@ -111,6 +111,12 @@ class TTGoogleMapConfig(BrowserView):
     @ram.cache(lambda *args: time() // (60 * 60))
     def get_configured_content_types(self):
         types = self.portalTypes.listContentTypes()
+        
+        excludedCT = ('TTGoogleMap', 'TTGoogleMapMarker')        
+        for ct in excludedCT:            
+            if ct in types:
+                types.remove(ct)
+            
         confCT = []
         for type in types:
             items = self.portalCatalog(portal_type = type)
