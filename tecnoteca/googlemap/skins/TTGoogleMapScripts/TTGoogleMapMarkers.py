@@ -33,7 +33,7 @@ for catloop in categories:
     for entry in markers:
         marker = entry.getObject()
         
-        if not(hasattr(marker, "getLatitude")) or marker.getLatitude() == None or (marker.getLatitude()=="0" and marker.getLongitude()=="0") :
+        if not(hasattr(marker, "getLatitude")) or marker.getLatitude() == None or marker.isDisabled():
             return ""
         
         output += newline;
@@ -46,7 +46,7 @@ for catloop in categories:
         # title and text 
         output += "html = '<div class=\"TTMapMarkerWin\">';"
         output += newline 
-        output += "html += \"<b>"+custom_escape(marker.Title())+"</b><br>"+(custom_escape(marker.getText())).strip()+"\";"
+        output += "html += \"<b>"+custom_escape(marker.Title())+"</b><br/>"+(custom_escape(marker.getText())).strip()+"\";"
         output += newline;
         
         # relations                            

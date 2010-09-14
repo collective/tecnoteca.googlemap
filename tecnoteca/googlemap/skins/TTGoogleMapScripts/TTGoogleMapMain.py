@@ -7,6 +7,8 @@
 ##parameters=googleMap,categories,contentFilterCategories,catcontainers,polylines,polygons
 ##title=
 
+from tecnoteca.googlemap import googlemapMessageFactory as _
+
 # generate categories' icon
 mapCatIcons = googleMap.TTGoogleMapCatIcons(categories)
 mapCatIcons += googleMap.TTGoogleMapCatContainers(catcontainers,contentFilterCategories,'icons')
@@ -27,18 +29,38 @@ mapPolygjs = googleMap.TTGoogleMapPolygons(polygons)
 
 # get default marker (if any)
 defaultMarker = context.REQUEST.get("mk");
+if defaultMarker is None:
+    defaultMarker = googleMap.getDefaultMarker()
 if(defaultMarker!=None and defaultMarker!=""):
     defaultMarker = 'showMarkerAtStartup(\''+str(defaultMarker)+'\');'
 else:
     defaultMarker = ''
 
+
 # main js
 output = """
 <script type="text/javascript">
 //<![CDATA[
+var ERRCODES = new Array(); 
+var TT_NO_MARKER_SELECTED = 667;
+var TT_NO_MARKER_FOUND = 668;
+ERRCODES[G_GEO_SUCCESS] = " """ + context.translate(_(u'G_GEO_SUCCESS')) + """ ";
+ERRCODES[G_GEO_BAD_REQUEST] = " """ + context.translate(_(u'G_GEO_BAD_REQUEST')) + """ ";
+ERRCODES[G_GEO_SERVER_ERROR] =" """ + context.translate(_(u'G_GEO_SERVER_ERROR')) + """ ";
+ERRCODES[G_GEO_MISSING_QUERY] =" """ + context.translate(_(u'G_GEO_MISSING_QUERY')) + """ ";
+ERRCODES[G_GEO_MISSING_ADDRESS] =" """ + context.translate(_(u'G_GEO_MISSING_ADDRESS')) +""" ";
+ERRCODES[G_GEO_UNKNOWN_ADDRESS] =" """ + context.translate(_(u'G_GEO_UNKNOWN_ADDRESS')) + """ ";
+ERRCODES[G_GEO_UNAVAILABLE_ADDRESS] = " """ + context.translate(_(u'G_GEO_UNAVAILABLE_ADDRESS')) +""" ";
+ERRCODES[G_GEO_UNKNOWN_DIRECTIONS] = " """ + context.translate(_(u'G_GEO_UNKNOWN_DIRECTIONS')) +""" ";
+ERRCODES[G_GEO_BAD_KEY] = " """ + context.translate(_(u'G_GEO_BAD_KEY')) + """ ";
+ERRCODES[G_GEO_TOO_MANY_QUERIES] = " """ + context.translate(_(u'G_GEO_TOO_MANY_QUERIES')) + """ ";
+ERRCODES[TT_NO_MARKER_SELECTED] = " """ + context.translate(_(u'TT_NO_MARKER_SELECTED')) + """ ";
+ERRCODES[TT_NO_MARKER_FOUND] = " """ + context.translate(_(u'TT_NO_MARKER_FOUND')) + """ ";
 
 // init vars
 var gmarkers = [];
+var active_gmarker = null;
+var active_directions = null;
 var gicons = [];
 var gpolylines = [];      
 var gpolygons = [];

@@ -4,6 +4,7 @@ from Products.Five.formlib import formbase
 from tecnoteca.googlemap.config import *
 from tecnoteca.googlemap.interfaces.config import ITTGoogleMapConfig
 from tecnoteca.googlemap.validator import LocationFieldValidator
+from tecnoteca.googlemap.content.ttgooglemapcoordinates import *
 from Products.CMFCore.utils import getToolByName
 from zope.i18nmessageid import MessageFactory
 from zope.formlib import form
@@ -11,6 +12,8 @@ from zope.interface import implements
 from zope.schema.fieldproperty import FieldProperty
 from OFS.SimpleItem import SimpleItem
 from zope.component import getUtility
+from plone.memoize import ram
+from time import time
 
 _ = MessageFactory('tecnoteca.googlemap')
 
@@ -24,6 +27,8 @@ class TTGoogleMapConfig(BrowserView):
         self.request = request
         portal_props = getToolByName(context, 'portal_properties')
         self.properties = getattr(portal_props, PROPERTY_SHEET, None)
+        self.portalCatalog = getToolByName(context, "portal_catalog")
+        self.portalTypes = getToolByName(context, "portal_types")
 
     def _search_key(self, property_id):        
         if self.properties is None:
@@ -101,3 +106,16 @@ class TTGoogleMapConfig(BrowserView):
         if validator(default_location) != 1:
             return (0.0, 0.0)
         return default_location
+    
+    # 1 hour cache
+    @ram.cache(lambda *args: time() // (60 * 60))
+    def get_configured_content_types(self):
+        types = self.portalTypes.listContentTypes()
+        confCT = []
+        for type in types:
+            items = self.portalCatalog(portal_type = type)
+            if items:
+                item = items[0].getObject()
+                if issubclass(item.__class__,TTGoogleMapCoordinates):
+                    confCT.append(type)
+        return confCT

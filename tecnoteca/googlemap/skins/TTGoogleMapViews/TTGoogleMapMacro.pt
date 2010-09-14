@@ -17,7 +17,7 @@
 				</tal:if>
 				<input type="checkbox" class="TTMapCheckbox" tal:attributes="id python:category.UID()+'box'; onclick python:'boxclick(this,\''+category.UID()+'\');;'"/>
 				<tal:block tal:content="python:category.Title()"></tal:block>
-				<br>
+				<br/>
 			</div>
 		</tal:block>
 	</metal:block>	
@@ -40,7 +40,7 @@
 			<div tal:define="polyline python:polyloop.getObject()">					
 				<input type="checkbox" class="TTMapCheckbox" tal:attributes="checked python:polyline.getDefaultActive() and 'checked' or None; onclick python:'polylineClick(this,'+str(repeat['polyloop'].number())+')'" />
 				<tal:block tal:content="python:polyline.Title()"></tal:block>
-				<br>
+				<br/>
 			</div>
 		</tal:block>
 	</metal:block>
@@ -51,7 +51,7 @@
 			<div tal:define="polygon python:polyloop.getObject()">					
 				<input type="checkbox" class="TTMapCheckbox" tal:attributes="checked python:polygon.getDefaultActive() and 'checked' or None; onclick python:'polygonClick(this,'+str(repeat['polyloop'].number())+')'" />
 				<tal:block tal:content="python:polygon.Title()"></tal:block>
-				<br>
+				<br/>
 			</div>
 		</tal:block>
 	</metal:block>	

@@ -10,3 +10,4 @@ class ITTGoogleMapConfig(Interface):
     default_location = Attribute("The default coordinates for new locations")
     default_map_size = Attribute("The default map size")
     coord_widget_map_size = Attribute("The default coordinates widget map size")
+    get_configured_content_types = Attribute("Configured content types")

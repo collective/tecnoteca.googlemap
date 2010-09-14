@@ -74,3 +74,21 @@ class ITTGoogleMap(Interface):
         description=_(u"Show the overview map"),
     )
 #
+    OpenBoxes = schema.Bool(
+        title=_(u"OpenBoxes"),
+        required=False,
+        description=_(u"Open boxes"),
+    )
+#
+    Directions = schema.Bool(
+        title=_(u"Directions"),
+        required=False,
+        description=_(u"Show directions"),
+    )
+#
+    DefaultMarker = schema.Bool(
+        title=_(u"Default Marker"),
+        required=False,
+        description=_(u"Default marker startup"),
+    )
+#
