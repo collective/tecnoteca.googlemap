@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: tecnoteca.googlemap\n"
-"POT-Creation-Date: 2010-08-13 15:59+0000\n"
+"POT-Creation-Date: 2010-09-13 16:01+0000\n"
 "PO-Revision-Date: 05/02/2010\n"
 "Last-Translator: Tecnoteca srl\n"
 "Language-Team: Tecnoteca srl\n"
@@ -23,12 +23,12 @@ msgstr "Available icons"
 msgid "Available icons desc"
 msgstr "Available marker icons"
 
-#: ./content/ttgooglemap.py:92
+#: ./content/ttgooglemap.py:94
 #: ./interfaces/ttgooglemap.py:42
 msgid "Cat Box Height"
 msgstr "Categories box max-height"
 
-#: ./content/ttgooglemap.py:93
+#: ./content/ttgooglemap.py:95
 #: ./interfaces/ttgooglemap.py:44
 msgid "Cat box max-height"
 msgstr "Max-height of the box before adding scrollbars"
@@ -49,7 +49,11 @@ msgstr "Category selected (active) at map start"
 msgid "CategoryIcon"
 msgstr "Category icon"
 
-#: ./skins/TTGoogleMapViews/TTGoogleMapView.pt:59
+#: ./skins/TTGoogleMapViews/TTGoogleMapView.pt:136
+msgid "City"
+msgstr "City"
+
+#: ./skins/TTGoogleMapViews/TTGoogleMapView.pt:60
 msgid "Close panel"
 msgstr "close"
 
@@ -84,6 +88,10 @@ msgstr "Coordinates widget - mapsize"
 msgid "Coordinates widget mapsize desc"
 msgstr "Widget mapsize (width,height px)"
 
+#: ./skins/TTGoogleMapViews/TTGoogleMapView.pt:144
+msgid "Country"
+msgstr "Country"
+
 #: ./content/ttgooglemapcategory.py:37
 #: ./content/ttgooglemapcategoryct.py:50
 #: ./interfaces/ttgooglemapcategory.py:12
@@ -95,6 +103,11 @@ msgstr "Custom icon"
 #: ./content/ttgooglemappolygon.py:37
 msgid "Default Active"
 msgstr "Default Active"
+
+#: ./content/ttgooglemap.py:193
+#: ./interfaces/ttgooglemap.py:90
+msgid "Default Marker"
+msgstr "Default marker"
 
 #: ./interfaces/ttgooglemappolyline.py:20
 msgid "Default active"
@@ -122,10 +135,20 @@ msgstr "Default mapsize"
 msgid "Default mapsize desc"
 msgstr "Default mapsize for new map objects (width,height px)"
 
-#: ./content/ttgooglemap.py:65
+#: ./content/ttgooglemap.py:194
+#: ./interfaces/ttgooglemap.py:92
+msgid "Default marker startup"
+msgstr "Default marker at map startup"
+
+#: ./content/ttgooglemap.py:67
 #: ./interfaces/ttgooglemap.py:32
 msgid "Default zoom level"
 msgstr "Default zoom level"
+
+#: ./content/ttgooglemap.py:181
+#: ./interfaces/ttgooglemap.py:84
+msgid "Directions"
+msgstr "Directions"
 
 #: ./skins/TTGoogleMapViews/TTGoogleMapCoordinatesWidget.pt:66
 msgid "Disable"
@@ -158,29 +181,77 @@ msgid "Encoded polyline value"
 msgstr "Encoded polyline - <a href='http://code.google.com/apis/maps/documentation/polylineutility.html' target='_blank'>click here</a> to get the encoded polyline"
 
 #. Default: "Categories"
-#: ./skins/TTGoogleMapViews/TTGoogleMapView.pt:85
+#: ./skins/TTGoogleMapViews/TTGoogleMapView.pt:86
 msgid "Frontend Categories"
 msgstr "Categories"
 
 #. Default: "Markers"
-#: ./skins/TTGoogleMapViews/TTGoogleMapView.pt:100
+#: ./skins/TTGoogleMapViews/TTGoogleMapView.pt:101
 msgid "Frontend Markers"
 msgstr "Markers"
 
 #. Default: "JavaScript must be enabled in order for you to use Google Maps.However, it seems JavaScript is either disabled or not supported by your browser. To view Google Maps, enable JavaScript by changing your browser options, and then try again."
-#: ./skins/TTGoogleMapViews/TTGoogleMapView.pt:114
+#: ./skins/TTGoogleMapViews/TTGoogleMapView.pt:115
 msgid "Frontend NoJavascript"
 msgstr "JavaScript must be enabled in order for you to use Google Maps. However, it seems JavaScript is either disabled or not supported by your browser. To view Google Maps, enable JavaScript by changing your browser options, and then try again."
 
 #. Default: "Areas"
-#: ./skins/TTGoogleMapViews/TTGoogleMapView.pt:57
+#: ./skins/TTGoogleMapViews/TTGoogleMapView.pt:58
 msgid "Frontend Polygons"
 msgstr "Areas"
 
 #. Default: "Paths"
-#: ./skins/TTGoogleMapViews/TTGoogleMapView.pt:71
+#: ./skins/TTGoogleMapViews/TTGoogleMapView.pt:72
 msgid "Frontend Polylines"
 msgstr "Paths"
+
+#: ./skins/TTGoogleMapScripts/TTGoogleMapMain.py:55
+msgid "G_GEO_BAD_KEY"
+msgstr "The given key is either invalid or does not match the domain for which it was given."
+
+#: ./skins/TTGoogleMapScripts/TTGoogleMapMain.py:48
+msgid "G_GEO_BAD_REQUEST"
+msgstr "A directions request could not be successfully parsed. For example, the request may have been rejected if it contained more than the maximum number of waypoints allowed."
+
+#: ./skins/TTGoogleMapScripts/TTGoogleMapMain.py:51
+msgid "G_GEO_MISSING_ADDRESS"
+msgstr "The HTTP q parameter was either missing or had no value. For geocoding requests, this means that an empty address was specified as input. For directions requests, this means that no query was specified in the input"
+
+#: ./skins/TTGoogleMapScripts/TTGoogleMapMain.py:50
+msgid "G_GEO_MISSING_QUERY"
+msgstr "The HTTP q parameter was either missing or had no value. For geocoding requests, this means that an empty address was specified as input. For directions requests, this means that no query was specified in the input"
+
+#: ./skins/TTGoogleMapScripts/TTGoogleMapMain.py:49
+msgid "G_GEO_SERVER_ERROR"
+msgstr "A geocoding, directions or maximum zoom level request could not be successfully processed, yet the exact reason for the failure is not known."
+
+#: ./skins/TTGoogleMapScripts/TTGoogleMapMain.py:47
+msgid "G_GEO_SUCCESS"
+msgstr "No errors occurred; the address was successfully parsed and its geocode has been returned."
+
+#: ./skins/TTGoogleMapScripts/TTGoogleMapMain.py:56
+msgid "G_GEO_TOO_MANY_QUERIES"
+msgstr "The given key has gone over the requests limit in the 24 hour period or has submitted too many requests in too short a period of time. If you re sending multiple requests in parallel or in a tight loop, use a timer or pause in your code to make sure you dont send the requests too quickly."
+
+#: ./skins/TTGoogleMapScripts/TTGoogleMapMain.py:53
+msgid "G_GEO_UNAVAILABLE_ADDRESS"
+msgstr "The geocode for the given address or the route for the given directions query cannot be returned due to legal or contractual reasons."
+
+#: ./skins/TTGoogleMapScripts/TTGoogleMapMain.py:52
+msgid "G_GEO_UNKNOWN_ADDRESS"
+msgstr "No corresponding geographic location could be found for the specified address. This may be due to the fact that the address is relatively new, or it may be incorrect."
+
+#: ./skins/TTGoogleMapScripts/TTGoogleMapMain.py:54
+msgid "G_GEO_UNKNOWN_DIRECTIONS"
+msgstr "The GDirections object could not compute directions between the points mentioned in the query. This is usually because there is no route available between the two points, or because we do not have data for routing in that region."
+
+#: ./skins/TTGoogleMapViews/TTGoogleMapView.pt:148
+msgid "Get directions btn"
+msgstr "Get directions"
+
+#: ./skins/TTGoogleMapViews/TTGoogleMapView.pt:130
+msgid "Get directions from"
+msgstr "Get directions"
 
 #. Default: "Google Map Category"
 #: ./profiles/default/types/TTGoogleMapCategory.xml
@@ -238,12 +309,12 @@ msgstr "Icon"
 msgid "Items in relation with marker"
 msgstr "Items in relation with marker"
 
-#: ./content/ttgooglemap.py:133
+#: ./content/ttgooglemap.py:135
 #: ./interfaces/ttgooglemap.py:60
 msgid "Large Map Control"
 msgstr "Large map control"
 
-#: ./content/ttgooglemap.py:134
+#: ./content/ttgooglemap.py:136
 #: ./interfaces/ttgooglemap.py:62
 msgid "Large map control buttons"
 msgstr "Large map control buttons"
@@ -260,42 +331,42 @@ msgstr "Levels"
 msgid "Line thickness (px)"
 msgstr "Line thickness (px)"
 
-#: ./content/ttgooglemap.py:50
+#: ./content/ttgooglemap.py:52
 #: ./interfaces/ttgooglemap.py:24
 msgid "Map Height"
 msgstr "Map height"
 
-#: ./content/ttgooglemap.py:79
+#: ./content/ttgooglemap.py:81
 #: ./interfaces/ttgooglemap.py:36
 msgid "Map Type"
 msgstr "Map type"
 
-#: ./content/ttgooglemap.py:145
+#: ./content/ttgooglemap.py:147
 #: ./interfaces/ttgooglemap.py:66
 msgid "Map Type Control"
 msgstr "Map Type Control"
 
-#: ./content/ttgooglemap.py:36
+#: ./content/ttgooglemap.py:38
 #: ./interfaces/ttgooglemap.py:18
 msgid "Map Width"
 msgstr "Map width"
 
-#: ./content/ttgooglemap.py:51
+#: ./content/ttgooglemap.py:53
 #: ./interfaces/ttgooglemap.py:26
 msgid "Map height (px)"
 msgstr "Map height (px)"
 
-#: ./content/ttgooglemap.py:37
+#: ./content/ttgooglemap.py:39
 #: ./interfaces/ttgooglemap.py:20
 msgid "Map width (px)"
 msgstr "Map width (px)"
 
-#: ./content/ttgooglemap.py:106
+#: ./content/ttgooglemap.py:108
 #: ./interfaces/ttgooglemap.py:48
 msgid "Marker Box Height"
 msgstr "Marker box max-height"
 
-#: ./content/ttgooglemap.py:107
+#: ./content/ttgooglemap.py:109
 #: ./interfaces/ttgooglemap.py:50
 msgid "Marker box max-height"
 msgstr "Max-height of the box before adding scrollbars"
@@ -330,15 +401,17 @@ msgstr "Opacity level: 0=invisible, 1=no transparency"
 msgid "Opacity level - from 0=invisible to 1=no transparency"
 msgstr "Opacity level - from 0=invisible to 1=no transparency"
 
-#: ./content/ttgooglemap.py:169
+#: ./content/ttgooglemap.py:171
+#: ./interfaces/ttgooglemap.py:80
 msgid "Open boxes"
 msgstr "Open control boxes at map startup"
 
-#: ./skins/TTGoogleMapViews/TTGoogleMapView.pt:58
+#: ./skins/TTGoogleMapViews/TTGoogleMapView.pt:59
 msgid "Open panel"
 msgstr "open"
 
-#: ./content/ttgooglemap.py:168
+#: ./content/ttgooglemap.py:170
+#: ./interfaces/ttgooglemap.py:78
 msgid "OpenBoxes"
 msgstr "Open boxes at startup"
 
@@ -352,12 +425,12 @@ msgstr "Outline"
 msgid "Outline area"
 msgstr "Outline area"
 
-#: ./content/ttgooglemap.py:157
+#: ./content/ttgooglemap.py:159
 #: ./interfaces/ttgooglemap.py:72
 msgid "Overview Map Control"
 msgstr "Overview Map Control"
 
-#: ./content/ttgooglemap.py:121
+#: ./content/ttgooglemap.py:123
 #: ./interfaces/ttgooglemap.py:54
 msgid "Panoramio"
 msgstr "Panoramio"
@@ -389,9 +462,10 @@ msgstr "Related markers"
 msgid "Search Address"
 msgstr "Search address: "
 
+#. Default: "Search"
 #: ./skins/TTGoogleMapViews/TTGoogleMapCoordinatesWidget.pt:61
-msgid "Search address"
-msgstr "Search address"
+msgid "Search_button"
+msgstr "Search"
 
 #: ./content/ttgooglemapcategory.py:38
 #: ./content/ttgooglemapcategoryct.py:51
@@ -404,22 +478,27 @@ msgstr "Select a custom icon for category - visit <a href='http://code.google.co
 msgid "Select content type"
 msgstr "Select content type"
 
-#: ./content/ttgooglemap.py:80
+#: ./content/ttgooglemap.py:82
 #: ./interfaces/ttgooglemap.py:38
 msgid "Select default map type"
 msgstr "Select default map type"
 
-#: ./content/ttgooglemap.py:122
+#: ./content/ttgooglemap.py:124
 #: ./interfaces/ttgooglemap.py:56
 msgid "Show Panoramio button"
 msgstr "Show Panoramio button"
 
-#: ./content/ttgooglemap.py:146
+#: ./content/ttgooglemap.py:182
+#: ./interfaces/ttgooglemap.py:86
+msgid "Show directions"
+msgstr "Show directions box"
+
+#: ./content/ttgooglemap.py:148
 #: ./interfaces/ttgooglemap.py:68
 msgid "Show map type buttons"
 msgstr "Show map type buttons"
 
-#: ./content/ttgooglemap.py:158
+#: ./content/ttgooglemap.py:160
 #: ./interfaces/ttgooglemap.py:74
 msgid "Show the overview map"
 msgstr "Show the overview map"
@@ -427,6 +506,15 @@ msgstr "Show the overview map"
 #: ./skins/TTGoogleMapViews/TTGoogleMapIconWidget.pt:29
 msgid "Standard icon disabled"
 msgstr "Standard icon disabled (custom icon active)"
+
+#: ./skins/TTGoogleMapViews/TTGoogleMapView.pt:140
+msgid "State"
+msgstr "State"
+
+#. Default: "Street Address"
+#: ./skins/TTGoogleMapViews/TTGoogleMapView.pt:132
+msgid "Street"
+msgstr "Street"
 
 #. Default: "TTGoogleMap"
 #: ./profiles/default/types/TTGoogleMap.xml
@@ -463,13 +551,21 @@ msgstr "Google Map Polygon"
 msgid "TTGoogleMapPolyline"
 msgstr "Google Map Polyline"
 
-#: ./content/ttgooglemap.py:25
+#: ./skins/TTGoogleMapScripts/TTGoogleMapMain.py:58
+msgid "TT_NO_MARKER_FOUND"
+msgstr "No marker found with id"
+
+#: ./skins/TTGoogleMapScripts/TTGoogleMapMain.py:57
+msgid "TT_NO_MARKER_SELECTED"
+msgstr "You must select the destination marker before, if none is available please add one or contact your site administrator to do so."
+
+#: ./content/ttgooglemap.py:27
 #: ./content/ttgooglemapmarker.py:24
 #: ./interfaces/ttgooglemap.py:12
 msgid "Text"
 msgstr "Text"
 
-#: ./content/ttgooglemap.py:26
+#: ./content/ttgooglemap.py:28
 #: ./interfaces/ttgooglemap.py:14
 msgid "Text on top of the map"
 msgstr "Text on top of the map"
@@ -486,7 +582,7 @@ msgstr "Weight"
 msgid "Zoom Factor"
 msgstr "Zoom Factor"
 
-#: ./content/ttgooglemap.py:64
+#: ./content/ttgooglemap.py:66
 #: ./interfaces/ttgooglemap.py:30
 msgid "Zoom Level"
 msgstr "Zoom level"

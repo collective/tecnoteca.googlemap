@@ -22,7 +22,7 @@ function createIcon(imgUrl) {
     icon.imageMap = [0,0, icon.iconSize.width,0, icon.iconSize.width,icon.iconSize.height, 0,icon.iconSize.height]; // set clickable area
     icon.shadowSize = new GSize(0, 0); // disable shadow
     return icon;
-}      
+}
 
 // == Create marker ==
 function createMarker(id,point,name,html,category,categoryFullName) {
@@ -77,6 +77,7 @@ function boxclick(box,category) {
 // == This function picks up the click and opens the corresponding info window
 function myclick(i) {
     GEvent.trigger(gmarkers[i],"click");
+    active_gmarker = gmarkers[i];
 }
 
 // == rebuilds the sidebar to match the markers currently displayed ==
@@ -118,7 +119,7 @@ function showMarkerAtStartup(markerId) {
       }
     }
     if(!found) {
-        alert("No marker found with id "+markerId);
+    	errnotify(ERRCODES[TT_NO_MARKER_FOUND]+": "+markerId);
     }
 }
 
@@ -246,7 +247,7 @@ function searchAddress(address, fieldId) {
     if (geocoder) {
         geocoder.getLatLng(address, function(point) {
             if (!point) {
-                alert(Address + " not found");
+            	errnotify(ERRCODES[G_GEO_UNKNOWN_ADDRESS]);
             } else {
             	document.getElementById(fieldId).value = point.lat().toFixed(5) + "|" + point.lng().toFixed(5); 
             	refreshPosition(point);
@@ -264,3 +265,59 @@ function disableEnterKey(e) {
           key = e.which; // firefox
      return (key != 13);
 }
+
+
+//== Get Directions has been clicked ==//
+function get_directions_from_data(){
+	var street = document.getElementById("tt_street_address").value;
+	var city = document.getElementById("tt_city_name").value;
+	var state = document.getElementById("tt_state_name").value;
+	var country = document.getElementById("tt_country_name").value;
+	var full_address = street + ', ' + city + ', ' + state + ', ' + country;
+	if (!geocoder){
+        var geocoder = new GClientGeocoder();
+	}
+	if (active_gmarker==null){
+        errnotify(ERRCODES[TT_NO_MARKER_SELECTED]);
+	}
+	else if (active_directions){
+	        active_directions.clear()
+	}
+	else {
+	    active_directions=new GDirections(map, document.getElementById("g_directions"));
+	    GEvent.addListener(active_directions, "error", g_notify_error);
+	    GEvent.addListener(active_directions, "load", g_clear_on_sucess);
+	}
+	
+	geocoder.getLatLng(full_address, function(g_point){
+	    if (g_point != null){
+	        active_directions.load("from:" + full_address + "@" + g_point.toUrlValue(6) + " to:" + active_gmarker.myname + "@" + active_gmarker.getLatLng().toUrlValue(6) );
+	    }
+	    else{
+	        errnotify(ERRCODES[G_GEO_UNKNOWN_ADDRESS]);
+	    }
+	});
+        
+}
+
+//== Notify errors to a section of the page ==
+function errnotify(err_message){
+	var err_display = document.getElementById('error_display');
+	err_display.innerHTML = '<dl class="portalMessage error"><dt>Error</dt> <dd>'+err_message+'</dd>  </dl>';
+}
+
+function g_notify_error(){
+	g_directions_status = active_directions.getStatus().code;
+	if (g_directions_status != 200){
+	    errnotify(ERRCODES[g_directions_status]);
+	}
+	else{
+        errnotify("hellllp");
+	}
+}
+
+function g_clear_on_sucess(){
+	var err_display = document.getElementById('error_display');
+	err_display.innerHTML = "";
+}
+

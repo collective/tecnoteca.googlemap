@@ -7,12 +7,14 @@ from tecnoteca.googlemap import config
 from Products.Archetypes import atapi
 from Products.CMFCore import utils
 
+from AccessControl import ModuleSecurityInfo
+
 # Define a message factory for when this product is internationalised.
 # This will be imported with the special name "_" in most modules. Strings
 # like _(u"message") will then be extracted by i18n tools for translation.
 
 googlemapMessageFactory = MessageFactory('tecnoteca.googlemap')
-
+ModuleSecurityInfo('tecnoteca.googlemap').declarePublic('googlemapMessageFactory')
 
 def initialize(context):
     """Initializer called when used as a Zope 2 product.
@@ -26,6 +28,7 @@ def initialize(context):
     
     from AccessControl import allow_module, allow_class
     allow_module('tecnoteca.googlemap.content')
+    
     from tecnoteca.googlemap.content.ttgooglemapcoordinates import TTGoogleMapCoordinates
     allow_class(TTGoogleMapCoordinates)
 

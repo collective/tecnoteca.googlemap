@@ -4,6 +4,8 @@
 from zope.interface import implements
 from zope.component import getMultiAdapter
 
+from Products.CMFCore.utils import getToolByName
+
 from Products.Archetypes import atapi
 from Products.ATContentTypes.content import folder
 from Products.ATContentTypes.content import schemata
@@ -170,6 +172,29 @@ TTGoogleMapSchema = folder.ATFolderSchema.copy() + TTGoogleMapCoordinatesSchema.
         ),
         default=True,
     ),
+    
+    atapi.BooleanField(
+        'Directions',
+        storage=atapi.AnnotationStorage(),
+        languageIndependent = True,
+        widget=atapi.BooleanWidget(
+            label=_(u"Directions"),
+            description=_(u"Show directions"),
+        ),
+        default=True,
+    ),    
+    
+    atapi.StringField(
+        'DefaultMarker',
+        storage=atapi.AnnotationStorage(),
+        default_output_type= 'text/x-html-safe',
+        widget=atapi.SelectionWidget (
+            format="select",
+            label=_(u"Default Marker"),
+            description=_(u"Default marker startup"),
+        ),
+        vocabulary="getMarkersVocabulary",
+    ),
 
 ))
 
@@ -194,7 +219,7 @@ class TTGoogleMap(folder.ATFolder, TTGoogleMapCoordinates):
     schema = TTGoogleMapSchema
 
     title = atapi.ATFieldProperty('title')
-    description = atapi.ATFieldProperty('description')
+    description = atapi.ATFieldProperty('description')    
 
     # -*- Your ATSchema to Python Property Bridges Here ... -*-
     Text = atapi.ATFieldProperty('Text')
@@ -219,15 +244,20 @@ class TTGoogleMap(folder.ATFolder, TTGoogleMapCoordinates):
 
     OverviewMapControl = atapi.ATFieldProperty('OverviewMapControl')
     
-    StartupBoxes = atapi.ATFieldProperty('OpenBoxes')
+    OpenBoxes = atapi.ATFieldProperty('OpenBoxes')
+    
+    Directions = atapi.ATFieldProperty('Directions')
+    
+    DefaultMarker = atapi.ATFieldProperty('DefaultMarker')
+    
+    def getConfig(self):
+        return getMultiAdapter((self, self.REQUEST), name="ttgooglemap_config")
     
     def defaultWidth(self):
-        config = getMultiAdapter((self, self.REQUEST), name="ttgooglemap_config")
-        return config.default_map_size[1]
+        return self.getConfig().default_map_size[1]
     
     def defaultHeight(self):
-        config = getMultiAdapter((self, self.REQUEST), name="ttgooglemap_config")
-        return config.default_map_size[0]
+        return self.getConfig().default_map_size[0]
     
     def defaultCatBoxHeight(self):
         mapHeight = int(self.defaultHeight())
@@ -237,5 +267,19 @@ class TTGoogleMap(folder.ATFolder, TTGoogleMapCoordinates):
         mapHeight = int(self.defaultHeight())
         return (mapHeight * 55 / 100) # 55% total map height
     
+    def getMarkersVocabulary(self):
+        vocabulary = atapi.DisplayList()
+        vocabulary.add(' ','--')
+        catalog = getToolByName(self, 'portal_catalog')     
+        confCT = self.getConfig().get_configured_content_types()
+        for ct in confCT:
+            markers = catalog(portal_type = ct, review_state = "published")
+            for item in markers:
+                marker=item.getObject()
+                vocabulary.add( str(marker.UID()), marker.pretty_title_or_id())
+
+        return vocabulary
+
+   
 
 atapi.registerType(TTGoogleMap, PROJECTNAME)

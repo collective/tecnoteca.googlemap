@@ -61,3 +61,6 @@ class TTGoogleMapCoordinates(base.ATCTContent):
             return coordinates[1]
         else:
             return None
+    
+    def isDisabled(self):
+        return (self.getLatitude()=="0" and self.getLongitude()=="0")

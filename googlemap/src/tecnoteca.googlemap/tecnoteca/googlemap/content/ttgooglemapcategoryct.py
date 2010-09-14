@@ -13,7 +13,6 @@ from Products.ATContentTypes.content import schemata
 from tecnoteca.googlemap import googlemapMessageFactory as _
 from tecnoteca.googlemap.interfaces import ITTGoogleMapCategoryCT
 from tecnoteca.googlemap.config import PROJECTNAME
-from tecnoteca.googlemap.content.ttgooglemapcoordinates import *
 
 TTGoogleMapCategoryCTSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
 
@@ -22,7 +21,7 @@ TTGoogleMapCategoryCTSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema
         'CType',
         storage=atapi.AnnotationStorage(),
         languageIndependent = True,
-        vocabulary="contentTypes",
+        vocabulary="configuredContentTypes",
         widget=atapi.SelectionWidget(
             label=_(u"Content type"),
             description=_(u"Select content type"),
@@ -97,17 +96,8 @@ class TTGoogleMapCategoryCT(base.ATCTContent):
         catalog = getToolByName(self, 'portal_catalog')
         return catalog(portal_type = self.getCType(), review_state = "published")
     
-    def contentTypes(self):
-        catalog = getToolByName(self, 'portal_catalog')
-        tool = getToolByName(self, "portal_types")
-        types = tool.listContentTypes()
-        confCT = []
-        for type in types:
-            items = catalog(portal_type = type)
-            if items:
-                item = items[0].getObject()
-                if issubclass(item.__class__,TTGoogleMapCoordinates):
-                    confCT.append(type)
-        return confCT
+    def configuredContentTypes(self):
+        config = getMultiAdapter((self, self.REQUEST), name="ttgooglemap_config")
+        return config.get_configured_content_types
 
 atapi.registerType(TTGoogleMapCategoryCT, PROJECTNAME)

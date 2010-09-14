@@ -23,7 +23,6 @@
   <property name="default_view">TTGoogleMapView</property>
   <property name="view_methods">
     <element value="TTGoogleMapView" />
-    <element value="base_view" />
   </property>
   <alias from="(Default)" to="(dynamic view)" />
   <alias from="edit" to="atct_edit" />
