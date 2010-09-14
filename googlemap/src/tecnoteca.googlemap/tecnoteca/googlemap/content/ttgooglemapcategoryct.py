@@ -98,6 +98,6 @@ class TTGoogleMapCategoryCT(base.ATCTContent):
     
     def configuredContentTypes(self):
         config = getMultiAdapter((self, self.REQUEST), name="ttgooglemap_config")
-        return config.get_configured_content_types
+        return config.get_configured_content_types()
 
 atapi.registerType(TTGoogleMapCategoryCT, PROJECTNAME)
