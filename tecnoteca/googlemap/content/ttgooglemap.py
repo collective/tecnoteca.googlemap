@@ -270,10 +270,19 @@ class TTGoogleMap(folder.ATFolder, TTGoogleMapCoordinates):
     def getMarkersVocabulary(self):
         vocabulary = atapi.DisplayList()
         vocabulary.add(' ','--')
-        catalog = getToolByName(self, 'portal_catalog')     
-        confCT = self.getConfig().get_configured_content_types()
-        for ct in confCT:
-            markers = catalog(portal_type = ct, review_state = "published")
+        catalog = getToolByName(self, 'portal_catalog')
+        
+        # standard markers
+        for item in self.getFolderContents(contentFilter={'portal_type':'TTGoogleMapMarker', \
+            'review_state':'published','path':{'depth':3, 'query':'/'.join(self.getPhysicalPath()) }}):
+            marker=item.getObject()
+            vocabulary.add( str(marker.UID()), marker.pretty_title_or_id())
+
+        # content types
+        for item in self.getFolderContents(contentFilter={'portal_type':'TTGoogleMapCategoryCT', \
+            'review_state':'published','path':{'depth':2, 'query':'/'.join(self.getPhysicalPath()) }}):
+            categoryCT=item.getObject()
+            markers = catalog(portal_type = categoryCT.getCType(), review_state = "published")
             for item in markers:
                 marker=item.getObject()
                 vocabulary.add( str(marker.UID()), marker.pretty_title_or_id())
