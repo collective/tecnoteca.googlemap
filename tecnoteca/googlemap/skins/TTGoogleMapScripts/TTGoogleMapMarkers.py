@@ -70,6 +70,6 @@ for catloop in categories:
             
         # careate marker
         output += newline
-        output += "map.addOverlay(createMarker(\""+marker.UID()+"\", point, \""+custom_escape(marker.Title())+"\", html, '"+category.UID()+"', '"+custom_escape(category.pretty_title_or_id())+"'));"
+        output += "map.addOverlay(createMarker(\""+marker.UID()+"\", point, \""+custom_escape(marker.Title())+"\", html, '"+category.UID()+"', \""+custom_escape(category.pretty_title_or_id())+"\"));"
         
 return output
