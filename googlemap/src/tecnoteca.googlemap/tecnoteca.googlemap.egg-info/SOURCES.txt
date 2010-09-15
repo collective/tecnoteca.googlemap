@@ -206,7 +206,7 @@ tecnoteca/googlemap/skins/TTGoogleMapScripts/TTGoogleMapMarkers.py
 tecnoteca/googlemap/skins/TTGoogleMapScripts/TTGoogleMapPolygons.py
 tecnoteca/googlemap/skins/TTGoogleMapScripts/TTGoogleMapPolylines.py
 tecnoteca/googlemap/skins/TTGoogleMapScripts/TTGoogleMarkerGetParentMap.py
-tecnoteca/googlemap/skins/TTGoogleMapViews/.tmp_TTGoogleMapMacro.pt.27460~
+tecnoteca/googlemap/skins/TTGoogleMapViews/.tmp_TTGoogleMapView.pt.22824~
 tecnoteca/googlemap/skins/TTGoogleMapViews/TTGoogleMapCoordinatesWidget.pt
 tecnoteca/googlemap/skins/TTGoogleMapViews/TTGoogleMapIconWidget.pt
 tecnoteca/googlemap/skins/TTGoogleMapViews/TTGoogleMapMacro.pt
