@@ -53,15 +53,17 @@ for catloop in categories:
         output += "html += '<ul>';"
         output += newline
         for relation in marker.getRelatedItems(): # standard relation (marker >> object)
-            output += "html += '<li>';"
-            output += "html += \"<a href='"+relation.absolute_url()+"' title='"+custom_escape(relation.Title())+"'>"+custom_escape(relation.Title())+"</a>\";"
-            output += "html += '</li>';"
-            output += newline
+            if relation:
+                output += "html += '<li>';"
+                output += "html += \"<a href='"+relation.absolute_url()+"' title='"+custom_escape(relation.Title())+"'>"+custom_escape(relation.Title())+"</a>\";"
+                output += "html += '</li>';"
+                output += newline
         for relation in marker.getBRefs(): # custom relation (object >> marker)
-            output += "html += '<li>';"
-            output += "html += \"<a href='"+relation.absolute_url()+"' title='"+custom_escape(relation.pretty_title_or_id())+"'>"+custom_escape(relation.pretty_title_or_id())+"</a>\";"
-            output += "html += '</li>';"
-            output += newline
+            if relation:
+                output += "html += '<li>';"
+                output += "html += \"<a href='"+relation.absolute_url()+"' title='"+custom_escape(relation.pretty_title_or_id())+"'>"+custom_escape(relation.pretty_title_or_id())+"</a>\";"
+                output += "html += '</li>';"
+                output += newline
         output += "html += '</ul>';"
         output += newline
         output += "html += '<br/>';"
