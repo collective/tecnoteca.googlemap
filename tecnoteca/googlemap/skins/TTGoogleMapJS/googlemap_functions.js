@@ -25,8 +25,8 @@ function createIcon(imgUrl) {
 }
 
 // == Create marker ==
-function createMarker(id,point,name,html,category,categoryFullName) {
-    var marker = new GMarker(point,gicons[category]);
+function createMarker(id,point,name,html,category,categoryFullName) {    
+	var marker = new GMarker(point, {icon:gicons[category], title:name})
     // === Store the category and name info as a marker properties ===
     marker.myid = id;
     marker.mycategory = category;
@@ -147,6 +147,7 @@ function createPolyline(position_,defaultActive_,color_,weight_,points_,levels_,
 function polylineClick(box,i) {
     if (box.checked) {
       gpolylines[i].show();
+      map.setCenter(gpolylines[i].getBounds().getCenter());
     } else {
       gpolylines[i].hide();
     }
@@ -181,6 +182,7 @@ function createPolygon(position_,defaultActive_,color_,opacity_,outline_,weight_
 function polygonClick(box,i) {
     if (box.checked) {
       map.addOverlay(gpolygons[i]);
+      map.setCenter(gpolygons[i].getBounds().getCenter());
     } else {
       map.removeOverlay(gpolygons[i]);
     }

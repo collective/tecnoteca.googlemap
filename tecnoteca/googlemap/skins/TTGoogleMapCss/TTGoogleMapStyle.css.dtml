@@ -8,7 +8,7 @@
 .TTMap {
 	border:1px solid <dtml-var globalBorderColor>;		
 }
-
+TTMapMarkerList
 .TTMapCoordinates {
 	border:1px solid <dtml-var globalBorderColor>;		
 }
@@ -62,6 +62,7 @@
 
 .documentContent ul.TTMapMarkerList, .TTMapMarkerList {
 	margin:0;
+	padding:0;
 	line-height:1.4em;	
 }
 
@@ -86,6 +87,13 @@
 
 .TTMapMarkerWin {
     width:300px;
+}
+
+.TTMapDirLabel {
+	display:block;
+	float:left;
+	min-width:70px;
+	font-weight:bold;
 }
 
 /* </dtml-with> */

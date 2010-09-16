@@ -129,19 +129,19 @@
 	            	<fieldset>
 	                    <legend i18n:translate="Get directions from">Get directions from</legend>
 		                <div class="field">
-		                        <label i18n:translate="Street" for="street_address">Street Address</label>: 
+		                        <label class="TTMapDirLabel" i18n:translate="Street" for="street_address">Street Address</label> 
 		                        <input name="street_address" id="tt_street_address" type="text" />
 		                </div>
 		                <div class="field">
-		                        <label i18n:translate="City" for="city_name">City</label>: 
+		                        <label class="TTMapDirLabel" i18n:translate="City" for="city_name">City</label>
 		                        <input name="city_name" id="tt_city_name" type="text" />
 		                </div>
 		                <div class="field">
-		                        <label i18n:translate="State" for="state_name">State</label>: 
+		                        <label class="TTMapDirLabel" i18n:translate="State" for="state_name">State</label> 
 		                        <input name="state_name" id="tt_state_name" type="text" />
 		                </div>
 		                <div class="field">
-		                        <label i18n:translate="Country" for="country_name">Country</label>: 
+		                        <label class="TTMapDirLabel" i18n:translate="Country" for="country_name">Country</label> 
 		                        <input name="country_name" id="tt_country_name" type="text" />
 		                </div>
 		                        <div class="formControls">
