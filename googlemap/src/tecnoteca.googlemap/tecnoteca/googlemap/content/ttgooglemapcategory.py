@@ -27,6 +27,7 @@ TTGoogleMapCategorySchema = folder.ATFolderSchema.copy() + atapi.Schema((
             macro='TTGoogleMapIconWidget',
         ),
         required=True,
+        default='cluster3.png',
     ),
     
 

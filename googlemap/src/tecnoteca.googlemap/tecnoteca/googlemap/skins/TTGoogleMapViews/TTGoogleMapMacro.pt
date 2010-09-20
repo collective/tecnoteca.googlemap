@@ -8,7 +8,7 @@
 	<!-- Categories HTML -->		
 	<metal:block define-macro="Categories">
 		<tal:block tal:repeat="catloop categories">
-			<div tal:define="category python:catloop.getObject()">
+			<div class="TTMapCategory" tal:define="category python:catloop.getObject()">
 				<tal:if tal:condition="python: category.getCustomIcon() != None and category.getCustomIcon() != ''">					
 					<img class="TTMapIcon" tal:replace="structure python:category.getCustomIcon().tag(css_class='TTMapIcon')" />
 				</tal:if>

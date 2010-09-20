@@ -16,6 +16,7 @@
 								polylines python:context.getFolderContents({'portal_type':'TTGoogleMapPolyline', 'review_state':'published'});
 								polygons python:context.getFolderContents({'portal_type':'TTGoogleMapPolygon', 'review_state':'published'});
                                 categories python:context.getFolderContents(contentFilter=contentFilterCategories);
+								defaultMarker python:request.get('mk', None) or context.getDefaultMarker();
 								config context/@@ttgooglemap_config">
 
         <div tal:replace="structure provider:plone.abovecontenttitle" />
@@ -120,7 +121,7 @@
 		<div metal:use-macro="here/TTGoogleMapMacro/macros/MapJS"></div>				
 		
 		<!-- print js main -->
-		<div tal:replace="structure python:here.TTGoogleMapMain(context,categories,contentFilterCategories,catcontainers,polylines,polygons)"></div>							
+		<div tal:replace="structure python:here.TTGoogleMapMain(context,categories,contentFilterCategories,catcontainers,polylines,polygons,defaultMarker)"></div>							
 		
 		<!-- directions origin form -->
 		<div tal:condition="python:context.getDirections()">

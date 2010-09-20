@@ -275,7 +275,9 @@ class TTGoogleMap(folder.ATFolder, TTGoogleMapCoordinates):
             category = cat.getObject()
             markers = category.getMarkers()
             for item in markers:
-                vocabulary.add( str(item.UID), item.pretty_title_or_id())
+                marker = item.getObject()
+                if not marker.isDisabled():
+                    vocabulary.add( str(item.UID), item.pretty_title_or_id())
         
         return vocabulary
 

@@ -34,7 +34,7 @@ for catloop in categories:
         marker = entry.getObject()
         
         if not(hasattr(marker, "getLatitude")) or marker.getLatitude() == None or marker.isDisabled():
-            return ""
+            continue
         
         output += newline;
         output += newline;
@@ -43,10 +43,14 @@ for catloop in categories:
         output += "point = new GLatLng("+marker.getLatitude()+","+marker.getLongitude()+");"
         output += newline;
         
-        # title and text 
+        # title and description 
         output += "html = '<div class=\"TTMapMarkerWin\">';"
         output += newline 
-        output += "html += \"<b>"+custom_escape(marker.Title())+"</b><br/>"+(custom_escape(marker.getText())).strip()+"\";"
+        if marker.portal_type == 'TTGoogleMapMarker': # if TTGoogleMapMarker object
+            output += "html += \"<b>"+custom_escape(marker.Title())+"</b><br/>"+(custom_escape(marker.getText())).strip()+"\";"
+        else: # content-type obj
+            output += "html += \"<a href='"+marker.absolute_url()+"'><b>"+custom_escape(marker.Title())+"</b></a><br/>"
+            output += (custom_escape(marker.Description())).strip()+"\";"
         output += newline;
         
         # relations                            

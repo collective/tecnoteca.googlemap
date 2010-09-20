@@ -4,7 +4,7 @@
 ##bind namespace=
 ##bind script=script
 ##bind subpath=traverse_subpath
-##parameters=googleMap,categories,contentFilterCategories,catcontainers,polylines,polygons
+##parameters=googleMap,categories,contentFilterCategories,catcontainers,polylines,polygons,defaultMarker
 ##title=
 
 from tecnoteca.googlemap import googlemapMessageFactory as _
@@ -27,14 +27,10 @@ mapPolyjs = googleMap.TTGoogleMapPolylines(polylines)
 # generate polygons' code
 mapPolygjs = googleMap.TTGoogleMapPolygons(polygons)
 
-# get default marker (if any)
-defaultMarker = context.REQUEST.get("mk");
-if defaultMarker is None:
-    defaultMarker = googleMap.getDefaultMarker()
+# default marker (if any)
+mapDefaultMarker = ''
 if(defaultMarker!=None and defaultMarker!=""):
-    defaultMarker = 'showMarkerAtStartup(\''+str(defaultMarker)+'\');'
-else:
-    defaultMarker = ''
+    mapDefaultMarker = 'showMarkerAtStartup(\''+str(defaultMarker)+'\');'
 
 
 # main js
@@ -105,7 +101,7 @@ Gload = function() {
         makeSidebar();
         
         // default marker js
-        """+defaultMarker+"""
+        """+mapDefaultMarker+"""
     }
 }
 
