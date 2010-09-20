@@ -48,6 +48,9 @@ TTMapMarkerList
 	color:<dtml-var linkColor>;
 }
 
+.TTMapCategory {
+}
+
 .TTMapCatContainter{
 	font-weight: bold;
 	margin-bottom: 5px;
@@ -81,7 +84,9 @@ TTMapMarkerList
 	list-style-type: square;
 }
 
-.TTMapIcon {}
+.TTMapIcon {
+	vertical-align: middle;
+}
 
 .TTMapCheckbox{}
 
