@@ -270,8 +270,8 @@ class TTGoogleMap(folder.ATFolder, TTGoogleMapCoordinates):
     def getMarkersVocabulary(self):
         vocabulary = atapi.DisplayList()
         vocabulary.add('','-')
-        
-        for cat in self.getFolderContents(contentFilter={'portal_type':('TTGoogleMapCategory','TTGoogleMapCategoryCT'),'review_state':'published','path':{'depth':3, 'query':'/'.join(self.getPhysicalPath()) }}):
+
+        for cat in self.getFolderContents(contentFilter={'portal_type':('TTGoogleMapCategory','TTGoogleMapCategoryCT'),'path':{'depth':3, 'query':'/'.join(self.getPhysicalPath()) }}):
             category = cat.getObject()
             markers = category.getMarkers()
             for item in markers:
