@@ -94,7 +94,7 @@ class TTGoogleMapCategoryCT(base.ATCTContent):
     
     def getMarkers(self):
         catalog = getToolByName(self, 'portal_catalog')
-        return catalog(portal_type = self.getCType(), review_state = "published")
+        return catalog(portal_type = self.getCType())
     
     def configuredContentTypes(self):
         config = getMultiAdapter((self, self.REQUEST), name="ttgooglemap_config")
