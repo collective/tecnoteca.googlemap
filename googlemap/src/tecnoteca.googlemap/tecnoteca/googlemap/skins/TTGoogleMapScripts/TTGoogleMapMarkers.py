@@ -13,6 +13,7 @@ def custom_escape(text):
         text = text.replace('”','&quot;')
         text = text.replace("\r", "")
         text = text.replace("\n", "")
+        text = unicode(text, errors='ignore')
         return text     
 
 newline="\n"
