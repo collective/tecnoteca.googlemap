@@ -7,7 +7,8 @@
 ##parameters=category, isGlobalMap
 ##title=
 
-output="var icon;"
+newline="\n"
+output=""
 if(category.getCustomIcon() != None and category.getCustomIcon() != ""):                
     output+='icon = createIcon(\''+category.absolute_url()+'/CustomIcon'+'\');'
 else:
@@ -15,6 +16,10 @@ else:
         output+='icon = createIcon(\''+category.getCategoryIcon()+'\');'
     else:
         output+='icon = createIcon(\'ttgooglemap_marker.png\');'
+output += newline
+
 if(isGlobalMap):
     output+='gicons[\''+category.UID()+'\'] = icon;'
+    output += newline
+    
 return output

@@ -7,6 +7,7 @@
 ##parameters=categories
 ##title=
 
+newline="\n"
 output=""
 for catloop in categories:
     category = catloop.getObject()
@@ -16,5 +17,7 @@ for catloop in categories:
         output+="show(\""+category.UID()+"\");";
     else:
         output+="hide(\""+category.UID()+"\");";
+        
+    output += newline
         
 return output
