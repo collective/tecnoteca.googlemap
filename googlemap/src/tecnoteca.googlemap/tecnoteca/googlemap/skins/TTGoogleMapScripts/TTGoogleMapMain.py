@@ -54,6 +54,7 @@ ERRCODES[TT_NO_MARKER_SELECTED] = " """ + context.translate(_(u'TT_NO_MARKER_SEL
 ERRCODES[TT_NO_MARKER_FOUND] = " """ + context.translate(_(u'TT_NO_MARKER_FOUND')) + """ ";
 
 // init vars
+var icon;
 var gmarkers = [];
 var active_gmarker = null;
 var active_directions = null;
