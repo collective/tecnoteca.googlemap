@@ -23,7 +23,7 @@
 			
 	<skin-path name="*">
 		<layer name="TTGoogleMapScripts"
-			   insert-after="custom" />
+			   insert-after="*" />
 		<layer name="TTGoogleMapImages"
 			   insert-after="TTGoogleMapScripts" />
 		<layer name="TTGoogleMapViews"

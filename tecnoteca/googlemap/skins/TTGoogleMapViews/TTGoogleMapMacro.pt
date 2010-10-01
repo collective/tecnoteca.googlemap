@@ -37,10 +37,9 @@
 	<!-- Polylines HTML -->		
 	<metal:block define-macro="Polylines">
 		<tal:block tal:repeat="polyloop polylines">
-			<div tal:define="polyline python:polyloop.getObject()">					
+			<div class="TTMapPolyline" tal:define="polyline python:polyloop.getObject()">
 				<input type="checkbox" class="TTMapCheckbox" tal:attributes="checked python:polyline.getDefaultActive() and 'checked' or None; onclick python:'polylineClick(this,'+str(repeat['polyloop'].number())+')'" />
 				<tal:block tal:content="python:polyline.Title()"></tal:block>
-				<br/>
 			</div>
 		</tal:block>
 	</metal:block>
@@ -48,10 +47,9 @@
 	<!-- Polygons HTML -->		
 	<metal:block define-macro="Polygons">
 		<tal:block tal:repeat="polyloop polygons">
-			<div tal:define="polygon python:polyloop.getObject()">					
+			<div class="TTMapPolygon" tal:define="polygon python:polyloop.getObject()">
 				<input type="checkbox" class="TTMapCheckbox" tal:attributes="checked python:polygon.getDefaultActive() and 'checked' or None; onclick python:'polygonClick(this,'+str(repeat['polyloop'].number())+')'" />
 				<tal:block tal:content="python:polygon.Title()"></tal:block>
-				<br/>
 			</div>
 		</tal:block>
 	</metal:block>	

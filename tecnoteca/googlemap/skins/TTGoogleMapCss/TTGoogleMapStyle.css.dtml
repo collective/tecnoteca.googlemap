@@ -51,6 +51,16 @@ TTMapMarkerList
 .TTMapCategory {
 }
 
+.TTMapPolygon {
+	margin-bottom: 5px;
+	margin-top: 5px;
+}
+
+.TTMapPolyline {
+	margin-bottom: 5px;
+	margin-top: 5px;
+}
+
 .TTMapCatContainter{
 	font-weight: bold;
 	margin-bottom: 5px;
