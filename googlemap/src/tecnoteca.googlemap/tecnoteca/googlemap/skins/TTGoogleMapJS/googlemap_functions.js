@@ -189,6 +189,7 @@ function polygonClick(box,i) {
 }
 
 
+
 // == refresh map position and marker ==
 function refreshPosition(point) {
 	var map = new GMap2(document.getElementById("map"));
