@@ -88,7 +88,10 @@ class TTGoogleMapCategory(folder.ATFolder):
         config = getMultiAdapter((self, self.REQUEST), name="ttgooglemap_config")
         return config.marker_icons
     
-    def getMarkers(self):
-        return self.getFolderContents(contentFilter={'portal_type':'TTGoogleMapMarker'});
+    def getMarkers(self, **args):
+        filter={'portal_type':'TTGoogleMapMarker', 'review_state':'published'}
+        if args:
+            filter = dict(filter.items() + args.items())            
+        return self.getFolderContents(contentFilter=filter);
 
 atapi.registerType(TTGoogleMapCategory, PROJECTNAME)
