@@ -12,10 +12,4 @@ class ITTGoogleMapMarker(Interface):
         title=_(u"Text"),
         required=False,
         description=_(u"Marker text"),
-    )    
-    
-    Coordinates = schema.TextLine(
-        title=_(u"Coordinates"),
-        required=True,
-        description=_(u"Coordinates lat long"),
     )
