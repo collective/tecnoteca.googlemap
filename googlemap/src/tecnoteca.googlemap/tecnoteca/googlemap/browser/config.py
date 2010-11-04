@@ -12,7 +12,6 @@ from zope.interface import implements
 from zope.schema.fieldproperty import FieldProperty
 from OFS.SimpleItem import SimpleItem
 from zope.component import getUtility
-from plone.memoize import ram
 from time import time
 
 _ = MessageFactory('tecnoteca.googlemap')
@@ -107,8 +106,6 @@ class TTGoogleMapConfig(BrowserView):
             return (0.0, 0.0)
         return default_location
     
-    # 1 hour cache
-    @ram.cache(lambda *args: time() // (60 * 60))
     def get_configured_content_types(self):
         types = self.portalTypes.listContentTypes()
         

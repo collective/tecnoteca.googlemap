@@ -208,7 +208,6 @@ tecnoteca/googlemap/skins/TTGoogleMapScripts/TTGoogleMapPolygons.py
 tecnoteca/googlemap/skins/TTGoogleMapScripts/TTGoogleMapPolylines.py
 tecnoteca/googlemap/skins/TTGoogleMapScripts/TTGoogleMarkerGetParentMap.py
 tecnoteca/googlemap/skins/TTGoogleMapViews/.tmp_TTGoogleMapCoordinatesWidget.pt.46505~
-tecnoteca/googlemap/skins/TTGoogleMapViews/.tmp_TTGoogleMapCoordinatesWidget.pt.74513~
 tecnoteca/googlemap/skins/TTGoogleMapViews/.tmp_TTGoogleMapMacro.pt.63~
 tecnoteca/googlemap/skins/TTGoogleMapViews/.tmp_TTGoogleMapView.pt.15999~
 tecnoteca/googlemap/skins/TTGoogleMapViews/.tmp_TTGoogleMapView.pt.59086~
