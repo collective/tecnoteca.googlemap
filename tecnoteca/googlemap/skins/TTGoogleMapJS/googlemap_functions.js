@@ -34,6 +34,7 @@ function createMarker(id,point,name,html,category,categoryFullName) {
     marker.myname = name;
     GEvent.addListener(marker, "click", function() {
       marker.openInfoWindowHtml(html);
+      active_gmarker = marker;
     });
     gmarkers.push(marker);
     return marker;
@@ -76,8 +77,8 @@ function boxclick(box,category) {
 
 // == This function picks up the click and opens the corresponding info window
 function myclick(i) {
+	active_gmarker = gmarkers[i];
     GEvent.trigger(gmarkers[i],"click");
-    active_gmarker = gmarkers[i];
 }
 
 // == rebuilds the sidebar to match the markers currently displayed ==
