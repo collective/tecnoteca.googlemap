@@ -40,6 +40,9 @@ output = """
 var ERRCODES = new Array(); 
 var TT_NO_MARKER_SELECTED = 667;
 var TT_NO_MARKER_FOUND = 668;
+var TT_ERROR = 669;
+
+ERRCODES[TT_ERROR] = " """ + context.translate(_(u'TT_ERROR')) + """ ";
 ERRCODES[G_GEO_SUCCESS] = " """ + context.translate(_(u'G_GEO_SUCCESS')) + """ ";
 ERRCODES[G_GEO_BAD_REQUEST] = " """ + context.translate(_(u'G_GEO_BAD_REQUEST')) + """ ";
 ERRCODES[G_GEO_SERVER_ERROR] =" """ + context.translate(_(u'G_GEO_SERVER_ERROR')) + """ ";

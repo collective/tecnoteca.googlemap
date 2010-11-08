@@ -290,12 +290,17 @@ function get_directions_from_data(){
 	else {
 	    active_directions=new GDirections(map, document.getElementById("g_directions"));
 	    GEvent.addListener(active_directions, "error", g_notify_error);
-	    GEvent.addListener(active_directions, "load", g_clear_on_sucess);
+	    GEvent.addListener(active_directions, "load", g_clear_on_success);
 	}
 	
 	geocoder.getLatLng(full_address, function(g_point){
-	    if (g_point != null){
-	        active_directions.load("from:" + full_address + "@" + g_point.toUrlValue(6) + " to:" + active_gmarker.myname + "@" + active_gmarker.getLatLng().toUrlValue(6) );
+	    if (g_point != null) {
+	    	try {
+	    		active_directions.load("from:" + full_address + "@" + g_point.toUrlValue(6) + " to:" + active_gmarker.myname + "@" + active_gmarker.getLatLng().toUrlValue(6) );
+	    		self.location.hash='directionsBox';
+	    	} catch (e) {
+	    		// do nothing
+	    	}	        
 	    }
 	    else{
 	        errnotify(ERRCODES[G_GEO_UNKNOWN_ADDRESS]);
@@ -307,7 +312,8 @@ function get_directions_from_data(){
 //== Notify errors to a section of the page ==
 function errnotify(err_message){
 	var err_display = document.getElementById('error_display');
-	err_display.innerHTML = '<dl class="portalMessage error"><dt>Error</dt> <dd>'+err_message+'</dd>  </dl>';
+	err_display.innerHTML = '<dl class="portalMessage error"><dt>'+ERRCODES[TT_ERROR]+'</dt> <dd>'+err_message+'</dd>  </dl>';
+	self.location.hash='errorBox';
 }
 
 function g_notify_error(){
@@ -320,7 +326,7 @@ function g_notify_error(){
 	}
 }
 
-function g_clear_on_sucess(){
+function g_clear_on_success(){
 	var err_display = document.getElementById('error_display');
 	err_display.innerHTML = "";
 }

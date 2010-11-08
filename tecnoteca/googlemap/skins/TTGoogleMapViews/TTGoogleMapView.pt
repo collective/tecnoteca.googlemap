@@ -44,7 +44,10 @@
 		<!-- Top text -->
 		<div tal:replace="structure python:context.getText()"></div>
 		
-		<div id="error_display"></div>
+		<div>
+			<a name="errorBox"></a>
+			<div id="error_display"></div>
+		</div>
 		
 		<!-- Map HTML  -->
 		<div class="TTMapContainer">
@@ -124,7 +127,9 @@
 		<div tal:replace="structure python:here.TTGoogleMapMain(context,categories,contentFilterCategories,catcontainers,polylines,polygons,defaultMarker)"></div>							
 		
 		<!-- directions origin form -->
-		<div tal:condition="python:context.getDirections()">
+		<tal:if tal:condition="python:context.getDirections()">
+			<div class="visualClear"><!-- --></div>
+			<a name="directionsBox"></a>
 	        <div id="goto_form">	        	
 				<form class="enableAutoFocus" name="get_directions_from" action="">
 	            	<fieldset>
@@ -137,6 +142,10 @@
 		                        <label class="TTMapDirLabel" i18n:translate="City" for="city_name">City</label>
 		                        <input name="city_name" id="tt_city_name" type="text" />
 		                </div>
+						
+						<input type="hidden" name="state_name" id="tt_state_name" value="" />
+						<input type="hidden" name="country_name" id="tt_country_name" value="" />
+						<!-- 
 		                <div class="field">
 		                        <label class="TTMapDirLabel" i18n:translate="State" for="state_name">State</label> 
 		                        <input name="state_name" id="tt_state_name" type="text" />
@@ -145,14 +154,15 @@
 		                        <label class="TTMapDirLabel" i18n:translate="Country" for="country_name">Country</label> 
 		                        <input name="country_name" id="tt_country_name" type="text" />
 		                </div>
-		                        <div class="formControls">
+						-->
+		                <div class="formControls">
 		                        <input i18n:attributes="value" class="context" name="get_directions_btn" type="button" value="Get directions btn" onClick="javascript:get_directions_from_data();"/>
 		                </div>
 	                </fieldset>
 				</form>
 	        </div>
 			<div id="g_directions" class="g_directions_placeholder"></div>
-		</div>
+		</tal:if>
 				
         <div metal:use-macro="here/document_relateditems/macros/relatedItems">
             show related items if they exist
