@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: tecnoteca.googlemap\n"
-"POT-Creation-Date: 2010-09-13 16:01+0000\n"
+"POT-Creation-Date: 2010-11-08 16:39+0000\n"
 "PO-Revision-Date: 05/02/2010\n"
 "Last-Translator: Tecnoteca srl\n"
 "Language-Team: Tecnoteca srl\n"
@@ -35,26 +35,23 @@ msgid "Cat box max-height"
 msgstr "Altezza massima box categorie, poi utilizzo scrollbar"
 
 #: ./content/ttgooglemapcategory.py:26
-#: ./content/ttgooglemapcategoryct.py:39
 #: ./interfaces/ttgooglemapcategory.py:20
 msgid "Category icon"
 msgstr "Icona categoria"
 
 #: ./interfaces/ttgooglemapcategory.py:26
-#: ./interfaces/ttgooglemapcategoryct.py:31
 msgid "Category selected (active) at map start"
 msgstr "Categoria attiva all'apertura della mappa"
 
 #: ./interfaces/ttgooglemapcategory.py:18
-#: ./interfaces/ttgooglemapcategoryct.py:23
 msgid "CategoryIcon"
 msgstr "Icona categoria"
 
-#: ./skins/TTGoogleMapViews/TTGoogleMapView.pt:136
+#: ./skins/TTGoogleMapViews/TTGoogleMapView.pt:142
 msgid "City"
 msgstr "Città"
 
-#: ./skins/TTGoogleMapViews/TTGoogleMapView.pt:60
+#: ./skins/TTGoogleMapViews/TTGoogleMapView.pt:64
 msgid "Close panel"
 msgstr "&raquo; chiudi"
 
@@ -71,13 +68,11 @@ msgstr "Content type"
 
 #: ./content/ttgooglemapcoordinates.py:21
 #: ./interfaces/ttgooglemapcoordinates.py:12
-#: ./interfaces/ttgooglemapmarker.py:18
 msgid "Coordinates"
 msgstr "Coordinate del punto"
 
 #: ./content/ttgooglemapcoordinates.py:22
 #: ./interfaces/ttgooglemapcoordinates.py:14
-#: ./interfaces/ttgooglemapmarker.py:20
 msgid "Coordinates lat long"
 msgstr "Valori di latitudine e longitudine"
 
@@ -89,19 +84,18 @@ msgstr "Dimensione widget selezione coordinate"
 msgid "Coordinates widget mapsize desc"
 msgstr "Dimensione mappa - larghezza x altezza, in px - del widget per la selezione delle coordinate"
 
-#: ./skins/TTGoogleMapViews/TTGoogleMapView.pt:144
+#: ./skins/TTGoogleMapViews/TTGoogleMapView.pt:150
 msgid "Country"
 msgstr "Nazione"
 
-#: ./content/ttgooglemapcategory.py:37
-#: ./content/ttgooglemapcategoryct.py:50
+#: ./content/ttgooglemapcategory.py:38
 #: ./interfaces/ttgooglemapcategory.py:12
 msgid "Custom icon"
 msgstr "Icona personalizzata"
 
-#: ./content/ttgooglemapcategory.py:48
-#: ./content/ttgooglemapcategoryct.py:61
+#: ./content/ttgooglemapcategory.py:49
 #: ./content/ttgooglemappolygon.py:37
+#: ./content/ttgooglemappolyline.py:38
 msgid "Default Active"
 msgstr "Attivo all'apertura"
 
@@ -114,9 +108,9 @@ msgstr "Punto d'interesse default"
 msgid "Default active"
 msgstr "Attivo all'apertura"
 
-#: ./content/ttgooglemapcategory.py:49
-#: ./content/ttgooglemapcategoryct.py:62
+#: ./content/ttgooglemapcategory.py:50
 #: ./content/ttgooglemappolygon.py:38
+#: ./content/ttgooglemappolyline.py:39
 msgid "Default active at map start"
 msgstr "Selezionare per attivare all'apertura della mappa"
 
@@ -181,111 +175,104 @@ msgstr "Codifica percorso"
 msgid "Encoded polyline value"
 msgstr "Codifica del percorso - <a href='http://code.google.com/apis/maps/documentation/polylineutility.html' target='_blank'>clicca qui</a> per calcolare la codifica del percorso"
 
+#: ./skins/TTGoogleMapViews/TTGoogleMapView.pt:90
 #. Default: "Categories"
-#: ./skins/TTGoogleMapViews/TTGoogleMapView.pt:86
 msgid "Frontend Categories"
 msgstr "Categorie di punti"
 
+#: ./skins/TTGoogleMapViews/TTGoogleMapView.pt:105
 #. Default: "Markers"
-#: ./skins/TTGoogleMapViews/TTGoogleMapView.pt:101
 msgid "Frontend Markers"
 msgstr "Punti d'interesse"
 
+#: ./skins/TTGoogleMapViews/TTGoogleMapView.pt:119
 #. Default: "JavaScript must be enabled in order for you to use Google Maps.However, it seems JavaScript is either disabled or not supported by your browser. To view Google Maps, enable JavaScript by changing your browser options, and then try again."
-#: ./skins/TTGoogleMapViews/TTGoogleMapView.pt:115
 msgid "Frontend NoJavascript"
 msgstr "JavaScript deve essere abilitato per poter visualizzare la mappa!"
 
+#: ./skins/TTGoogleMapViews/TTGoogleMapView.pt:62
 #. Default: "Areas"
-#: ./skins/TTGoogleMapViews/TTGoogleMapView.pt:58
 msgid "Frontend Polygons"
 msgstr "Aree"
 
+#: ./skins/TTGoogleMapViews/TTGoogleMapView.pt:76
 #. Default: "Paths"
-#: ./skins/TTGoogleMapViews/TTGoogleMapView.pt:72
 msgid "Frontend Polylines"
 msgstr "Percorsi"
 
-#: ./skins/TTGoogleMapScripts/TTGoogleMapMain.py:55
+#: ./skins/TTGoogleMapScripts/TTGoogleMapMain.py:54
 msgid "G_GEO_BAD_KEY"
 msgstr "Google Key non valida"
 
-#: ./skins/TTGoogleMapScripts/TTGoogleMapMain.py:48
+#: ./skins/TTGoogleMapScripts/TTGoogleMapMain.py:47
 msgid "G_GEO_BAD_REQUEST"
-msgstr "Richiesta non valida - bad request"
+msgstr "Richiesta non valida"
 
-#: ./skins/TTGoogleMapScripts/TTGoogleMapMain.py:51
+#: ./skins/TTGoogleMapScripts/TTGoogleMapMain.py:50
 msgid "G_GEO_MISSING_ADDRESS"
 msgstr "Indirizzo non trovato"
 
-#: ./skins/TTGoogleMapScripts/TTGoogleMapMain.py:50
-msgid "G_GEO_MISSING_QUERY"
-msgstr "Indirizzo mancante"
-
 #: ./skins/TTGoogleMapScripts/TTGoogleMapMain.py:49
-msgid "G_GEO_SERVER_ERROR"
-msgstr "Server error"
+msgid "G_GEO_MISSING_QUERY"
+msgstr "Inserire l'indirizzo di partenza"
 
-#: ./skins/TTGoogleMapScripts/TTGoogleMapMain.py:47
+#: ./skins/TTGoogleMapScripts/TTGoogleMapMain.py:48
+msgid "G_GEO_SERVER_ERROR"
+msgstr "Errore del server, impossibile completare l'operazione"
+
+#: ./skins/TTGoogleMapScripts/TTGoogleMapMain.py:46
 msgid "G_GEO_SUCCESS"
 msgstr "Richiesta eseguita con successo"
 
-#: ./skins/TTGoogleMapScripts/TTGoogleMapMain.py:56
+#: ./skins/TTGoogleMapScripts/TTGoogleMapMain.py:55
 msgid "G_GEO_TOO_MANY_QUERIES"
-msgstr "Troppe richieste in corso"
+msgstr "Troppe richieste in corso, riprovare piu tardi"
 
-#: ./skins/TTGoogleMapScripts/TTGoogleMapMain.py:53
+#: ./skins/TTGoogleMapScripts/TTGoogleMapMain.py:52
 msgid "G_GEO_UNAVAILABLE_ADDRESS"
 msgstr "Indirizzo non trovato"
 
-#: ./skins/TTGoogleMapScripts/TTGoogleMapMain.py:52
+#: ./skins/TTGoogleMapScripts/TTGoogleMapMain.py:51
 msgid "G_GEO_UNKNOWN_ADDRESS"
 msgstr "Indirizzo non trovato"
 
-#: ./skins/TTGoogleMapScripts/TTGoogleMapMain.py:54
+#: ./skins/TTGoogleMapScripts/TTGoogleMapMain.py:53
 msgid "G_GEO_UNKNOWN_DIRECTIONS"
-msgstr "Impossibile recuperare le indicazioni"
+msgstr "Impossibile ottenere le indicazioni stradali per il punto selezionato"
 
-#: ./skins/TTGoogleMapViews/TTGoogleMapView.pt:148
+#: ./skins/TTGoogleMapViews/TTGoogleMapView.pt:154
 msgid "Get directions btn"
 msgstr "Ottieni indicazioni"
 
-#: ./skins/TTGoogleMapViews/TTGoogleMapView.pt:130
+#: ./skins/TTGoogleMapViews/TTGoogleMapView.pt:136
 msgid "Get directions from"
-msgstr "Ottieni indicazioni"
+msgstr "Seleziona un punto d'interesse e ottieni le indicazioni stradali"
 
 #. Default: "Google Map Category"
-#: ./profiles/default/types/TTGoogleMapCategory.xml
 msgid "Google Map Category"
 msgstr "Categoria di punti"
 
 #. Default: "Google Map Category Container"
-#: ./profiles/default/types/TTGoogleMapCategoryContainer.xml
 msgid "Google Map Category Container"
 msgstr "Macro Categoria"
 
 #. Default: "Google Map Category Content Type"
-#: ./profiles/default/types/TTGoogleMapCategoryCT.xml
 msgid "Google Map Category Content Type"
 msgstr "Content type categoria"
 
 #. Default: "Google Map Marker"
-#: ./profiles/default/types/TTGoogleMapMarker.xml
 msgid "Google Map Marker"
 msgstr "Punto d'interesse"
 
 #. Default: "Google Map Object"
-#: ./profiles/default/types/TTGoogleMap.xml
 msgid "Google Map Object"
 msgstr "Oggetto Google Map"
 
 #. Default: "Google Map Polygon"
-#: ./profiles/default/types/TTGoogleMapPolygon.xml
 msgid "Google Map Polygon"
 msgstr "Area"
 
 #. Default: "Google Map Polyline"
-#: ./profiles/default/types/TTGoogleMapPolyline.xml
 msgid "Google Map Polyline"
 msgstr "Percorso"
 
@@ -302,7 +289,6 @@ msgid "GoogleMap api keys desc"
 msgstr "URL configurati e relative Google Key"
 
 #: ./content/ttgooglemapcategory.py:25
-#: ./content/ttgooglemapcategoryct.py:38
 msgid "Icon"
 msgstr "Icona"
 
@@ -407,7 +393,7 @@ msgstr "Livello trasparenza - da 0=invisibile a 1=senza trasparenza"
 msgid "Open boxes"
 msgstr "Visualizza i box (aree, percorsi, categorie) aperti all'apertura della mappa"
 
-#: ./skins/TTGoogleMapViews/TTGoogleMapView.pt:59
+#: ./skins/TTGoogleMapViews/TTGoogleMapView.pt:63
 msgid "Open panel"
 msgstr "&raquo; apri"
 
@@ -458,18 +444,17 @@ msgstr "Impostazioni GoogleMap"
 msgid "Related Markers"
 msgstr "Punti d'interesse associati"
 
-#. Default: "Search address"
 #: ./skins/TTGoogleMapViews/TTGoogleMapCoordinatesWidget.pt:59
+#. Default: "Search address"
 msgid "Search Address"
 msgstr "Digita qui l'indirizzo: "
 
-#. Default: "Search"
 #: ./skins/TTGoogleMapViews/TTGoogleMapCoordinatesWidget.pt:61
+#. Default: "Search"
 msgid "Search_button"
 msgstr "Cerca"
 
-#: ./content/ttgooglemapcategory.py:38
-#: ./content/ttgooglemapcategoryct.py:51
+#: ./content/ttgooglemapcategory.py:39
 #: ./interfaces/ttgooglemapcategory.py:14
 msgid "Select a custom icon for category"
 msgstr "Inserisci un'icona diversa per questa categoria - visita <a href='http://code.google.com/p/google-maps-icons/' target='_blank'>questa pagina</a> per ottenere altre icone da poter utilizzare"
@@ -508,57 +493,54 @@ msgstr "Visualizza la mappa di overview"
 msgid "Standard icon disabled"
 msgstr "Icona personalizzata inserita"
 
-#: ./skins/TTGoogleMapViews/TTGoogleMapView.pt:140
+#: ./skins/TTGoogleMapViews/TTGoogleMapView.pt:146
 msgid "State"
 msgstr "Regione"
 
+#: ./skins/TTGoogleMapViews/TTGoogleMapView.pt:138
 #. Default: "Street Address"
-#: ./skins/TTGoogleMapViews/TTGoogleMapView.pt:132
 msgid "Street"
 msgstr "Via"
 
 #. Default: "TTGoogleMap"
-#: ./profiles/default/types/TTGoogleMap.xml
 msgid "TTGoogleMap"
 msgstr "Google Map"
 
 #. Default: "TTGoogleMapCategory"
-#: ./profiles/default/types/TTGoogleMapCategory.xml
 msgid "TTGoogleMapCategory"
 msgstr "Categoria di punti"
 
 #. Default: "TTGoogleMapCategoryCT"
-#: ./profiles/default/types/TTGoogleMapCategoryCT.xml
 msgid "TTGoogleMapCategoryCT"
 msgstr "Categoria content type"
 
 #. Default: "TTGoogleMapCategoryContainer"
-#: ./profiles/default/types/TTGoogleMapCategoryContainer.xml
 msgid "TTGoogleMapCategoryContainer"
 msgstr "Macro Categoria"
 
 #. Default: "TTGoogleMapMarker"
-#: ./profiles/default/types/TTGoogleMapMarker.xml
 msgid "TTGoogleMapMarker"
 msgstr "Punto d'interesse"
 
 #. Default: "TTGoogleMapPolygon"
-#: ./profiles/default/types/TTGoogleMapPolygon.xml
 msgid "TTGoogleMapPolygon"
 msgstr "Area"
 
 #. Default: "Google Map Polyline"
-#: ./profiles/default/types/TTGoogleMapPolyline.xml
 msgid "TTGoogleMapPolyline"
 msgstr "Percorso"
 
-#: ./skins/TTGoogleMapScripts/TTGoogleMapMain.py:58
-msgid "TT_NO_MARKER_FOUND"
-msgstr "Nessun marker trovato con id"
+#: ./skins/TTGoogleMapScripts/TTGoogleMapMain.py:45
+msgid "TT_ERROR"
+msgstr "Errore"
 
 #: ./skins/TTGoogleMapScripts/TTGoogleMapMain.py:57
+msgid "TT_NO_MARKER_FOUND"
+msgstr "Nessun punto d'interesse trovato con id"
+
+#: ./skins/TTGoogleMapScripts/TTGoogleMapMain.py:56
 msgid "TT_NO_MARKER_SELECTED"
-msgstr "Nessun marker selezionato"
+msgstr "Selezionare prima un punto d'interesse"
 
 #: ./content/ttgooglemap.py:27
 #: ./content/ttgooglemapmarker.py:24
