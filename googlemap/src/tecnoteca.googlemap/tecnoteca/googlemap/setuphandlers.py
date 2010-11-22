@@ -21,6 +21,10 @@ def updateProperties(portal):
             props_sheet.manage_addProperty(id = property['id'], value = property['value'], type = property['type'])           
 
 def setupVarious(context):
+
+    if context.readDataFile('tecnoteca.googlemap_various.txt') is None:
+        return
+    
     # Add additional setup code here
     portal = context.getSite()
     # update prop
