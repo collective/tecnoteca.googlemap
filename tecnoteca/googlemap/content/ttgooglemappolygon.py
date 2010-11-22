@@ -76,7 +76,6 @@ TTGoogleMapPolygonSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
         ),
         required=True,
         default=2,
-        validators=('isInt'),
     ),
 
 
@@ -114,7 +113,6 @@ TTGoogleMapPolygonSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
         ),
         required=True,
         default=32,
-        validators=('isInt'),
     ),
 
 
@@ -128,7 +126,6 @@ TTGoogleMapPolygonSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
         ),
         required=True,
         default=4,
-        validators=('isInt'),
     ),
 
 
