@@ -68,7 +68,6 @@ TTGoogleMapSchema = folder.ATFolderSchema.copy() + TTGoogleMapCoordinatesSchema.
         ),
         required=True,
         default=13,
-        validators=('isInt'),
     ),
 
 
