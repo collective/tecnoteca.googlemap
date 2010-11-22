@@ -79,11 +79,11 @@ TTGoogleMapPolygonSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
     ),
 
 
-    atapi.StringField(
+    atapi.TextField(
         'EncodedPolyline',
         languageIndependent = True,
         storage=atapi.AnnotationStorage(),
-        widget=atapi.StringWidget(
+        widget=atapi.TextAreaWidget(
             label=_(u"Encoded Polyline"),
             description=_(u"Encoded polyline value"),
         ),
@@ -91,11 +91,11 @@ TTGoogleMapPolygonSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
     ),
 
 
-    atapi.StringField(
+    atapi.TextField(
         'Levels',
         languageIndependent = True,
         storage=atapi.AnnotationStorage(),
-        widget=atapi.StringWidget(
+        widget=atapi.TextAreaWidget(
             label=_(u"Levels"),
             description=_(u"Encoded levels"),
         ),
