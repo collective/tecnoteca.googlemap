@@ -26,7 +26,7 @@ TTGoogleMapPolylineSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
             description=_(u"Polyline color"),
         ),
         required=True,
-        default="#00CCFF",
+        default="#FF0000",
     ),
 
 
@@ -51,15 +51,15 @@ TTGoogleMapPolylineSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
             description=_(u"Line thickness (px)"),
         ),
         required=True,
-        default=10,
+        default=5,
     ),
 
 
-    atapi.StringField(
+    atapi.TextField(
         'EncodedPolyline',
         languageIndependent = True,
         storage=atapi.AnnotationStorage(),
-        widget=atapi.StringWidget(
+        widget=atapi.TextAreaWidget(
             label=_(u"Encoded Polyline"),
             description=_(u"Encoded polyline value"),
         ),
@@ -67,11 +67,11 @@ TTGoogleMapPolylineSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
     ),
 
 
-    atapi.StringField(
+    atapi.TextField(
         'Levels',
         languageIndependent = True,
         storage=atapi.AnnotationStorage(),
-        widget=atapi.StringWidget(
+        widget=atapi.TextAreaWidget(
             label=_(u"Levels"),
             description=_(u"Encoded levels"),
         ),
