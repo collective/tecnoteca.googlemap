@@ -52,7 +52,6 @@ TTGoogleMapPolylineSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
         ),
         required=True,
         default=10,
-        validators=('isInt'),
     ),
 
 
@@ -90,7 +89,6 @@ TTGoogleMapPolylineSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
         ),
         required=True,
         default=32,
-        validators=('isInt'),
     ),
 
 
@@ -104,7 +102,6 @@ TTGoogleMapPolylineSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
         ),
         required=True,
         default=4,
-        validators=('isInt'),
     ),
 
 

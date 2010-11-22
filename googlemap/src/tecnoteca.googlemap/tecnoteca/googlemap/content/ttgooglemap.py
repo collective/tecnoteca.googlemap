@@ -40,7 +40,6 @@ TTGoogleMapSchema = folder.ATFolderSchema.copy() + TTGoogleMapCoordinatesSchema.
         ),
         required=True,
         default_method = 'defaultWidth',
-        validators=('isInt'),
     ),
 
 
@@ -54,7 +53,6 @@ TTGoogleMapSchema = folder.ATFolderSchema.copy() + TTGoogleMapCoordinatesSchema.
         ),
         required=True,
         default_method = 'defaultHeight',
-        validators=('isInt'),
     ),
 
 
@@ -95,7 +93,6 @@ TTGoogleMapSchema = folder.ATFolderSchema.copy() + TTGoogleMapCoordinatesSchema.
         ),
         required=True,
         default_method = 'defaultCatBoxHeight',
-        validators=('isInt'),
     ),
     
     
@@ -109,7 +106,6 @@ TTGoogleMapSchema = folder.ATFolderSchema.copy() + TTGoogleMapCoordinatesSchema.
         ),
         required=True,
         default_method = 'defaultMarkerBoxHeight',
-        validators=('isInt'),
     ),
     
     
