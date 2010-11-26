@@ -5,6 +5,7 @@ from zope.formlib.form import FormFields
 
 from zope.i18nmessageid import MessageFactory
 
+from zope.schema import Int
 from zope.schema import Tuple
 from zope.schema import TextLine
 
@@ -52,6 +53,11 @@ class IMapsSchema(Interface):
         missing_value=tuple(),
         required=True,
         value_type=TextLine())
+    
+    markers_cache = Int(
+        title=_(u"Markers cache in seconds"),
+        description=_(u"Markers cache in seconds desc"),
+        required=False)
 
 
 class MapsControlPanelAdapter(SchemaAdapterBase):
@@ -114,6 +120,16 @@ class MapsControlPanelAdapter(SchemaAdapterBase):
         self.context._updateProperty(PROPERTY_MARKERS, value)
 
     marker_icons = property(get_marker_icons, set_marker_icons)    
+    
+    
+    
+    def get_markers_cache(self):
+        return getattr(self.context, PROPERTY_MARKERS_CACHE, '')
+
+    def set_markers_cache(self, value):
+        self.context._updateProperty(PROPERTY_MARKERS_CACHE, value)
+
+    markers_cache = property(get_markers_cache, set_markers_cache)    
 
 
 

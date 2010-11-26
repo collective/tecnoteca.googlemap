@@ -66,6 +66,7 @@ tecnoteca/googlemap/profiles/default/metadata.xml
 tecnoteca/googlemap/profiles/default/portlets.xml
 tecnoteca/googlemap/profiles/default/rolemap.xml
 tecnoteca/googlemap/profiles/default/skins.xml
+tecnoteca/googlemap/profiles/default/tecnoteca.googlemap_various.txt
 tecnoteca/googlemap/profiles/default/types.xml
 tecnoteca/googlemap/profiles/default/types/TTGoogleMap.xml
 tecnoteca/googlemap/profiles/default/types/TTGoogleMapCategory.xml
@@ -207,10 +208,6 @@ tecnoteca/googlemap/skins/TTGoogleMapScripts/TTGoogleMapMarkers.py
 tecnoteca/googlemap/skins/TTGoogleMapScripts/TTGoogleMapPolygons.py
 tecnoteca/googlemap/skins/TTGoogleMapScripts/TTGoogleMapPolylines.py
 tecnoteca/googlemap/skins/TTGoogleMapScripts/TTGoogleMarkerGetParentMap.py
-tecnoteca/googlemap/skins/TTGoogleMapViews/.tmp_TTGoogleMapCoordinatesWidget.pt.46505~
-tecnoteca/googlemap/skins/TTGoogleMapViews/.tmp_TTGoogleMapMacro.pt.63~
-tecnoteca/googlemap/skins/TTGoogleMapViews/.tmp_TTGoogleMapView.pt.15999~
-tecnoteca/googlemap/skins/TTGoogleMapViews/.tmp_TTGoogleMapView.pt.59086~
 tecnoteca/googlemap/skins/TTGoogleMapViews/TTGoogleMapCoordinatesWidget.pt
 tecnoteca/googlemap/skins/TTGoogleMapViews/TTGoogleMapIconWidget.pt
 tecnoteca/googlemap/skins/TTGoogleMapViews/TTGoogleMapMacro.pt
