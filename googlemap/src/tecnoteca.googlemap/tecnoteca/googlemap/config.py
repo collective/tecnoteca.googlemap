@@ -10,6 +10,7 @@ PROPERTY_DEFAULT_LOCATION = 'ttgooglemap_default_location'
 PROPERTY_DEFAULT_MAPSIZE = 'ttgooglemap_default_map_size'
 PROPERTY_COORD_WIDGET_MAP_SIZE = 'ttgooglemap_coord_widget_map_size'
 PROPERTY_MARKERS = 'ttgooglemap_markers'
+PROPERTY_MARKERS_CACHE = 'ttgooglemap_markers_cache'
 
 ADD_PERMISSIONS = {
     # -*- extra stuff goes here -*-
@@ -137,4 +138,5 @@ PROPERTIES_LIST = [{'id' : PROPERTY_GOOGLE_KEYS, 'type' : 'lines', 'value' : ["h
                                                                         "marker_workoffice.png|workoffice",\
                                                                         "marker_world.png|world",\
                                                                         "marker_youthhostel.png|youthhostel",\
-                                                                        "marker_zoo.png|zoo"]},]
+                                                                        "marker_zoo.png|zoo"]},
+                   {'id' : PROPERTY_MARKERS_CACHE, 'type' : 'int', 'value' : 0},]

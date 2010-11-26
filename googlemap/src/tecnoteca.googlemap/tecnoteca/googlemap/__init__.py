@@ -31,6 +31,9 @@ def initialize(context):
     
     from tecnoteca.googlemap.content.ttgooglemapcoordinates import TTGoogleMapCoordinates
     allow_class(TTGoogleMapCoordinates)
+    
+    from tecnoteca.googlemap.browser.logger import log
+    allow_class(log)
 
     # Retrieve the content types that have been registered with Archetypes
     # This happens when the content type is imported and the registerType()
