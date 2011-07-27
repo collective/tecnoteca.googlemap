@@ -59,13 +59,13 @@ for catloop in categories:
             output += "html += '<ul>';"
             output += newline
             for relation in marker.getRelatedItems(): # standard relation (marker >> object)
-                if relation:
+                if relation and relation.getLanguage()==context.REQUEST.get("Language","it"):
                     output += "html += '<li>';"
                     output += "html += \"<a href='"+relation.absolute_url()+"' title='"+custom_escape(relation.Title())+"'>"+custom_escape(relation.Title())+"</a>\";"
                     output += "html += '</li>';"
                     output += newline
             for relation in marker.getBRefs(): # custom relation (object >> marker)
-                if relation:
+                if relation and relation.getLanguage()==context.REQUEST.get("Language","it"):
                     output += "html += '<li>';"
                     output += "html += \"<a href='"+relation.absolute_url()+"' title='"+custom_escape(relation.pretty_title_or_id())+"'>"+custom_escape(relation.pretty_title_or_id())+"</a>\";"
                     output += "html += '</li>';"

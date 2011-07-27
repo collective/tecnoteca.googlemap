@@ -6,7 +6,12 @@ from zope.component import getMultiAdapter
 
 from Products.CMFCore.utils import getToolByName
 
-from Products.Archetypes import atapi
+try:
+    from Products.LinguaPlone import public as atapi
+except ImportError:
+    # No multilingual support
+    from Products.Archetypes import atapi
+
 from Products.ATContentTypes.content import folder
 from Products.ATContentTypes.content import schemata
 

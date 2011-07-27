@@ -16,10 +16,17 @@ else:
         output+='icon = createIcon(\''+category.getCategoryIcon()+'\');'
     else:
         output+='icon = createIcon(\'ttgooglemap_marker.png\');'
+
+if(category.getClustererIcon() != None and category.getClustererIcon() != ""):
+    output+='clustererIcon = createClustererIcon(\''+category.absolute_url()+'/ClustererIcon'+'\');'
+else:
+    output+='clustererIcon = null;'
+
 output += newline
 
 if(isGlobalMap):
     output+='gicons[\''+category.UID()+'\'] = icon;'
+    output+='clusterersIcon[\''+category.UID()+'\'] = clustererIcon;'
     output += newline
     
 return output

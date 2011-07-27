@@ -10,16 +10,16 @@
 		<tal:block tal:repeat="catloop categories">
 			<div class="TTMapCategory" tal:define="category python:catloop.getObject()">
 				<tal:if tal:condition="python: category.getCustomIcon() != None and category.getCustomIcon() != ''">					
-					<img class="TTMapIcon" tal:replace="structure python:category.getCustomIcon().tag(css_class='TTMapIcon')" />
+					<img class="TTMapIcon" tal:replace="structure python:category.getCustomIcon().tag(css_class='TTMapIcon', onclick='javascript: document.getElementById(\''+category.UID()+'box\').click();')"/>
 				</tal:if>
 				<tal:if tal:condition="python: not (category.getCustomIcon() != None and category.getCustomIcon() != '') and (category.getCategoryIcon() != None and category.getCategoryIcon() != '')">
 					<img class="TTMapIcon" tal:attributes="src python:category.getCategoryIcon(); alt python:category.Title()" />
 				</tal:if>
-				<input type="checkbox" class="TTMapCheckbox" tal:attributes="id python:category.UID()+'box'; onclick python:'boxclick(this,\''+category.UID()+'\');;'"/>
-				<tal:block tal:content="python:category.Title()"></tal:block>
-				<br/>
+				<input type="checkbox" class="TTMapCheckbox" name="ttcategorycheckbox" tal:attributes="id python:category.UID()+'box'; onclick python:'boxclick(this,\''+category.UID()+'\');;'"/>
+                <label class="TTMapCatLabel" for="ttcategorycheckbox" tal:content="python:category.Title()"></label>
 			</div>
 		</tal:block>
+        <div class="visualClear"></div>
 	</metal:block>	
 	
 	<!-- MacroCategories HTML -->		
@@ -38,20 +38,22 @@
 	<metal:block define-macro="Polylines">
 		<tal:block tal:repeat="polyloop polylines">
 			<div class="TTMapPolyline" tal:define="polyline python:polyloop.getObject()">
-				<input type="checkbox" class="TTMapCheckbox" tal:attributes="checked python:polyline.getDefaultActive() and 'checked' or None; onclick python:'polylineClick(this,'+str(repeat['polyloop'].number())+')'" />
-				<tal:block tal:content="python:polyline.Title()"></tal:block>
+				<input type="checkbox" name="ttpolylcheckbox" class="TTMapCheckbox" tal:attributes="checked python:polyline.getDefaultActive() and 'checked' or None; onclick python:'polylineClick(this,'+str(repeat['polyloop'].number())+')'" />
+                <label class="TTMapPolyLabel" for="ttpolylcheckbox" tal:content="python:polyline.Title()"></label>
 			</div>
 		</tal:block>
+        <div class="visualClear"></div>
 	</metal:block>
 	
 	<!-- Polygons HTML -->		
 	<metal:block define-macro="Polygons">
 		<tal:block tal:repeat="polyloop polygons">
 			<div class="TTMapPolygon" tal:define="polygon python:polyloop.getObject()">
-				<input type="checkbox" class="TTMapCheckbox" tal:attributes="checked python:polygon.getDefaultActive() and 'checked' or None; onclick python:'polygonClick(this,'+str(repeat['polyloop'].number())+')'" />
-				<tal:block tal:content="python:polygon.Title()"></tal:block>
+				<input type="checkbox" name="ttpolygcheckbox" class="TTMapCheckbox" tal:attributes="checked python:polygon.getDefaultActive() and 'checked' or None; onclick python:'polygonClick(this,'+str(repeat['polyloop'].number())+')'" />
+                <label class="TTMapPolyLabel" for="ttpolygcheckbox" tal:content="python:polygon.Title()"></label>
 			</div>
 		</tal:block>
+        <div class="visualClear"></div>
 	</metal:block>	
 	
 	<!-- Map JS -->		
@@ -66,6 +68,10 @@
 		<!-- load panoramio -->
 		<script type="text/javascript" tal:attributes="src string:${here/portal_url}/pano_layer.js"></script>
 		<script type="text/javascript" tal:attributes="src string:${here/portal_url}/pano_maptypecontrol.js"></script>
+        
+        <!-- marker clusterer -->
+        <script type="text/javascript" tal:attributes="src string:${here/portal_url}/markerclusterer.js"></script>
+        
 	</metal:block>	
 	
 </body>
