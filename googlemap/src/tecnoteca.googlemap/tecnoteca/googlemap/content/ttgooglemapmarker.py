@@ -3,7 +3,12 @@
 
 from zope.interface import implements
 
-from Products.Archetypes import atapi
+try:
+    from Products.LinguaPlone import public as atapi
+except ImportError:
+    # No multilingual support
+    from Products.Archetypes import atapi
+
 from Products.ATContentTypes.content import base
 from Products.ATContentTypes.content import schemata
 

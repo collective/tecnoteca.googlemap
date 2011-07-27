@@ -24,6 +24,26 @@ function createIcon(imgUrl) {
     return icon;
 }
 
+//== Create clusterer icon ==
+function createClustererIcon(imgUrl) {
+	var height = 37;
+	var width = 32;
+	var imgsize = getImgSize(imgUrl);
+	if(imgsize[0]!=null && imgsize[0]!=0) { // if size defined
+		height = imgsize[0];
+		width = imgsize[1];
+	}
+	var clustererIcon = [{
+		url: imgUrl,
+        height: height,
+        width: width,
+        opt_anchor: [height, width],
+        opt_textColor: '#FFFFFF'
+    }];
+	return clustererIcon;
+}
+
+
 // == Create marker ==
 function createMarker(id,point,name,html,category,categoryFullName) {    
 	var marker = new GMarker(point, {icon:gicons[category], title:name})
@@ -42,13 +62,24 @@ function createMarker(id,point,name,html,category,categoryFullName) {
 
 // == shows all markers of a particular category, and ensures the checkbox is checked ==
 function show(category) {
+	var activeMarkers = [];
     for (var i=0; i<gmarkers.length; i++) {
       if (gmarkers[i].mycategory == category) {
-        gmarkers[i].show();
+        // gmarkers[i].show();
+        activeMarkers.push(gmarkers[i]);
       }
     }
     // == check the checkbox ==
     document.getElementById(category+"box").checked = true;
+    
+    // == marker clusterer
+    var markerClusterer = null;
+    if (clusterersIcon[category]!=null) {
+    	markerClusterer = new MarkerClusterer(map, activeMarkers, {styles: clusterersIcon[category]});
+    } else {
+    	markerClusterer = new MarkerClusterer(map, activeMarkers);
+    }
+    clusterers[category] = markerClusterer;
 }
 
 // == hides all markers of a particular category, and ensures the checkbox is cleared ==
@@ -62,6 +93,13 @@ function hide(category) {
     document.getElementById(category+"box").checked = false;
     // == close the info window, in case its open on a marker that we just hid
     map.closeInfoWindow();
+    
+    // == marker clusterer
+    var markerClusterer = clusterers[category];
+    if (markerClusterer!=null && markerClusterer.hasOwnProperty("clearMarkers")) {
+    	markerClusterer.clearMarkers();
+        markerClusterer = null;
+    }
 }
 
 // == a checkbox has been clicked ==

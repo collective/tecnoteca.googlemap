@@ -59,6 +59,8 @@ ERRCODES[TT_NO_MARKER_FOUND] = " """ + context.translate(_(u'TT_NO_MARKER_FOUND'
 // init vars
 var icon;
 var gmarkers = [];
+var clusterers = new Array();
+var clusterersIcon = new Array();
 var active_gmarker = null;
 var active_directions = null;
 var gicons = [];
@@ -95,10 +97,10 @@ Gload = function() {
         // categories show/hide
         """+mapCatSH+"""
         
-        //polylines
+        // polylines
         """+mapPolyjs+"""
     
-        //polygons
+        // polygons
         """+mapPolygjs+"""
         
         // create the initial sidebar    

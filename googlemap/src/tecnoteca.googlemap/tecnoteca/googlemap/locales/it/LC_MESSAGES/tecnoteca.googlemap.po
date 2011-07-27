@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: tecnoteca.googlemap\n"
-"POT-Creation-Date: 2010-11-08 16:39+0000\n"
+"POT-Creation-Date: 2011-07-27 09:58+0000\n"
 "PO-Revision-Date: 05/02/2010\n"
 "Last-Translator: Tecnoteca srl\n"
 "Language-Team: Tecnoteca srl\n"
@@ -16,25 +16,25 @@ msgstr ""
 "Report-Msgid-Bugs-To: tecnoteca@tecnoteca.com\n"
 "X-Is-Fallback-For: it-ch it-it\n"
 
-#: ./browser/controlpanel.py:50
+#: ./browser/controlpanel.py:51
 msgid "Available icons"
 msgstr "Icone disponibili"
 
-#: ./browser/controlpanel.py:51
+#: ./browser/controlpanel.py:52
 msgid "Available icons desc"
 msgstr "Icone dei punti d'interesse"
 
-#: ./content/ttgooglemap.py:94
+#: ./content/ttgooglemap.py:91
 #: ./interfaces/ttgooglemap.py:42
 msgid "Cat Box Height"
 msgstr "Altezza box categorie"
 
-#: ./content/ttgooglemap.py:95
+#: ./content/ttgooglemap.py:92
 #: ./interfaces/ttgooglemap.py:44
 msgid "Cat box max-height"
 msgstr "Altezza massima box categorie, poi utilizzo scrollbar"
 
-#: ./content/ttgooglemapcategory.py:26
+#: ./content/ttgooglemapcategory.py:30
 #: ./interfaces/ttgooglemapcategory.py:20
 msgid "Category icon"
 msgstr "Icona categoria"
@@ -55,13 +55,17 @@ msgstr "Città"
 msgid "Close panel"
 msgstr "&raquo; chiudi"
 
+#: ./content/ttgooglemapcategory.py:53
+msgid "Clusterer icon"
+msgstr "Icona raggruppamento"
+
 #: ./content/ttgooglemappolygon.py:25
 #: ./content/ttgooglemappolyline.py:25
 #: ./interfaces/ttgooglemappolygon.py:12
 msgid "Color"
 msgstr "Colore"
 
-#: ./content/ttgooglemapcategoryct.py:27
+#: ./content/ttgooglemapcategoryct.py:31
 #: ./interfaces/ttgooglemapcategoryct.py:11
 msgid "Content type"
 msgstr "Content type"
@@ -76,30 +80,26 @@ msgstr "Coordinate del punto"
 msgid "Coordinates lat long"
 msgstr "Valori di latitudine e longitudine"
 
-#: ./browser/controlpanel.py:45
+#: ./browser/controlpanel.py:46
 msgid "Coordinates widget mapsize"
 msgstr "Dimensione widget selezione coordinate"
 
-#: ./browser/controlpanel.py:46
+#: ./browser/controlpanel.py:47
 msgid "Coordinates widget mapsize desc"
 msgstr "Dimensione mappa - larghezza x altezza, in px - del widget per la selezione delle coordinate"
 
-#: ./skins/TTGoogleMapViews/TTGoogleMapView.pt:150
-msgid "Country"
-msgstr "Nazione"
-
-#: ./content/ttgooglemapcategory.py:38
+#: ./content/ttgooglemapcategory.py:42
 #: ./interfaces/ttgooglemapcategory.py:12
 msgid "Custom icon"
 msgstr "Icona personalizzata"
 
-#: ./content/ttgooglemapcategory.py:49
+#: ./content/ttgooglemapcategory.py:64
 #: ./content/ttgooglemappolygon.py:37
 #: ./content/ttgooglemappolyline.py:38
 msgid "Default Active"
 msgstr "Attivo all'apertura"
 
-#: ./content/ttgooglemap.py:193
+#: ./content/ttgooglemap.py:188
 #: ./interfaces/ttgooglemap.py:90
 msgid "Default Marker"
 msgstr "Punto d'interesse default"
@@ -108,39 +108,39 @@ msgstr "Punto d'interesse default"
 msgid "Default active"
 msgstr "Attivo all'apertura"
 
-#: ./content/ttgooglemapcategory.py:50
+#: ./content/ttgooglemapcategory.py:65
 #: ./content/ttgooglemappolygon.py:38
 #: ./content/ttgooglemappolyline.py:39
 msgid "Default active at map start"
 msgstr "Selezionare per attivare all'apertura della mappa"
 
-#: ./browser/controlpanel.py:35
+#: ./browser/controlpanel.py:36
 msgid "Default location"
 msgstr "Coordinate iniziali"
 
-#: ./browser/controlpanel.py:36
+#: ./browser/controlpanel.py:37
 msgid "Default location desc"
 msgstr "Coordinate iniziali di nuovi oggetti \"Google Map\" e \"Punto d'interesse\""
 
-#: ./browser/controlpanel.py:40
+#: ./browser/controlpanel.py:41
 msgid "Default mapsize"
 msgstr "Dimensione mappa"
 
-#: ./browser/controlpanel.py:41
+#: ./browser/controlpanel.py:42
 msgid "Default mapsize desc"
 msgstr "Dimensione mappa - larghezza x altezza, in px - dei nuovi oggetti \"Google Map\""
 
-#: ./content/ttgooglemap.py:194
+#: ./content/ttgooglemap.py:189
 #: ./interfaces/ttgooglemap.py:92
 msgid "Default marker startup"
 msgstr "Punti d'interesse in evidenza all'apertura della mappa"
 
-#: ./content/ttgooglemap.py:67
+#: ./content/ttgooglemap.py:65
 #: ./interfaces/ttgooglemap.py:32
 msgid "Default zoom level"
 msgstr "Livello di zoom iniziale della mappa"
 
-#: ./content/ttgooglemap.py:181
+#: ./content/ttgooglemap.py:176
 #: ./interfaces/ttgooglemap.py:84
 msgid "Directions"
 msgstr "Indicazioni stradali"
@@ -153,14 +153,14 @@ msgstr "Disabilita"
 msgid "Disable coordinates"
 msgstr "Disabilita coordinate"
 
-#: ./content/ttgooglemappolygon.py:88
-#: ./content/ttgooglemappolyline.py:64
+#: ./content/ttgooglemappolygon.py:87
+#: ./content/ttgooglemappolyline.py:63
 #: ./interfaces/ttgooglemappolygon.py:36
 msgid "Encoded Polyline"
 msgstr "Codifica percorso"
 
-#: ./content/ttgooglemappolygon.py:101
-#: ./content/ttgooglemappolyline.py:77
+#: ./content/ttgooglemappolygon.py:100
+#: ./content/ttgooglemappolyline.py:76
 #: ./interfaces/ttgooglemappolygon.py:44
 msgid "Encoded levels"
 msgstr "Codifica livelli - <a href='http://code.google.com/apis/maps/documentation/polylineutility.html' target='_blank'>clicca qui</a> per calcolare la codifica dei livelli"
@@ -170,8 +170,8 @@ msgstr "Codifica livelli - <a href='http://code.google.com/apis/maps/documentati
 msgid "Encoded polyline"
 msgstr "Codifica percorso"
 
-#: ./content/ttgooglemappolygon.py:89
-#: ./content/ttgooglemappolyline.py:65
+#: ./content/ttgooglemappolygon.py:88
+#: ./content/ttgooglemappolyline.py:64
 msgid "Encoded polyline value"
 msgstr "Codifica del percorso - <a href='http://code.google.com/apis/maps/documentation/polylineutility.html' target='_blank'>clicca qui</a> per calcolare la codifica del percorso"
 
@@ -240,7 +240,7 @@ msgstr "Indirizzo non trovato"
 msgid "G_GEO_UNKNOWN_DIRECTIONS"
 msgstr "Impossibile ottenere le indicazioni stradali per il punto selezionato"
 
-#: ./skins/TTGoogleMapViews/TTGoogleMapView.pt:154
+#: ./skins/TTGoogleMapViews/TTGoogleMapView.pt:159
 msgid "Get directions btn"
 msgstr "Ottieni indicazioni"
 
@@ -280,15 +280,15 @@ msgstr "Percorso"
 msgid "Google Map related markers"
 msgstr "Google Map punti in relazione"
 
-#: ./browser/controlpanel.py:28
+#: ./browser/controlpanel.py:29
 msgid "GoogleMap api keys"
 msgstr "GoogleMap Api Keys"
 
-#: ./browser/controlpanel.py:29
+#: ./browser/controlpanel.py:30
 msgid "GoogleMap api keys desc"
 msgstr "URL configurati e relative Google Key"
 
-#: ./content/ttgooglemapcategory.py:25
+#: ./content/ttgooglemapcategory.py:29
 msgid "Icon"
 msgstr "Icona"
 
@@ -296,18 +296,18 @@ msgstr "Icona"
 msgid "Items in relation with marker"
 msgstr "Contenuti in relazione con il punto d'interesse"
 
-#: ./content/ttgooglemap.py:135
+#: ./content/ttgooglemap.py:130
 #: ./interfaces/ttgooglemap.py:60
 msgid "Large Map Control"
 msgstr "Controlli mappa"
 
-#: ./content/ttgooglemap.py:136
+#: ./content/ttgooglemap.py:131
 #: ./interfaces/ttgooglemap.py:62
 msgid "Large map control buttons"
 msgstr "Controlli mappa estesi"
 
-#: ./content/ttgooglemappolygon.py:100
-#: ./content/ttgooglemappolyline.py:76
+#: ./content/ttgooglemappolygon.py:99
+#: ./content/ttgooglemappolyline.py:75
 #: ./interfaces/ttgooglemappolygon.py:42
 msgid "Levels"
 msgstr "Livelli"
@@ -318,17 +318,17 @@ msgstr "Livelli"
 msgid "Line thickness (px)"
 msgstr "Spessore della linea in pixel"
 
-#: ./content/ttgooglemap.py:52
+#: ./content/ttgooglemap.py:51
 #: ./interfaces/ttgooglemap.py:24
 msgid "Map Height"
 msgstr "Altezza mappa"
 
-#: ./content/ttgooglemap.py:81
+#: ./content/ttgooglemap.py:78
 #: ./interfaces/ttgooglemap.py:36
 msgid "Map Type"
 msgstr "Tipologia mappa"
 
-#: ./content/ttgooglemap.py:147
+#: ./content/ttgooglemap.py:142
 #: ./interfaces/ttgooglemap.py:66
 msgid "Map Type Control"
 msgstr "Selezione tipologia mappa"
@@ -338,7 +338,7 @@ msgstr "Selezione tipologia mappa"
 msgid "Map Width"
 msgstr "Larghezza mappa"
 
-#: ./content/ttgooglemap.py:53
+#: ./content/ttgooglemap.py:52
 #: ./interfaces/ttgooglemap.py:26
 msgid "Map height (px)"
 msgstr "Specificare l'altezza della mappa in pixel"
@@ -348,12 +348,12 @@ msgstr "Specificare l'altezza della mappa in pixel"
 msgid "Map width (px)"
 msgstr "Specificare la larghezza della mappa in pixel"
 
-#: ./content/ttgooglemap.py:108
+#: ./content/ttgooglemap.py:104
 #: ./interfaces/ttgooglemap.py:48
 msgid "Marker Box Height"
 msgstr "Altezza box punti d'interesse"
 
-#: ./content/ttgooglemap.py:109
+#: ./content/ttgooglemap.py:105
 #: ./interfaces/ttgooglemap.py:50
 msgid "Marker box max-height"
 msgstr "Altezza massima box dei punti d'interesse, poi utilizzo scrollbar"
@@ -363,14 +363,22 @@ msgstr "Altezza massima box dei punti d'interesse, poi utilizzo scrollbar"
 msgid "Marker text"
 msgstr "Testo del marker"
 
-#: ./content/ttgooglemappolygon.py:126
-#: ./content/ttgooglemappolyline.py:102
+#: ./browser/controlpanel.py:58
+msgid "Markers cache in seconds"
+msgstr "Cache punti mappa"
+
+#: ./browser/controlpanel.py:59
+msgid "Markers cache in seconds desc"
+msgstr "Tempo validità cache (in secondi) per i punti della mappa"
+
+#: ./content/ttgooglemappolygon.py:124
+#: ./content/ttgooglemappolyline.py:100
 #: ./interfaces/ttgooglemappolygon.py:54
 msgid "Num Levels"
 msgstr "Numero livelli"
 
-#: ./content/ttgooglemappolygon.py:127
-#: ./content/ttgooglemappolyline.py:103
+#: ./content/ttgooglemappolygon.py:125
+#: ./content/ttgooglemappolyline.py:101
 #: ./interfaces/ttgooglemappolygon.py:56
 msgid "Number of levels"
 msgstr "Numero di livelli"
@@ -388,7 +396,7 @@ msgstr "Livello trsparenza: 0=invisibile, 1=no transparenza"
 msgid "Opacity level - from 0=invisible to 1=no transparency"
 msgstr "Livello trasparenza - da 0=invisibile a 1=senza trasparenza"
 
-#: ./content/ttgooglemap.py:171
+#: ./content/ttgooglemap.py:166
 #: ./interfaces/ttgooglemap.py:80
 msgid "Open boxes"
 msgstr "Visualizza i box (aree, percorsi, categorie) aperti all'apertura della mappa"
@@ -397,7 +405,7 @@ msgstr "Visualizza i box (aree, percorsi, categorie) aperti all'apertura della m
 msgid "Open panel"
 msgstr "&raquo; apri"
 
-#: ./content/ttgooglemap.py:170
+#: ./content/ttgooglemap.py:165
 #: ./interfaces/ttgooglemap.py:78
 msgid "OpenBoxes"
 msgstr "Box aperti all'apertura"
@@ -412,17 +420,17 @@ msgstr "Mostra bordo"
 msgid "Outline area"
 msgstr "Mostra bordo intorno all'area"
 
-#: ./content/ttgooglemap.py:159
+#: ./content/ttgooglemap.py:154
 #: ./interfaces/ttgooglemap.py:72
 msgid "Overview Map Control"
 msgstr "Mappa di overview"
 
-#: ./content/ttgooglemap.py:123
+#: ./content/ttgooglemap.py:118
 #: ./interfaces/ttgooglemap.py:54
 msgid "Panoramio"
 msgstr "Panoramio"
 
-#: ./browser/controlpanel.py:125
+#: ./browser/controlpanel.py:141
 msgid "Parameters configuration"
 msgstr "Configurazione parametri"
 
@@ -436,7 +444,7 @@ msgstr "Colore area"
 msgid "Polyline color"
 msgstr "Colore percorso"
 
-#: ./browser/controlpanel.py:123
+#: ./browser/controlpanel.py:139
 msgid "Product settings"
 msgstr "Impostazioni GoogleMap"
 
@@ -454,37 +462,41 @@ msgstr "Digita qui l'indirizzo: "
 msgid "Search_button"
 msgstr "Cerca"
 
-#: ./content/ttgooglemapcategory.py:39
+#: ./content/ttgooglemapcategory.py:43
 #: ./interfaces/ttgooglemapcategory.py:14
 msgid "Select a custom icon for category"
 msgstr "Inserisci un'icona diversa per questa categoria - visita <a href='http://code.google.com/p/google-maps-icons/' target='_blank'>questa pagina</a> per ottenere altre icone da poter utilizzare"
 
-#: ./content/ttgooglemapcategoryct.py:28
+#: ./content/ttgooglemapcategory.py:54
+msgid "Select a custom icon for clusterer"
+msgstr "Selezionare un'icona per il raggruppamento di punti ravvicinati; si consiglia un'icona con colore pieno (affinchè sia leggibile il numero che comparirà all'interno)"
+
+#: ./content/ttgooglemapcategoryct.py:32
 #: ./interfaces/ttgooglemapcategoryct.py:13
 msgid "Select content type"
 msgstr "Selezionare il content type"
 
-#: ./content/ttgooglemap.py:82
+#: ./content/ttgooglemap.py:79
 #: ./interfaces/ttgooglemap.py:38
 msgid "Select default map type"
 msgstr "Selezionare la tipologia iniziale della mappa"
 
-#: ./content/ttgooglemap.py:124
+#: ./content/ttgooglemap.py:119
 #: ./interfaces/ttgooglemap.py:56
 msgid "Show Panoramio button"
 msgstr "Visualizza pulsante Panoramio - <a href='http://www.panoramio.com/' target='_blank'>clicca qui</a> per maggiori informazioni su Panoramio"
 
-#: ./content/ttgooglemap.py:182
+#: ./content/ttgooglemap.py:177
 #: ./interfaces/ttgooglemap.py:86
 msgid "Show directions"
 msgstr "Visualizza box per ricerca indicazioni stradali"
 
-#: ./content/ttgooglemap.py:148
+#: ./content/ttgooglemap.py:143
 #: ./interfaces/ttgooglemap.py:68
 msgid "Show map type buttons"
 msgstr "Visualizza i pulsanti per la selezione della tipologia della mappa"
 
-#: ./content/ttgooglemap.py:160
+#: ./content/ttgooglemap.py:155
 #: ./interfaces/ttgooglemap.py:74
 msgid "Show the overview map"
 msgstr "Visualizza la mappa di overview"
@@ -492,10 +504,6 @@ msgstr "Visualizza la mappa di overview"
 #: ./skins/TTGoogleMapViews/TTGoogleMapIconWidget.pt:29
 msgid "Standard icon disabled"
 msgstr "Icona personalizzata inserita"
-
-#: ./skins/TTGoogleMapViews/TTGoogleMapView.pt:146
-msgid "State"
-msgstr "Regione"
 
 #: ./skins/TTGoogleMapViews/TTGoogleMapView.pt:138
 #. Default: "Street Address"
@@ -559,23 +567,23 @@ msgstr "Testo da inserire prima della mappa"
 msgid "Weight"
 msgstr "Spessore"
 
-#: ./content/ttgooglemappolygon.py:112
-#: ./content/ttgooglemappolyline.py:88
+#: ./content/ttgooglemappolygon.py:111
+#: ./content/ttgooglemappolyline.py:87
 #: ./interfaces/ttgooglemappolygon.py:48
 msgid "Zoom Factor"
 msgstr "Zoom"
 
-#: ./content/ttgooglemap.py:66
+#: ./content/ttgooglemap.py:64
 #: ./interfaces/ttgooglemap.py:30
 msgid "Zoom Level"
 msgstr "Livello zoom"
 
-#: ./content/ttgooglemappolygon.py:113
+#: ./content/ttgooglemappolygon.py:112
 #: ./interfaces/ttgooglemappolyline.py:44
 msgid "Zoom factor"
 msgstr "Livello zoom"
 
-#: ./content/ttgooglemappolyline.py:89
+#: ./content/ttgooglemappolyline.py:88
 msgid "Zoom factor parameter"
 msgstr "Livello di zoom"
 

@@ -9,7 +9,12 @@ from plone.memoize import ram
 
 from Products.CMFCore.utils import getToolByName
 
-from Products.Archetypes import atapi
+try:
+    from Products.LinguaPlone import public as atapi
+except ImportError:
+    # No multilingual support
+    from Products.Archetypes import atapi
+
 from Products.ATContentTypes.content import base
 from Products.ATContentTypes.content import schemata
 

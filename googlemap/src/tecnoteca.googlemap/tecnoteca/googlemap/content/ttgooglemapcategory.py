@@ -7,7 +7,12 @@ from zope.component import getMultiAdapter
 from time import time
 from plone.memoize import ram
 
-from Products.Archetypes import atapi
+try:
+    from Products.LinguaPlone import public as atapi
+except ImportError:
+    # No multilingual support
+    from Products.Archetypes import atapi
+
 from Products.ATContentTypes.content import folder
 from Products.ATContentTypes.content import schemata
 from Products.CMFCore.utils import getToolByName
@@ -44,6 +49,17 @@ TTGoogleMapCategorySchema = folder.ATFolderSchema.copy() + atapi.Schema((
         ),
         validators=('isNonEmptyFile'),
     ),
+
+    
+    atapi.ImageField(
+        'ClustererIcon',
+        storage=atapi.AnnotationStorage(),
+        widget=atapi.ImageWidget(
+            label=_(u"Clusterer icon"),
+            description=_(u"Select a custom icon for clusterer"),
+        ),
+        validators=('isNonEmptyFile'),
+    ),    
 
 
     atapi.BooleanField(
@@ -99,6 +115,8 @@ class TTGoogleMapCategory(folder.ATFolder):
 
     # -*- Your ATSchema to Python Property Bridges Here ... -*-
     CustomIcon = atapi.ATFieldProperty('CustomIcon')
+    
+    ClustererIcon = atapi.ATFieldProperty('ClustererIcon')
 
     CategoryIcon = atapi.ATFieldProperty('CategoryIcon')
 

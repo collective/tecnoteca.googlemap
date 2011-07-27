@@ -29,6 +29,7 @@ tecnoteca/googlemap/browser/__init__.py
 tecnoteca/googlemap/browser/config.py
 tecnoteca/googlemap/browser/configure.zcml
 tecnoteca/googlemap/browser/controlpanel.py
+tecnoteca/googlemap/browser/logger.py
 tecnoteca/googlemap/content/__init__.py
 tecnoteca/googlemap/content/configure.zcml
 tecnoteca/googlemap/content/ttgooglemap.py
@@ -196,6 +197,7 @@ tecnoteca/googlemap/skins/TTGoogleMapImages/ttgooglemap_map.png
 tecnoteca/googlemap/skins/TTGoogleMapImages/ttgooglemap_marker.png
 tecnoteca/googlemap/skins/TTGoogleMapImages/ttgooglemap_path.png
 tecnoteca/googlemap/skins/TTGoogleMapJS/googlemap_functions.js
+tecnoteca/googlemap/skins/TTGoogleMapJS/markerclusterer.js
 tecnoteca/googlemap/skins/TTGoogleMapJS/pano_layer.js
 tecnoteca/googlemap/skins/TTGoogleMapJS/pano_maptypecontrol.js
 tecnoteca/googlemap/skins/TTGoogleMapScripts/TTGoogleMapCatContainers.py

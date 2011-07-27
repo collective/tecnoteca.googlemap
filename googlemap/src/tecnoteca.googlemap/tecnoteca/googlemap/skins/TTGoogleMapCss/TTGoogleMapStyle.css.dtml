@@ -49,6 +49,7 @@ TTMapMarkerList
 }
 
 .TTMapCategory {
+    
 }
 
 .TTMapPolygon {
@@ -59,6 +60,19 @@ TTMapMarkerList
 .TTMapPolyline {
 	margin-bottom: 5px;
 	margin-top: 5px;
+}
+
+.TTMapCatLabel {
+    font-size:11px;
+}
+
+.TTMapPolyLabel {
+    margin-left: 20px;
+    font-size:11px;
+    display: block;
+}
+.TTMapCheckbox {
+    float:left;
 }
 
 .TTMapCatContainter{
@@ -96,9 +110,12 @@ TTMapMarkerList
 
 .TTMapIcon {
 	vertical-align: middle;
+    cursor:pointer;
 }
 
-.TTMapCheckbox{}
+.TTMapCheckbox{
+    cursor:pointer;
+}
 
 .TTMapMarkerWin {
     width:300px;
