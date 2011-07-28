@@ -667,7 +667,7 @@ ClusterMarker_.prototype.initialize = function (map) {
       pos.x + "px;color:" + txtColor +  ";position:absolute;font-size:11px;" +
       'font-family:Arial,sans-serif;font-weight:bold';
   div.innerHTML = this.text_;
-  map.getPane(G_MAP_MAP_PANE).appendChild(div);
+  map.getPane(G_MAP_FLOAT_SHADOW_PANE).appendChild(div);
   var padding = this.padding_;
   GEvent.addDomListener(div, "click", function () {
     var pos = map.fromLatLngToDivPixel(latlng);

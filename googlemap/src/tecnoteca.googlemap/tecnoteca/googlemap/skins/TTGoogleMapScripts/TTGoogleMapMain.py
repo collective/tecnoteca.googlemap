@@ -84,18 +84,12 @@ Gload = function() {
         // map controls
         map.setMapType("""+ googleMap.getMapType() +""");    
         """+ (googleMap.getLargeMapControl() and "map.addControl(new GLargeMapControl());" or "map.addControl(new GSmallMapControl());") +"""
-        """+ (googleMap.getMapTypeControl() and "map.addControl(new GMapTypeControl());" or "") +"""
+        """+ (googleMap.getMapTypeControl() and "// map.addControl(new GMapTypeControl());" or "") +"""
         """+ (googleMap.getOverviewMapControl() and "map.addControl(new GOverviewMapControl());" or "") +"""
         """+ (googleMap.getPanoramio() and "map.addControl(new PanoMapTypeControl()); var geocoder = new GClientGeocoder();" or "") +"""                        
         
         // icons
         """+mapCatIcons+"""
-        
-        // markers
-        """+mapMarkers+"""
-        
-        // categories show/hide
-        """+mapCatSH+"""
         
         // polylines
         """+mapPolyjs+"""
@@ -103,11 +97,18 @@ Gload = function() {
         // polygons
         """+mapPolygjs+"""
         
+        // markers
+        """+mapMarkers+"""
+        
+        // categories show/hide
+        """+mapCatSH+"""                
+        
         // create the initial sidebar    
         makeSidebar();
         
         // default marker js
         """+mapDefaultMarker+"""
+                
     }
 }
 
