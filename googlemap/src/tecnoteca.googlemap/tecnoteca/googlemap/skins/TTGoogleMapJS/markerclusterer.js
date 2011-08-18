@@ -677,6 +677,7 @@ ClusterMarker_.prototype.initialize = function (map) {
     ne = map.fromDivPixelToLatLng(ne);
     var zoom = map.getBoundsZoomLevel(new GLatLngBounds(sw, ne), map.getSize());
     map.setCenter(latlng, zoom);
+    map.closeInfoWindow();
   });
   this.div_ = div;
 };
