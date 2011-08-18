@@ -164,15 +164,25 @@ function showMarkerAtStartup(markerId) {
 
 
 // == Create polyline
-function createPolyline(position_,defaultActive_,color_,weight_,points_,levels_,zoom_,numLevels_) {
+function createPolyline(position_,defaultActive_,color_,weight_,points_,levels_,zoom_,numLevels_,polylinetxt_) {
     var encodedPolyline = new GPolyline.fromEncoded({
                                 color: color_,
                                 weight: weight_,
                                 points: points_,
+                                latlngs: "40,12",
                                 levels: levels_,
                                 zoomFactor: zoom_,
                                 numLevels: numLevels_
                                   });
+    
+    GEvent.addListener(encodedPolyline, 'click', function(overlay) {
+    		map.openInfoWindow(overlay,polylinetxt_);
+    });
+    
+    GEvent.addListener(encodedPolyline, 'mouseover', function(overlay) {
+    	// DO NOTHING
+    });
+    
     if(defaultActive_)
         encodedPolyline.show();
     else
@@ -184,11 +194,15 @@ function createPolyline(position_,defaultActive_,color_,weight_,points_,levels_,
 
 // == a polyline has been clicked ==
 function polylineClick(box,i) {
+	var poly = gpolylines[i];
     if (box.checked) {
-      gpolylines[i].show();
-      map.setCenter(gpolylines[i].getBounds().getCenter());
+      poly.show();
+      map.setCenter(poly.getBounds().getCenter());
+      var midVertex = Math.round(poly.getVertexCount() / 2);
+      GEvent.trigger(poly,"click",poly.getVertex(midVertex));
     } else {
-      gpolylines[i].hide();
+    	poly.hide();
+    	map.closeInfoWindow();
     }
 }
 

@@ -5,6 +5,15 @@
       lang="en"
       metal:use-macro="here/main_template/macros/master"
       i18n:domain="tecnoteca.googlemap">
+          
+<head>
+    <tal:fill metal:fill-slot="javascript_head_slot"
+        tal:define="config context/@@ttgooglemap_config;">
+        <!-- load map js -->
+        <div metal:use-macro="here/TTGoogleMapMacro/macros/MapJS"></div>
+    </tal:fill>
+</head>      
+          
 <body>
 
 <div metal:fill-slot="main">
@@ -16,8 +25,7 @@
 								polylines python:context.getFolderContents({'portal_type':'TTGoogleMapPolyline', 'review_state':'published'});
 								polygons python:context.getFolderContents({'portal_type':'TTGoogleMapPolygon', 'review_state':'published'});
                                 categories python:context.getFolderContents(contentFilter=contentFilterCategories);
-								defaultMarker python:request.get('mk', None) or context.getDefaultMarker();
-								config context/@@ttgooglemap_config">
+								defaultMarker python:request.get('mk', None) or context.getDefaultMarker();">
 
         <div tal:replace="structure provider:plone.abovecontenttitle" />
 
@@ -119,9 +127,6 @@
 		<noscript i18n:translate="Frontend NoJavascript">
 			JavaScript must be enabled in order for you to use Google Maps.However, it seems JavaScript is either disabled or not supported by your browser. To view Google Maps, enable JavaScript by changing your browser options, and then try again.
 	    </noscript>
-		
-		<!-- load map js -->
-		<div metal:use-macro="here/TTGoogleMapMacro/macros/MapJS"></div>				
 		
 		<!-- print js main -->
 		<div tal:replace="structure python:here.TTGoogleMapMain(context,categories,contentFilterCategories,catcontainers,polylines,polygons,defaultMarker)"></div>							

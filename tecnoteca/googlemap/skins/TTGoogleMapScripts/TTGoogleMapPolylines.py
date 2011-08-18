@@ -7,11 +7,46 @@
 ##parameters=polylines
 ##title=
 
-output=""
+def custom_escape(text):
+        text = text.replace('"','\\"')
+        text = text.replace('“','&quot;')
+        text = text.replace('”','&quot;')
+        text = text.replace("\r", "")
+        text = text.replace("\n", "")
+        text = unicode(text, errors='ignore')
+        return text   
+
+newline="\n"
+output="var polylinetxt;"
+output += newline
+
 count=0;
 for polyloop in polylines:    
     polyline = polyloop.getObject()
     count = count+1
+    
+    output += "polylinetxt = \"<a href='"+polyline.absolute_url()+"'><b>"+custom_escape(polyline.Title())+"</b></a></br>"
+    output += (custom_escape(polyline.Description())).strip()+"\";"
+    output += newline
+    
+    # relations
+    if polyline.getRelatedItems() or polyline.getBRefs():
+        output += "polylinetxt += '<ul>';"
+        output += newline
+        for relation in polyline.getRelatedItems(): # standard relation (polyline >> object)
+            if relation and relation.getLanguage()==context.REQUEST.get("Language","it"):
+                output += "polylinetxt += '<li>';"
+                output += "polylinetxt += \"<a href='"+relation.absolute_url()+"' title='"+custom_escape(relation.Title())+"'>"+custom_escape(relation.Title())+"</a>\";"
+                output += "polylinetxt += '</li>';"
+                output += newline
+        for relation in polyline.getBRefs(): # custom relation (object >> polyline)
+            if relation and relation.getLanguage()==context.REQUEST.get("Language","it"):
+                output += "polylinetxt += '<li>';"
+                output += "polylinetxt += \"<a href='"+relation.absolute_url()+"' title='"+custom_escape(relation.pretty_title_or_id())+"'>"+custom_escape(relation.pretty_title_or_id())+"</a>\";"
+                output += "polylinetxt += '</li>';"
+                output += newline
+        output += "polylinetxt += '</ul>';"
+        output += newline
     
     output += "createPolyline("
     output += str(count)
@@ -29,6 +64,8 @@ for polyloop in polylines:
     output += str(polyline.getZoomFactor())
     output += ","
     output += str(polyline.getNumLevels())
+    output += ","
+    output += "polylinetxt"
     output += ");";
     output += "\n";
     

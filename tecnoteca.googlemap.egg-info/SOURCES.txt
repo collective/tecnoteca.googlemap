@@ -196,6 +196,7 @@ tecnoteca/googlemap/skins/TTGoogleMapImages/ttgooglemap_macrocategory.png
 tecnoteca/googlemap/skins/TTGoogleMapImages/ttgooglemap_map.png
 tecnoteca/googlemap/skins/TTGoogleMapImages/ttgooglemap_marker.png
 tecnoteca/googlemap/skins/TTGoogleMapImages/ttgooglemap_path.png
+tecnoteca/googlemap/skins/TTGoogleMapJS/egeoxml.js
 tecnoteca/googlemap/skins/TTGoogleMapJS/googlemap_functions.js
 tecnoteca/googlemap/skins/TTGoogleMapJS/markerclusterer.js
 tecnoteca/googlemap/skins/TTGoogleMapJS/pano_layer.js
@@ -210,6 +211,9 @@ tecnoteca/googlemap/skins/TTGoogleMapScripts/TTGoogleMapMarkers.py
 tecnoteca/googlemap/skins/TTGoogleMapScripts/TTGoogleMapPolygons.py
 tecnoteca/googlemap/skins/TTGoogleMapScripts/TTGoogleMapPolylines.py
 tecnoteca/googlemap/skins/TTGoogleMapScripts/TTGoogleMarkerGetParentMap.py
+tecnoteca/googlemap/skins/TTGoogleMapViews/.tmp_TTGoogleMapMacro.pt.46886~
+tecnoteca/googlemap/skins/TTGoogleMapViews/.tmp_TTGoogleMapMacro.pt.97511~
+tecnoteca/googlemap/skins/TTGoogleMapViews/.tmp_TTGoogleMapView.pt.38781~
 tecnoteca/googlemap/skins/TTGoogleMapViews/TTGoogleMapCoordinatesWidget.pt
 tecnoteca/googlemap/skins/TTGoogleMapViews/TTGoogleMapIconWidget.pt
 tecnoteca/googlemap/skins/TTGoogleMapViews/TTGoogleMapMacro.pt
