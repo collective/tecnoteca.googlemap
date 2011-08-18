@@ -25,7 +25,7 @@ for polyloop in polylines:
     polyline = polyloop.getObject()
     count = count+1
     
-    output += "polylinetxt = \"<a href='"+polyline.absolute_url()+"'><b>"+custom_escape(polyline.Title())+"</b></a></br>"
+    output += "polylinetxt = \"<a href='"+polyline.absolute_url()+"'><b>"+custom_escape(polyline.Title())+"</b></a><br/>"
     output += (custom_escape(polyline.Description())).strip()+"\";"
     output += newline
     
