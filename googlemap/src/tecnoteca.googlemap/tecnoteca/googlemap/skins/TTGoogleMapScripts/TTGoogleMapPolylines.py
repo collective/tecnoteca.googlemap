@@ -16,6 +16,9 @@ def custom_escape(text):
         text = unicode(text, errors='ignore')
         return text   
 
+mtool = getattr(context,'portal_membership')
+isAnonymousUser = mtool.isAnonymousUser()
+
 newline="\n"
 output="var polylinetxt;"
 output += newline
@@ -66,6 +69,8 @@ for polyloop in polylines:
     output += str(polyline.getNumLevels())
     output += ","
     output += "polylinetxt"
+    output += ","
+    output += str(isAnonymousUser)
     output += ");";
     output += "\n";
     
