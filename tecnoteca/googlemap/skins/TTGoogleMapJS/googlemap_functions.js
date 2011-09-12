@@ -61,7 +61,8 @@ function createMarker(id,point,name,html,category,categoryFullName) {
 }
 
 // == shows all markers of a particular category, and ensures the checkbox is checked ==
-function show(category) {
+function show(category) {	
+	hide(category); // cleanup
 	var activeMarkers = [];
     for (var i=0; i<gmarkers.length; i++) {
       if (gmarkers[i].mycategory == category) {
@@ -152,6 +153,9 @@ function showMarkerAtStartup(markerId) {
         document.getElementById(category+"box").checked = true;
         show(category);
         makeSidebar();
+        
+        // show specific marker (marker clusterer might not ... )
+        gmarkers[i].show();
 
         //simulate click on marker
         myclick(i);
@@ -164,7 +168,7 @@ function showMarkerAtStartup(markerId) {
 
 
 // == Create polyline
-function createPolyline(position_,defaultActive_,color_,weight_,points_,levels_,zoom_,numLevels_,polylinetxt_) {
+function createPolyline(position_,defaultActive_,color_,weight_,points_,levels_,zoom_,numLevels_,polylinetxt_, isAnon_) {
     var encodedPolyline = new GPolyline.fromEncoded({
                                 color: color_,
                                 weight: weight_,
@@ -174,6 +178,14 @@ function createPolyline(position_,defaultActive_,color_,weight_,points_,levels_,
                                 zoomFactor: zoom_,
                                 numLevels: numLevels_
                                   });
+    
+    try {
+    	encodedPolyline.getLength()
+    } catch (err) {
+    	if(!isAnon_)
+    		alert("Encoding problem found for polyline: "+polylinetxt_)
+    	return null;
+    }
     
     GEvent.addListener(encodedPolyline, 'click', function(overlay) {
     		map.openInfoWindow(overlay,polylinetxt_);
@@ -187,23 +199,27 @@ function createPolyline(position_,defaultActive_,color_,weight_,points_,levels_,
         encodedPolyline.show();
     else
         encodedPolyline.hide();
+    
     gpolylines[position_] = encodedPolyline;
     map.addOverlay(encodedPolyline);
+        
     return encodedPolyline;
 }
 
 // == a polyline has been clicked ==
 function polylineClick(box,i) {
 	var poly = gpolylines[i];
-    if (box.checked) {
-      poly.show();
-      map.setCenter(poly.getBounds().getCenter());
-      var midVertex = Math.round(poly.getVertexCount() / 2);
-      GEvent.trigger(poly,"click",poly.getVertex(midVertex));
-    } else {
-    	poly.hide();
-    	map.closeInfoWindow();
-    }
+	if(poly) {
+	    if (box.checked) {
+	      poly.show();
+	      map.setCenter(poly.getBounds().getCenter());
+	      var midVertex = Math.round(poly.getVertexCount() / 2);
+	      GEvent.trigger(poly,"click",poly.getVertex(midVertex));
+	    } else {
+	    	poly.hide();
+	    	map.closeInfoWindow();
+	    }
+	}
 }
 
 // == Create polygon
