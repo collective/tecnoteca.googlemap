@@ -64,7 +64,7 @@ residential area) and highlight some paths (ie highlight streets or tourist rout
 ---------------------------------------------------------------------------
 
 Tecnoteca srl
-Via Manzoni, 16
+via L'Aquila 1/B
 33010 Tavagnacco UD
 http://www.tecnoteca.com
 

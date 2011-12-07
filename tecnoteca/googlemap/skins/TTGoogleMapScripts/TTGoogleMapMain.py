@@ -58,7 +58,7 @@ ERRCODES[TT_NO_MARKER_FOUND] = " """ + context.translate(_(u'TT_NO_MARKER_FOUND'
 
 // init vars
 var icon;
-var gmarkers = [];
+var gmarkers = new Object();
 var clusterers = new Array();
 var clusterersIcon = new Array();
 var active_gmarker = null;
@@ -68,6 +68,7 @@ var gpolylines = [];
 var gpolygons = [];
 var htmls = [];
 var i = 0;
+var mgr;
 var map;
         
 Gload = function() {
@@ -79,7 +80,9 @@ Gload = function() {
         
         // set center
         var center = new GLatLng("""+str(googleMap.getLatitude())+""", """+str(googleMap.getLongitude())+"""); 
-        map.setCenter(center, """+str(googleMap.getZoomLevel())+""");    
+        map.setCenter(center, """+str(googleMap.getZoomLevel())+""");
+        
+        mgr = new MarkerManager(map);
         
         // map controls
         map.setMapType("""+ googleMap.getMapType() +""");    
