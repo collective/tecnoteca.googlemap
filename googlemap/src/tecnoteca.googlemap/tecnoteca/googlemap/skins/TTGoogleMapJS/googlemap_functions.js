@@ -55,16 +55,16 @@ function createMarker(id,point,name,html,category,categoryFullName) {
     GEvent.addListener(marker, "click", function() {
       marker.openInfoWindowHtml(html);
       active_gmarker = marker;
-    });
-    gmarkers.push(marker);
-    return marker;
+    });    
+    gmarkers[id]=marker;
+    return gmarkers[id];
 }
 
 // == shows all markers of a particular category, and ensures the checkbox is checked ==
-function show(category) {	
+function show(category) {
 	hide(category); // cleanup
 	var activeMarkers = [];
-    for (var i=0; i<gmarkers.length; i++) {
+    for (i in gmarkers) {
       if (gmarkers[i].mycategory == category) {
         // gmarkers[i].show();
         activeMarkers.push(gmarkers[i]);
@@ -85,7 +85,7 @@ function show(category) {
 
 // == hides all markers of a particular category, and ensures the checkbox is cleared ==
 function hide(category) {
-    for (var i=0; i<gmarkers.length; i++) {
+	for (i in gmarkers) {
       if (gmarkers[i].mycategory == category) {
         gmarkers[i].hide();
       }
@@ -125,7 +125,7 @@ function makeSidebar() {
 	var html = "<ul class='TTMapMarkerList'>";
 	var mem = ""
 	var mc = ""
-    for (var i=0; i<gmarkers.length; i++) {
+	for (i in gmarkers) {
       var mc = gmarkers[i].mycategory;
       if((i==0 || mc!=mem) && !gmarkers[i].isHidden()) {
       	html += '<li class="TTMapMarkerListTitle"><b>'+gmarkers[i].mycategoryfullname+'</b></li>';
@@ -144,7 +144,7 @@ function makeSidebar() {
 // == shows a specific marker at map start ==
 function showMarkerAtStartup(markerId) {
     var found = false;
-    for (var i=0; i<gmarkers.length; i++) {
+    for (i in gmarkers) {
       if (gmarkers[i].myid == markerId) {
         found=true;
 
