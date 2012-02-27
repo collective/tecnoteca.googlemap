@@ -117,7 +117,8 @@ function boxclick(box,category) {
 // == This function picks up the click and opens the corresponding info window
 function myclick(i) {
 	active_gmarker = gmarkers[i];
-    GEvent.trigger(gmarkers[i],"click");
+	map.panTo(active_gmarker.getLatLng());
+    GEvent.trigger(active_gmarker,"click");
 }
 
 // == rebuilds the sidebar to match the markers currently displayed ==
@@ -127,12 +128,13 @@ function makeSidebar() {
 	var mc = ""
 	for (i in gmarkers) {
       var mc = gmarkers[i].mycategory;
-      if((i==0 || mc!=mem) && !gmarkers[i].isHidden()) {
+      var catIsChecked = document.getElementById(mc+"box").checked;
+      if((i==0 || mc!=mem) && catIsChecked) {
       	html += '<li class="TTMapMarkerListTitle"><b>'+gmarkers[i].mycategoryfullname+'</b></li>';
       }
       mem = mc;
-      if (!gmarkers[i].isHidden()) {
-        html += '<li class="TTMapMarkerListItem"><a href="javascript:myclick(' + i + ')">' + gmarkers[i].myname + '</a></li>';
+      if (catIsChecked) {
+        html += '<li class="TTMapMarkerListItem"><a href="javascript:myclick(\'' + i + '\')">' + gmarkers[i].myname + '</a></li>';
       }
     }
     html += "</ul>";
