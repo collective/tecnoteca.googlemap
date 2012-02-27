@@ -117,6 +117,7 @@ function boxclick(box,category) {
 // == This function picks up the click and opens the corresponding info window
 function myclick(i) {
 	active_gmarker = gmarkers[i];
+	map.enableInfoWindow();
 	map.panTo(active_gmarker.getLatLng());
     GEvent.trigger(active_gmarker,"click");
 }
