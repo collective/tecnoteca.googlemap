@@ -119,6 +119,7 @@ function myclick(i) {
 	active_gmarker = gmarkers[i];
 	map.enableInfoWindow();
 	map.panTo(active_gmarker.getLatLng());
+	active_gmarker.initialize(map);
     GEvent.trigger(active_gmarker,"click");
 }
 
