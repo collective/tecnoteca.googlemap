@@ -64,6 +64,7 @@ function createMarker(id,point,name,html,category,categoryFullName) {
 function show(category) {
 	hide(category); // cleanup
 	var activeMarkers = [];
+	var i;
     for (i in gmarkers) {
       if (gmarkers[i].mycategory == category) {
         // gmarkers[i].show();
@@ -117,8 +118,8 @@ function boxclick(box,category) {
 // == This function picks up the click and opens the corresponding info window
 function myclick(i) {
 	active_gmarker = gmarkers[i];
-	map.enableInfoWindow();
 	map.panTo(active_gmarker.getLatLng());
+	map.enableInfoWindow();
 	active_gmarker.initialize(map);
     GEvent.trigger(active_gmarker,"click");
 }
@@ -148,6 +149,7 @@ function makeSidebar() {
 // == shows a specific marker at map start ==
 function showMarkerAtStartup(markerId) {
     var found = false;
+    var i;
     for (i in gmarkers) {
       if (gmarkers[i].myid == markerId) {
         found=true;
