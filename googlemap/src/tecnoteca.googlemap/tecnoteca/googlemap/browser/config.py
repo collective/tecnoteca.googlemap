@@ -1,6 +1,6 @@
 from zope.interface import implements
 from Products.Five.browser import BrowserView
-from Products.Five.formlib import formbase
+from five.formlib import formbase
 from tecnoteca.googlemap.config import *
 from tecnoteca.googlemap.interfaces.config import ITTGoogleMapConfig
 from tecnoteca.googlemap.validator import LocationFieldValidator
@@ -29,7 +29,7 @@ class TTGoogleMapConfig(BrowserView):
         self.portalCatalog = getToolByName(context, "portal_catalog")
         self.portalTypes = getToolByName(context, "portal_types")
 
-    def _search_key(self, property_id):        
+    def _search_key(self, property_id):
         if self.properties is None:
             return 'undefined'
         keys_list = getattr(self.properties, property_id, None)
@@ -52,26 +52,26 @@ class TTGoogleMapConfig(BrowserView):
                 return keys[url]
             portal_url = portal_url[:-1]
         return 'undefined'
-    
+
     @property
     def coord_widget_map_size(self):
         if self.properties is None:
             return 'undefined'
         size = getattr(self.properties, PROPERTY_COORD_WIDGET_MAP_SIZE, None)
         if size is None:
-            return 'undefined'        
+            return 'undefined'
         split = size.split(',')
         return (split[0], split[1])
-    
+
     @property
     def default_map_size(self):
         if self.properties is None:
             return 'undefined'
         size = getattr(self.properties, PROPERTY_DEFAULT_MAPSIZE, None)
         if size is None:
-            return 'undefined'        
+            return 'undefined'
         split = size.split(',')
-        return (split[0], split[1])       
+        return (split[0], split[1])
 
     @property
     def googlemaps_key(self):
@@ -105,15 +105,15 @@ class TTGoogleMapConfig(BrowserView):
         if validator(default_location) != 1:
             return (0.0, 0.0)
         return default_location
-    
+
     def get_configured_content_types(self):
         types = self.portalTypes.listContentTypes()
-        
-        excludedCT = ('TTGoogleMap', 'TTGoogleMapMarker')        
-        for ct in excludedCT:            
+
+        excludedCT = ('TTGoogleMap', 'TTGoogleMapMarker')
+        for ct in excludedCT:
             if ct in types:
                 types.remove(ct)
-            
+
         confCT = []
         for type in types:
             items = self.portalCatalog(portal_type = type)

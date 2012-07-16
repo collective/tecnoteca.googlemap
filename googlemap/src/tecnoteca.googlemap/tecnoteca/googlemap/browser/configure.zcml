@@ -4,6 +4,7 @@
     i18n_domain="tecnoteca.googlemap">
 
   <include package="plone.app.contentmenu" />
+  <include package="Products.CMFCore" />
 
   <!-- -*- extra stuff goes here -*- -->  
       
