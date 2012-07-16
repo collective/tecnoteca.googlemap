@@ -19,13 +19,14 @@ from Products.CMFCore.utils import getToolByName
 
 from tecnoteca.googlemap import googlemapMessageFactory as _
 from tecnoteca.googlemap.interfaces import ITTGoogleMapCategory
+from tecnoteca.googlemap.interfaces import ITTGoogleMapMarker
 from tecnoteca.googlemap.config import *
 from tecnoteca.googlemap.browser.config import TTGoogleMapConfig
 from tecnoteca.googlemap.browser.logger import log
 
 TTGoogleMapCategorySchema = folder.ATFolderSchema.copy() + atapi.Schema((
 
-    # -*- Your Archetypes field definitions here ... -*-    
+    # -*- Your Archetypes field definitions here ... -*-
     atapi.StringField(
         'CategoryIcon',
         storage=atapi.AnnotationStorage(),
@@ -38,7 +39,7 @@ TTGoogleMapCategorySchema = folder.ATFolderSchema.copy() + atapi.Schema((
         required=True,
         default='cluster3.png',
     ),
-    
+
 
     atapi.ImageField(
         'CustomIcon',
@@ -50,7 +51,7 @@ TTGoogleMapCategorySchema = folder.ATFolderSchema.copy() + atapi.Schema((
         validators=('isNonEmptyFile'),
     ),
 
-    
+
     atapi.ImageField(
         'ClustererIcon',
         storage=atapi.AnnotationStorage(),
@@ -59,7 +60,7 @@ TTGoogleMapCategorySchema = folder.ATFolderSchema.copy() + atapi.Schema((
             description=_(u"Select a custom icon for clusterer"),
         ),
         validators=('isNonEmptyFile'),
-    ),    
+    ),
 
 
     atapi.BooleanField(
@@ -95,7 +96,7 @@ def markers_cachekay(method, self, **args):
     ptool = getToolByName(self, 'portal_properties')
     sheet = getToolByName(ptool, PROPERTY_SHEET)
     ram_cache_seconds = sheet.getProperty(PROPERTY_MARKERS_CACHE, 1)
-    # if ram_cache_seconds is 0 sets it to 0.001 for division 
+    # if ram_cache_seconds is 0 sets it to 0.001 for division
     if not ram_cache_seconds:
         ram_cache_seconds = 0.001
     # set the key for context
@@ -115,23 +116,23 @@ class TTGoogleMapCategory(folder.ATFolder):
 
     # -*- Your ATSchema to Python Property Bridges Here ... -*-
     CustomIcon = atapi.ATFieldProperty('CustomIcon')
-    
+
     ClustererIcon = atapi.ATFieldProperty('ClustererIcon')
 
     CategoryIcon = atapi.ATFieldProperty('CategoryIcon')
 
     DefaultActive = atapi.ATFieldProperty('DefaultActive')
-    
+
     def markerIconVocab(self):
         config = getMultiAdapter((self, self.REQUEST), name="ttgooglemap_config")
         return config.marker_icons
-    
+
     @ram.cache(markers_cachekay)
     def getMarkers(self, **args):
         log('Query the catalog to get markers for TTGoogleMapCategory. Category: "%s"' % self.Title())
-        filter={'portal_type':'TTGoogleMapMarker', 'review_state':'published'}
+        filter={'object_provides':ITTGoogleMapMarker.__identifier__, 'review_state':'published'}
         if args:
-            filter = dict(filter.items() + args.items())            
+            filter = dict(filter.items() + args.items())
         return self.getFolderContents(contentFilter=filter);
 
 atapi.registerType(TTGoogleMapCategory, PROJECTNAME)
