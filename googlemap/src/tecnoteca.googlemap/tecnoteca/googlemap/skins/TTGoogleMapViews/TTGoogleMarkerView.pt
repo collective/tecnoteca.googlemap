@@ -13,7 +13,9 @@
                                 getKssClasses nocall:kssClassesView/getKssClassesInlineEditable;
 								base_macros here/base/macros;
 								folderlisting_macro view_macros/folderlisting | folderlisting | base_macros/folderlisting;
-								body_macro view_macros/body | body_macro | base_macros/body;">
+								body_macro view_macros/body | body_macro | base_macros/body;
+                    normalizeString nocall:context/@@plone/normalizeString;
+                    wtool context/portal_workflow;">
 		
 		<!-- if anon user, perform redirect to parent map -->					
 		<tal:block tal:define="googleMap here/TTGoogleMarkerGetParentMap;
