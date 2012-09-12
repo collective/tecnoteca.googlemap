@@ -13,8 +13,8 @@ def custom_escape(text):
         text = text.replace('”','&quot;')
         text = text.replace("\r", "")
         text = text.replace("\n", "")
-        text = unicode(text, errors='ignore')
-        return text     
+        text = unicode(text, context.portal_properties.site_properties.default_charset, errors='ignore')
+        return text
 
 newline="\n"
 output=""
@@ -77,7 +77,7 @@ for catloop in categories:
         output += newline
         output += "html += '</div>';"
             
-        # careate marker
+        # create marker
         output += newline
         output += "mgr.addMarker(createMarker(\""+marker.UID()+"\", point, \""+custom_escape(marker.Title())+"\", html, '"+category.UID()+"', \""+custom_escape(category.pretty_title_or_id())+"\"));"
         
