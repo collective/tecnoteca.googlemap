@@ -7,13 +7,22 @@
 ##parameters=polygons
 ##title=
 
+helper = context.restrictedTraverse('@@ttgooglemap_helpersview')
+
 output=""
 count=0;
 for polyloop in polygons:    
     polygon = polyloop.getObject()
     count = count+1
     
+    # info window html
+    html = helper.getTitleHTML(polygon)
+    html += helper.getDescriptionHTML(polygon)
+    html += helper.getRelatedItemsHTML(polygon);
+    
     output += "createPolygon("
+    output += "\"" + str(html) + "\""
+    output += ","
     output += str(count)
     output += ","
     output += str(polygon.getDefaultActive()).lower()

@@ -21,7 +21,7 @@ from Products.ATContentTypes.content import schemata
 from tecnoteca.googlemap import googlemapMessageFactory as _
 from tecnoteca.googlemap.interfaces import ITTGoogleMapCategoryCT
 from tecnoteca.googlemap.config import *
-from tecnoteca.googlemap.content.ttgooglemapcategory import TTGoogleMapCategorySchema,TTGoogleMapCategory, markers_cachekay
+from tecnoteca.googlemap.content.ttgooglemapcategory import TTGoogleMapCategorySchema,TTGoogleMapCategory, markers_cachekey
 from tecnoteca.googlemap.browser.logger import log
 
 TTGoogleMapCategoryCTSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
@@ -61,7 +61,11 @@ class TTGoogleMapCategoryCT(TTGoogleMapCategory):
     # -*- Your ATSchema to Python Property Bridges Here ... -*-
     CType = atapi.ATFieldProperty('CType')
     
-    @ram.cache(markers_cachekay)
+    @property
+    def gmap_category_objecttype(self):
+        return self.getCType()
+    
+    @ram.cache(markers_cachekey)
     def getMarkers(self, **args):
         log('Query the catalog to get markers for TTGoogleMapCategoryCT. Content Type: "%s"' % self.getCType())
         catalog = getToolByName(self, 'portal_catalog')
@@ -71,4 +75,4 @@ class TTGoogleMapCategoryCT(TTGoogleMapCategory):
         config = getMultiAdapter((self, self.REQUEST), name="ttgooglemap_config")
         return config.get_configured_content_types()
 
-atapi.registerType(TTGoogleMapCategoryCT, PROJECTNAME)
+base.registerATCT(TTGoogleMapCategoryCT, PROJECTNAME)

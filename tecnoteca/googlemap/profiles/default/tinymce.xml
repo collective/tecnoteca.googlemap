@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<object>
+    <resourcetypes>
+        <linkable>
+            <element value="TTGoogleMap"/>
+            <element value="TTGoogleMapCategory"/>
+            <element value="TTGoogleMapCategoryContainer"/>
+            <element value="TTGoogleMapCategoryCT"/>
+            <element value="TTGoogleMapMarker"/>
+            <element value="TTGoogleMapPolygon"/>
+            <element value="TTGoogleMapPolyline"/>
+        </linkable>
+        <containsobjects>
+            <element value="TTGoogleMap"/>
+            <element value="TTGoogleMapCategory"/>
+            <element value="TTGoogleMapCategoryContainer"/>
+        </containsobjects>
+    </resourcetypes>
+</object>

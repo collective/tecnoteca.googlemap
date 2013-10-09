@@ -13,7 +13,7 @@
 					<img class="TTMapIcon" tal:replace="structure python:category.getCustomIcon().tag(css_class='TTMapIcon', onclick='javascript: document.getElementById(\''+category.UID()+'box\').click();')"/>
 				</tal:if>
 				<tal:if tal:condition="python: not (category.getCustomIcon() != None and category.getCustomIcon() != '') and (category.getCategoryIcon() != None and category.getCategoryIcon() != '')">
-					<img class="TTMapIcon" tal:attributes="src python:category.getCategoryIcon(); alt python:category.Title()" />
+					<img class="TTMapIcon" tal:attributes="src python:category.getCategoryIcon(); alt python:category.Title(); onclick python:'javascript: document.getElementById(\''+category.UID()+'box\').click();;'" />
 				</tal:if>
 				<input type="checkbox" class="TTMapCheckbox" name="ttcategorycheckbox" tal:attributes="id python:category.UID()+'box'; onclick python:'boxclick(this,\''+category.UID()+'\');;'"/>
                 <label class="TTMapCatLabel" for="ttcategorycheckbox" tal:content="python:category.Title()"></label>
@@ -38,7 +38,7 @@
 	<metal:block define-macro="Polylines">
 		<tal:block tal:repeat="polyloop polylines">
 			<div class="TTMapPolyline" tal:define="polyline python:polyloop.getObject()">
-				<input type="checkbox" name="ttpolylcheckbox" class="TTMapCheckbox" tal:attributes="checked python:polyline.getDefaultActive() and 'checked' or None; onclick python:'polylineClick(this,'+str(repeat['polyloop'].number())+')'" />
+				<input type="checkbox" name="ttpolylcheckbox" class="TTMapCheckbox TTMapFloatLeft" tal:attributes="checked python:polyline.getDefaultActive() and 'checked' or None; onclick python:'polylineClick(this,'+str(repeat['polyloop'].number())+')'" />
                 <label class="TTMapPolyLabel" for="ttpolylcheckbox" tal:content="python:polyline.Title()"></label>
 			</div>
 		</tal:block>
@@ -49,7 +49,7 @@
 	<metal:block define-macro="Polygons">
 		<tal:block tal:repeat="polyloop polygons">
 			<div class="TTMapPolygon" tal:define="polygon python:polyloop.getObject()">
-				<input type="checkbox" name="ttpolygcheckbox" class="TTMapCheckbox" tal:attributes="checked python:polygon.getDefaultActive() and 'checked' or None; onclick python:'polygonClick(this,'+str(repeat['polyloop'].number())+')'" />
+				<input type="checkbox" name="ttpolygcheckbox" class="TTMapCheckbox TTMapFloatLeft" tal:attributes="checked python:polygon.getDefaultActive() and 'checked' or None; onclick python:'polygonClick(this,'+str(repeat['polyloop'].number())+')'" />
                 <label class="TTMapPolyLabel" for="ttpolygcheckbox" tal:content="python:polygon.Title()"></label>
 			</div>
 		</tal:block>
@@ -58,23 +58,22 @@
 	
 	<!-- Map JS -->		
 	<metal:block define-macro="MapJS">
+		
 		<!-- google api -->
-		<script tal:define="googlemap_key config/googlemaps_key" tal:attributes="src python:'http://maps.google.com/maps?file=api&amp;v=2&amp;key='+googlemap_key+'&hl='+context.REQUEST.get('LANGUAGE','en')" type="text/javascript"></script>
+		<script tal:define="googlemap_key config/googlemaps_key" tal:attributes="src python:'http://maps.googleapis.com/maps/api/js?v=3&amp;sensor=false&amp;libraries=geometry,panoramio,weather&amp;key='+googlemap_key+'&amp;language='+context.REQUEST.get('LANGUAGE','en')" type="text/javascript"></script>
+		
+		<!-- marker manager -->
         <script type="text/javascript" tal:attributes="src string:${here/portal_url}/markermanager.js"></script>
 		
-		<!-- google functions -->
+		<!-- map functions -->
 		<script type="text/javascript" tal:attributes="src string:${here/portal_url}/googlemap_functions.js"></script>
 		
-		<!-- load panoramio -->
-		<script type="text/javascript" tal:attributes="src string:${here/portal_url}/pano_layer.js"></script>
-		<script type="text/javascript" tal:attributes="src string:${here/portal_url}/pano_maptypecontrol.js"></script>
-        
-        <!-- marker clusterer -->
+		<!-- widget functions -->
+		<script type="text/javascript" tal:attributes="src string:${here/portal_url}/googlemap_widget_functions.js"></script>
+		
+		<!-- marker clusterer -->
         <script type="text/javascript" tal:attributes="src string:${here/portal_url}/markerclusterer.js"></script>
-        
-        <!-- egeoxml -->
-        <script type="text/javascript" tal:attributes="src string:${here/portal_url}/egeoxml.js"></script>
-                
+
 	</metal:block>	
 	
 </body>

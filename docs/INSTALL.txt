@@ -56,7 +56,8 @@ from another package's configure.zcml file.
 Additional informations
 --------------------------------
 - Dependencies 
-Plone 3, SmartColorWidget
+
+Plone 3 and 4, SmartColorWidget
 Plone 2 not supported
 
 - Google Maps API Key

@@ -3,17 +3,31 @@
     xmlns:browser="http://namespaces.zope.org/browser"
     i18n_domain="tecnoteca.googlemap">
 
-  <include package="plone.app.contentmenu" />
+    <include package="plone.app.contentmenu" />
 
-  <!-- -*- extra stuff goes here -*- -->  
-      
-  <adapter factory=".controlpanel.MapsControlPanelAdapter" />
-  
-  <browser:page
-  	  name="ttgooglemap_controlpanel"      
-      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
-      class=".controlpanel.MapsControlPanel"
-      permission="cmf.ManagePortal"
-  />
-  
+    <adapter factory=".controlpanel.MapsControlPanelAdapter" />
+    
+    <!-- Control panel view -->
+    <browser:page
+        name="ttgooglemap_controlpanel"
+        for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+        class=".controlpanel.MapsControlPanel"
+        permission="cmf.ManagePortal" />
+        
+    <!-- Helper browser view -->
+    <browser:page
+		name="ttgooglemap_helpersview"
+		for="*"
+		class=".views.HelpersView"
+		allowed_attributes="customEscape getTitleHTML getDescriptionHTML getRelatedItemsHTML"
+		permission="zope2.Public" />
+    
+    <!-- The related-maps viewlet for CT objects -->
+    <browser:viewlet
+        name="plone.belowcontentbody.relatedmaps"
+        manager="plone.app.layout.viewlets.interfaces.IBelowContentBody"
+        class=".viewlets.CTLinkViewlet"
+        view="plone.app.layout.globals.interfaces.IViewView"
+        permission="zope2.View" />
+    
 </configure>

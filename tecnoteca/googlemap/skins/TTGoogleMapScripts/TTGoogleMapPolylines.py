@@ -7,49 +7,20 @@
 ##parameters=polylines
 ##title=
 
-def custom_escape(text):
-        text = text.replace('"','\\"')
-        text = text.replace('“','&quot;')
-        text = text.replace('”','&quot;')
-        text = text.replace("\r", "")
-        text = text.replace("\n", "")
-        text = unicode(text, errors='ignore')
-        return text   
-
-mtool = getattr(context,'portal_membership')
-isAnonymousUser = mtool.isAnonymousUser()
+helper = context.restrictedTraverse('@@ttgooglemap_helpersview')
 
 newline="\n"
-output="var polylinetxt;"
-output += newline
+output=newline
 
 count=0;
 for polyloop in polylines:    
     polyline = polyloop.getObject()
     count = count+1
-    
-    output += "polylinetxt = \"<a href='"+polyline.absolute_url()+"'><b>"+custom_escape(polyline.Title())+"</b></a><br/>"
-    output += (custom_escape(polyline.Description())).strip()+"\";"
-    output += newline
-    
-    # relations
-    if polyline.getRelatedItems() or polyline.getBRefs():
-        output += "polylinetxt += '<ul>';"
-        output += newline
-        for relation in polyline.getRelatedItems(): # standard relation (polyline >> object)
-            if relation and relation.getLanguage()==context.REQUEST.get("Language","it"):
-                output += "polylinetxt += '<li>';"
-                output += "polylinetxt += \"<a href='"+relation.absolute_url()+"' title='"+custom_escape(relation.Title())+"'>"+custom_escape(relation.Title())+"</a>\";"
-                output += "polylinetxt += '</li>';"
-                output += newline
-        for relation in polyline.getBRefs(): # custom relation (object >> polyline)
-            if relation and relation.getLanguage()==context.REQUEST.get("Language","it"):
-                output += "polylinetxt += '<li>';"
-                output += "polylinetxt += \"<a href='"+relation.absolute_url()+"' title='"+custom_escape(relation.pretty_title_or_id())+"'>"+custom_escape(relation.pretty_title_or_id())+"</a>\";"
-                output += "polylinetxt += '</li>';"
-                output += newline
-        output += "polylinetxt += '</ul>';"
-        output += newline
+        
+    # info window html
+    html = helper.getTitleHTML(polyline)
+    html += helper.getDescriptionHTML(polyline)
+    html += helper.getRelatedItemsHTML(polyline);
     
     output += "createPolyline("
     output += str(count)
@@ -68,10 +39,8 @@ for polyloop in polylines:
     output += ","
     output += str(polyline.getNumLevels())
     output += ","
-    output += "polylinetxt"
-    output += ","
-    output += str(isAnonymousUser)
+    output += "\"" + html + "\""    
     output += ");";
-    output += "\n";
+    output += newline;
     
 return output

@@ -12,6 +12,8 @@ from Acquisition import aq_inner
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.CMFCore.utils import getToolByName
 
+from zope.component import getMultiAdapter
+
 _ = MessageFactory('tecnoteca.googlemap')
 
 class ITTGeoReferencePortlet(IPortletDataProvider):
@@ -28,6 +30,7 @@ class Renderer(base.Renderer):
     render = ViewPageTemplateFile('TTGeoReference.pt')
         
     def getRelatedMarkers(self):
+        helper = getMultiAdapter((self.context, self.request), name=u'ttgooglemap_helpersview')
         context = aq_inner(self.context)
         markers = []
         try:
@@ -37,7 +40,7 @@ class Renderer(base.Renderer):
             # add inverse relations
             related.extend(context.getBRefs())
             for rel in related:
-                if(rel.portal_type == 'TTGoogleMapMarker'):
+                if(rel.portal_type == 'TTGoogleMapMarker'): # helper.isGMContentType(rel)
                     markers.append(rel)
         except:
             pass

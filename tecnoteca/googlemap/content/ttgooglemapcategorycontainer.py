@@ -9,6 +9,7 @@ except ImportError:
     # No multilingual support
     from Products.Archetypes import atapi
 
+from Products.ATContentTypes.content import base
 from Products.ATContentTypes.content import folder
 from Products.ATContentTypes.content import schemata
 
@@ -47,4 +48,4 @@ class TTGoogleMapCategoryContainer(folder.ATFolder):
 
     # -*- Your ATSchema to Python Property Bridges Here ... -*-
 
-atapi.registerType(TTGoogleMapCategoryContainer, PROJECTNAME)
+base.registerATCT(TTGoogleMapCategoryContainer, PROJECTNAME)

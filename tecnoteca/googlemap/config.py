@@ -23,10 +23,10 @@ ADD_PERMISSIONS = {
     'TTGoogleMap': 'tecnoteca.googlemap: Add TTGoogleMap',
 }
 
-PROPERTIES_LIST = [{'id' : PROPERTY_GOOGLE_KEYS, 'type' : 'lines', 'value' : ["http://localhost:8080 | localhost_googlemap_key"]},
-                   {'id' : PROPERTY_DEFAULT_LOCATION, 'type' : 'string', 'value' : '46.10262,13.20933'},
-                   {'id' : PROPERTY_DEFAULT_MAPSIZE, 'type' : 'string', 'value' : '400,550'},
-                   {'id' : PROPERTY_COORD_WIDGET_MAP_SIZE, 'type' : 'string', 'value' : '400,400'},
+PROPERTIES_LIST = [{'id' : PROPERTY_GOOGLE_KEYS, 'type' : 'lines', 'value' : ["http://localhost:8080 |","www.mydomain.com|google_map_key"]},
+                   {'id' : PROPERTY_DEFAULT_LOCATION, 'type' : 'string', 'value' : '46.10857,13.22452'},
+                   {'id' : PROPERTY_DEFAULT_MAPSIZE, 'type' : 'string', 'value' : '400,600'},
+                   {'id' : PROPERTY_COORD_WIDGET_MAP_SIZE, 'type' : 'string', 'value' : '400,450'},
                    {'id' : PROPERTY_MARKERS, 'type' : 'lines', 'value' : ["marker_accident.png|accident",\
                                                                         "marker_airplane-tourism.png|airplane-tourism",\
                                                                         "marker_ancientmonument.png|ancientmonument",\

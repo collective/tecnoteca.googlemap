@@ -39,7 +39,7 @@ setup(name='tecnoteca.googlemap',
       zip_safe=False,
       install_requires=['setuptools',
                         # -*- Extra requirements: -*-
-                        'Products.SmartColorWidget',
+                        'Products.SmartColorWidget>=1.1.5',
                         ],
       tests_require=tests_require,
       extras_require=dict(tests=tests_require),

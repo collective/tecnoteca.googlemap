@@ -47,6 +47,11 @@ class IMapsSchema(Interface):
         description=_(u"Coordinates widget mapsize desc"),
         required=True)
     
+    markers_cache = Int(
+        title=_(u"Markers cache in seconds"),
+        description=_(u"Markers cache in seconds desc"),
+        required=False)
+    
     marker_icons = Tuple(
         title=_(u'Available icons'),
         description=_(u"Available icons desc"),
@@ -54,10 +59,6 @@ class IMapsSchema(Interface):
         required=True,
         value_type=TextLine())
     
-    markers_cache = Int(
-        title=_(u"Markers cache in seconds"),
-        description=_(u"Markers cache in seconds desc"),
-        required=False)
 
 
 class MapsControlPanelAdapter(SchemaAdapterBase):
@@ -93,7 +94,7 @@ class MapsControlPanelAdapter(SchemaAdapterBase):
     
     
     def get_default_mapsize(self):
-        return getattr(self.context,PROPERTY_DEFAULT_MAPSIZE,"400,550")
+        return getattr(self.context,PROPERTY_DEFAULT_MAPSIZE,"400,600")
 
     def set_default_mapsize(self, value):
         self.context._updateProperty(PROPERTY_DEFAULT_MAPSIZE, value)
@@ -104,13 +105,23 @@ class MapsControlPanelAdapter(SchemaAdapterBase):
    
 
     def get_widget_mapsize(self):
-        return getattr(self.context,PROPERTY_COORD_WIDGET_MAP_SIZE,"400,400")
+        return getattr(self.context,PROPERTY_COORD_WIDGET_MAP_SIZE,"400,550")
 
     def set_widget_mapsize(self, value):
         self.context._updateProperty(PROPERTY_COORD_WIDGET_MAP_SIZE, value)
 
     widget_mapsize = property(get_widget_mapsize,set_widget_mapsize)
-    
+
+
+
+    def get_markers_cache(self):
+        return getattr(self.context, PROPERTY_MARKERS_CACHE, '')
+
+    def set_markers_cache(self, value):
+        self.context._updateProperty(PROPERTY_MARKERS_CACHE, value)
+
+    markers_cache = property(get_markers_cache, set_markers_cache)   
+        
     
     
     def get_marker_icons(self):
@@ -120,16 +131,7 @@ class MapsControlPanelAdapter(SchemaAdapterBase):
         self.context._updateProperty(PROPERTY_MARKERS, value)
 
     marker_icons = property(get_marker_icons, set_marker_icons)    
-    
-    
-    
-    def get_markers_cache(self):
-        return getattr(self.context, PROPERTY_MARKERS_CACHE, '')
-
-    def set_markers_cache(self, value):
-        self.context._updateProperty(PROPERTY_MARKERS_CACHE, value)
-
-    markers_cache = property(get_markers_cache, set_markers_cache)    
+     
 
 
 

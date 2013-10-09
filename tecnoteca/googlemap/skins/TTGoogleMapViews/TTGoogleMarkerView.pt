@@ -48,7 +48,9 @@
 					<legend i18n:translate="Items in relation with marker">Items in relation with marker</legend>
 					<ul class="visualNoMarker">
 					<tal:related tal:repeat="item python:context.getBRefs()" 
-								 tal:define="use_view_action site_properties/typesUseViewActionInListings|python:(); getInfoFor python:wtool.getInfoFor;">
+								 tal:define="use_view_action site_properties/typesUseViewActionInListings|python:(); 
+								             getInfoFor nocall: here/portal_workflow/getInfoFor;
+								             normalizeString nocall: here/@@plone/normalizeString;">
 					    <li tal:define="
 					            desc                item/Description;
 					            item_type           item/portal_type;

@@ -1,6 +1,5 @@
 from zope.interface import implements
 from Products.Five.browser import BrowserView
-from Products.Five.formlib import formbase
 from tecnoteca.googlemap.config import *
 from tecnoteca.googlemap.interfaces.config import ITTGoogleMapConfig
 from tecnoteca.googlemap.validator import LocationFieldValidator

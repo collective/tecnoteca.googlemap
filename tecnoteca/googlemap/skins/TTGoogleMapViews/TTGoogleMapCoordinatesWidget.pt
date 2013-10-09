@@ -70,7 +70,7 @@
 			<div id="map" class="TTMapCoordinates" tal:attributes="style python:'width:'+str(map_size[0])+'px;; height:'+str(map_size[1])+'px;;'"></div>			
 			
 			<!-- load map js -->
-			<div metal:use-macro="here/TTGoogleMapMacro/macros/MapJS"></div>
+			<div metal:use-macro="here/TTGoogleMapMacro/macros/MapJS"></div>	
 			
 			<!-- print js main (edit version) -->		
 			<div tal:replace="structure python:here.TTGoogleMapCoordinatesWidgetMain(context,default_location,elementId)"></div>

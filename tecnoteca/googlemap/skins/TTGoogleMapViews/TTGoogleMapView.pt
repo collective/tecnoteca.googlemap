@@ -18,14 +18,14 @@
 
 <div metal:fill-slot="main">
     <tal:main-macro metal:define-macro="main"
-                    tal:define="kssClassesView context/@@kss_field_decorator_view;
-                                getKssClasses nocall:kssClassesView/getKssClassesInlineEditable;								
-								contentFilterCategories python:{'portal_type':('TTGoogleMapCategory','TTGoogleMapCategoryCT'), 'review_state':'published'};
-								catcontainers python:context.getFolderContents(contentFilter={'portal_type':'TTGoogleMapCategoryContainer', 'review_state':'published'});
-								polylines python:context.getFolderContents({'portal_type':'TTGoogleMapPolyline', 'review_state':'published'});
-								polygons python:context.getFolderContents({'portal_type':'TTGoogleMapPolygon', 'review_state':'published'});
-                                categories python:context.getFolderContents(contentFilter=contentFilterCategories);
-								defaultMarker python:request.get('mk', None) or context.getDefaultMarker();">
+                     tal:define="kssClassesView context/@@kss_field_decorator_view;
+                                 getKssClasses nocall:kssClassesView/getKssClassesInlineEditable;								
+								 contentFilterCategories python:{'portal_type':('TTGoogleMapCategory','TTGoogleMapCategoryCT'), 'review_state':'published'};
+								 catcontainers python:context.getFolderContents(contentFilter={'portal_type':'TTGoogleMapCategoryContainer', 'review_state':'published'});
+								 polylines python:context.getFolderContents({'portal_type':'TTGoogleMapPolyline', 'review_state':'published'});
+								 polygons python:context.getFolderContents({'portal_type':'TTGoogleMapPolygon', 'review_state':'published'});
+                                 categories python:context.getFolderContents(contentFilter=contentFilterCategories);
+								 defaultMarker python:request.get('mk', None) or context.getDefaultMarker();">
 
         <div tal:replace="structure provider:plone.abovecontenttitle" />
 
@@ -59,13 +59,20 @@
 		
 		<!-- Map HTML  -->
 		<div class="TTMapContainer">
-			<div class="TTMapColLeft">
-				<div id="map" class="TTMap" tal:attributes="style python:'width:'+str(context.getMapWidth())+'px;; height:'+str(context.getMapHeight())+'px;;'"></div>
-			</div>
-			<div class="TTMapColRight" tal:attributes="style string:margin-left:${here/getMapWidth}px;">
-				
+			<tal:if tal:condition="python:context.getFullWidth()">
+				<div id="TTMapWrap" class="TTMapFullWidth">
+					<div id="map" class="TTMap TTMapFullWidth" tal:attributes="style python:'height:'+str(context.getMapHeight())+'px;;'"></div>
+				</div>			
+			</tal:if>
+			<tal:else tal:condition="python:not context.getFullWidth()">
+				<div id="TTMapWrap" class="TTMapFloatLeft">
+					<div id="map" class="TTMap" tal:attributes="style python:'width:'+str(context.getMapWidth())+'px;; height:'+str(context.getMapHeight())+'px;;'"></div>
+				</div>					
+			</tal:else>
+			
+			<div id="TTMapCollapsiblePanels" tal:attributes="style python:not context.getFullWidth() and 'margin-left:'+str(context.getMapWidth())+'px;;' or '' ;">
 				<tal:if tal:condition="python:len(polygons)>0">
-					<div class="TTMapCollapsiblePanel" id="PolygonsPanel">
+					<div class="TTMapCollapsiblePanel" id="TTMapPolygonsPanel">
 					  <div class="TTMapCollapsiblePanelTab">
 					  	<div class="TTMapPanelLabel" i18n:translate="Frontend Polygons">Areas</div>
 						<div class="TTMapPanelOpenClose" tal:attributes="style python:context.getOpenBoxes() and 'display:none' or ''; " i18n:translate="Open panel">Open panel</div>
@@ -75,11 +82,10 @@
 						<div metal:use-macro="here/TTGoogleMapMacro/macros/Polygons"></div>
 					  </div>
 					</div>
-					<br/>
 				</tal:if>							
 	
 				<tal:if tal:condition="python:len(polylines)>0">
-					<div class="TTMapCollapsiblePanel" id="PolylinesPanel">
+					<div class="TTMapCollapsiblePanel" id="TTMapPolylinesPanel">
 					  <div class="TTMapCollapsiblePanelTab">
 					  	<div class="TTMapPanelLabel" i18n:translate="Frontend Polylines">Paths</div>
 						<div class="TTMapPanelOpenClose" tal:attributes="style python:context.getOpenBoxes() and 'display:none' or ''; " i18n:translate="Open panel">Open panel</div>
@@ -89,11 +95,10 @@
 						<div metal:use-macro="here/TTGoogleMapMacro/macros/Polylines"></div>
 					  </div>
 					</div>
-					<br/>
 				</tal:if>							
 														
 				<tal:if tal:condition="python: (len(categories)>0) or (len(catcontainers)>0)">	
-					<div class="TTMapCollapsiblePanel" id="CategoriesPanel">
+					<div class="TTMapCollapsiblePanel" id="TTMapCategoriesPanel">
 					  <div class="TTMapCollapsiblePanelTab">
 					  	<div class="TTMapPanelLabel" i18n:translate="Frontend Categories">Categories</div>
 						<div class="TTMapPanelOpenClose" tal:attributes="style python:context.getOpenBoxes() and 'display:none' or ''; " i18n:translate="Open panel">Open panel</div>
@@ -104,11 +109,10 @@
 						<div metal:use-macro="here/TTGoogleMapMacro/macros/MacroCategories"></div>
 					  </div>		
 					</div>
-					<br/>
 				</tal:if>
 				
 				<tal:if tal:condition="python: (len(categories)>0) or (len(catcontainers)>0)">
-					<div class="TTMapCollapsiblePanel" id="MarkersPanel">
+					<div class="TTMapCollapsiblePanel" id="TTMapMarkersPanel">
 					  <div class="TTMapCollapsiblePanelTab">
 					  	<div class="TTMapPanelLabel" i18n:translate="Frontend Markers">Markers</div>
 						<div class="TTMapPanelOpenClose" tal:attributes="style python:context.getOpenBoxes() and 'display:none' or ''; " i18n:translate="Open panel">Open panel</div>
@@ -161,7 +165,7 @@
 		                </div>
 						-->
 		                <div class="formControls">
-		                        <input i18n:attributes="value" class="context" name="get_directions_btn" type="button" value="Get directions btn" onClick="javascript:get_directions_from_data();"/>
+		                        <input i18n:attributes="value" class="context" name="get_directions_btn" type="button" value="Get directions" onClick="javascript:get_directions_from_data();"/>
 		                </div>
 	                </fieldset>
 				</form>
@@ -176,6 +180,6 @@
 		<div tal:replace="structure provider:plone.belowcontentbody" />
 
     </tal:main-macro>
-</div>
+ </div>
 </body>
 </html>  

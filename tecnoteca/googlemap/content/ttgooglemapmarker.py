@@ -56,4 +56,4 @@ class TTGoogleMapMarker(base.ATCTContent, TTGoogleMapCoordinates):
     # -*- Your ATSchema to Python Property Bridges Here ... -*-
     Text = atapi.ATFieldProperty('Text')    
 
-atapi.registerType(TTGoogleMapMarker, PROJECTNAME)
+base.registerATCT(TTGoogleMapMarker, PROJECTNAME)

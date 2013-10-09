@@ -16,10 +16,14 @@ def updateProperties(portal):
     props_sheet = getToolByName(props_tool, PROPERTY_SHEET)
     # add properties to the sheet
     for property in PROPERTIES_LIST:
-        print property
         if not props_sheet.hasProperty(property['id']):
             props_sheet.manage_addProperty(id = property['id'], value = property['value'], type = property['type'])           
 
+def updateIndexes(portal):
+    catalog_tool = getToolByName(portal, 'portal_catalog')
+    if 'gmap_category_objecttype' not in catalog_tool.indexes():
+        catalog_tool.addIndex(name = 'gmap_category_objecttype',
+                              type = 'FieldIndex')
 def setupVarious(context):
 
     if context.readDataFile('tecnoteca.googlemap_various.txt') is None:
@@ -29,3 +33,4 @@ def setupVarious(context):
     portal = context.getSite()
     # update prop
     updateProperties(portal)
+    updateIndexes(portal)

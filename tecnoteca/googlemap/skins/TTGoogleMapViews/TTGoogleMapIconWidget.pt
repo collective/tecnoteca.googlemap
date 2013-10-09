@@ -51,7 +51,6 @@
 	                                               checked python:item in selection and 'checked' or None;
 	                                               value item;"
 	                               />
-							
 							<img tal:attributes="src python:here.portal_url()+'/'+item; alt python:vocab.getValue(item); title python:vocab.getValue(item)" />
 						</div>
                     </tal:radios>

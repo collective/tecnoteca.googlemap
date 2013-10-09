@@ -1,0 +1,19 @@
+<div class="relatedItems relatedMaps"
+     i18n:domain="tecnoteca.googlemap"
+     tal:condition="view/show">
+    <div class="visualClear" id="clear-space-before-relatedMapBox"><!-- --></div>
+    <dl id="relatedMapBox">
+        <dt i18n:translate="label_related_maps">Maps</dt>
+        <tal:related repeat="item view/items">
+            <dd>
+                <img tal:attributes="title item/title;
+                                     alt item/title;
+                                     src string:${here/portal_url}/ttgooglemap_marker.png;" />
+                <a href="" class=""
+                   tal:attributes="href item/url;
+                                   title item/description;"
+                   tal:content="item/title">Related Maps</a>
+            </dd>
+        </tal:related>
+    </dl>
+</div>

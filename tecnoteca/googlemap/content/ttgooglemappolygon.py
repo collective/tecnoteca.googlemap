@@ -18,6 +18,7 @@ from tecnoteca.googlemap.config import PROJECTNAME
 
 from Products.SmartColorWidget.Widget import SmartColorWidget
 
+
 TTGoogleMapPolygonSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
 
     # -*- Your Archetypes field definitions here ... -*-
@@ -175,4 +176,4 @@ class TTGoogleMapPolygon(base.ATCTContent):
     NumLevels = atapi.ATFieldProperty('NumLevels')
 
 
-atapi.registerType(TTGoogleMapPolygon, PROJECTNAME)
+base.registerATCT(TTGoogleMapPolygon, PROJECTNAME)

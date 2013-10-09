@@ -7,31 +7,7 @@
 ##parameters=marker,default_location,coordFieldId
 ##title=
 
-# edit-mode js
-edit_mode_listeners = """
-GEvent.addListener(marker, "dragend", function() {
-    var point = marker.getPoint();
-    map.panTo(point);
-    document.getElementById(fieldId).value = point.lat().toFixed(5) + "|" + point.lng().toFixed(5);
-});
-
-GEvent.addListener(map, "moveend", function() {
-    map.clearOverlays();
-    var center = map.getCenter();
-    var marker = new GMarker(center, {
-        draggable :true
-    });
-    map.addOverlay(marker);
-    document.getElementById(fieldId).value = center.lat().toFixed(5) + "|" + center.lng().toFixed(5);
-
-    GEvent.addListener(marker, "dragend", function() {
-        var point = marker.getPoint();
-        map.panTo(point);
-        document.getElementById(fieldId).value = point.lat().toFixed(5) + "|" + point.lng().toFixed(5);
-    });
-
-});
-"""
+from tecnoteca.googlemap import googlemapMessageFactory as _
 
 # init lat/long
 latitude = marker.getLatitude()
@@ -46,26 +22,45 @@ if( longitude==None or longitude=="" ):
 output = """
 <script type="text/javascript">
 
-var fieldId = '"""+ (coordFieldId!=None and str(coordFieldId) or '') +"""';
+var ERRCODES = new Array(); 
+ERRCODES['TT_ERROR'] = " """ + context.translate(_(u'TT_ERROR')) + """ ";
+ERRCODES['G_GEO_UNKNOWN_ADDRESS'] =" """ + context.translate(_(u'G_GEO_UNKNOWN_ADDRESS')) + """ ";
+
+
+coordFieldId = '"""+ (coordFieldId!=None and str(coordFieldId) or '') +"""';
+
+editMode = false;
+if(coordFieldId)
+    editMode = true;
 
 Gload = function() {
-     if (GBrowserIsCompatible()) {
-         var map = new GMap2(document.getElementById("map"));
-         map.addControl(new GSmallMapControl());
-         map.addControl(new GMapTypeControl());
-         var center = new GLatLng("""+str(latitude)+""", """+str(longitude)+""");
-         map.setCenter(center, 15);
-         geocoder = new GClientGeocoder();
-         var marker = new GMarker(center, {draggable:"""+ (coordFieldId!=None and 'true' or 'false') +"""});
-         map.addOverlay(marker);
-         
-         """+ (coordFieldId!=None and edit_mode_listeners or '') +"""
-     }
-   }
+    var initialPosition = new google.maps.LatLng("""+str(latitude)+""", """+str(longitude)+""");    
+
+    // map
+    map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 15,
+        center: initialPosition,        
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        draggable: editMode,
+        panControl: editMode,
+    });
+    google.maps.event.addListener(map, "dragend", function() {
+        refreshMarkerPosition(map.getCenter());
+    });
+    
+    
+    // marker
+    marker = new google.maps.Marker({
+        draggable: editMode
+    });
+    marker.setMap(map);
+    google.maps.event.addListener(marker, "dragend", function() {
+        refreshMarkerPosition(marker.position);
+    });
+    refreshMarkerPosition(initialPosition);
+}
    
-   // register functions
-   registerEventListener(window, 'load', Gload);
-   registerEventListener(window, 'unload', GUnload);
+   google.maps.event.addDomListener(window, 'load', Gload);
    
 </script>
 """

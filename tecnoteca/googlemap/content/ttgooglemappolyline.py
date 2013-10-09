@@ -133,18 +133,12 @@ class TTGoogleMapPolyline(base.ATCTContent):
 
     # -*- Your ATSchema to Python Property Bridges Here ... -*-
     Color = atapi.ATFieldProperty('Color')
-
     DefaultActive = atapi.ATFieldProperty('DefaultActive')
-
     Weight = atapi.ATFieldProperty('Weight')
-
     EncodedPolyline = atapi.ATFieldProperty('EncodedPolyline')
-
     Levels = atapi.ATFieldProperty('Levels')
-
     ZoomFactor = atapi.ATFieldProperty('ZoomFactor')
-
     NumLevels = atapi.ATFieldProperty('NumLevels')
 
 
-atapi.registerType(TTGoogleMapPolyline, PROJECTNAME)
+base.registerATCT(TTGoogleMapPolyline, PROJECTNAME)

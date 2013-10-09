@@ -6,6 +6,7 @@ from zope.component import getMultiAdapter
 
 from time import time
 from plone.memoize import ram
+from Products.CMFCore.interfaces._content import ISiteRoot
 
 try:
     from Products.LinguaPlone import public as atapi
@@ -13,11 +14,13 @@ except ImportError:
     # No multilingual support
     from Products.Archetypes import atapi
 
+from Products.ATContentTypes.content import base
 from Products.ATContentTypes.content import folder
 from Products.ATContentTypes.content import schemata
 from Products.CMFCore.utils import getToolByName
 
 from tecnoteca.googlemap import googlemapMessageFactory as _
+from tecnoteca.googlemap.interfaces import ITTGoogleMap
 from tecnoteca.googlemap.interfaces import ITTGoogleMapCategory
 from tecnoteca.googlemap.config import *
 from tecnoteca.googlemap.browser.config import TTGoogleMapConfig
@@ -87,7 +90,7 @@ schemata.finalizeATCTSchema(
 )
 
 
-def markers_cachekay(method, self, **args):
+def markers_cachekey(method, self, **args):
     """
     Returns the key used by @ram.cache
     """
@@ -126,7 +129,17 @@ class TTGoogleMapCategory(folder.ATFolder):
         config = getMultiAdapter((self, self.REQUEST), name="ttgooglemap_config")
         return config.marker_icons
     
-    @ram.cache(markers_cachekay)
+    def getParentMap(self, context = None):
+        if not context:
+            context = self.aq_inner
+        if ITTGoogleMap.providedBy(context):
+            return context
+        elif ISiteRoot.providedBy(context):
+            return None
+        else:
+            return self.getParentMap(context.aq_parent)
+    
+    @ram.cache(markers_cachekey)
     def getMarkers(self, **args):
         log('Query the catalog to get markers for TTGoogleMapCategory. Category: "%s"' % self.Title())
         filter={'portal_type':'TTGoogleMapMarker', 'review_state':'published'}
@@ -134,4 +147,4 @@ class TTGoogleMapCategory(folder.ATFolder):
             filter = dict(filter.items() + args.items())            
         return self.getFolderContents(contentFilter=filter);
 
-atapi.registerType(TTGoogleMapCategory, PROJECTNAME)
+base.registerATCT(TTGoogleMapCategory, PROJECTNAME)

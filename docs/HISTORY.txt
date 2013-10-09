@@ -1,6 +1,13 @@
 Changelog
 =========
 
+Tecnoteca Google Map 1.1 - October 8, 2013
+    - GoogleMaps API v3
+    - Georeference custom ContentTypes
+    - French translation (thanks André Nuyens)
+	- Traffic, Bicycle, Weather, Street view buttons
+	- Full width option
+
 Tecnoteca Google Map 1.0 - August 4, 2010
 	- Markers and categories boxes with customizable max-height
 	- Improved markers list (added categories titles)

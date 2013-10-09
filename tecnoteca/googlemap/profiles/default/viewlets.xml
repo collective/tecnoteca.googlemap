@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!-- This file holds the setup configuration of the viewlet managers
+for the "Tecnoteca Vigevano Theme 2012" skin.
+-->
+
+<object>
+    
+    <!-- plone.app.layout.viewlets.interfaces.IBelowContentBody -->
+    <order manager="plone.belowcontentbody" 
+           skinname="*">
+        <viewlet name="plone.belowcontentbody.relatedmaps" 
+                 insert-before="plone.belowcontentbody.relateditems" />
+    </order>
+    
+</object>

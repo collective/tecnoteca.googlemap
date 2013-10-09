@@ -12,6 +12,7 @@ except ImportError:
     # No multilingual support
     from Products.Archetypes import atapi
 
+from Products.ATContentTypes.content import base
 from Products.ATContentTypes.content import folder
 from Products.ATContentTypes.content import schemata
 
@@ -46,6 +47,18 @@ TTGoogleMapSchema = folder.ATFolderSchema.copy() + TTGoogleMapCoordinatesSchema.
         required=True,
         default_method = 'defaultWidth',
     ),
+    
+                                                                                                       
+    atapi.BooleanField(
+        'FullWidth',
+        storage=atapi.AnnotationStorage(),
+        languageIndependent = True,
+        widget=atapi.BooleanWidget(
+            label=_(u"FullWidth"),
+            description=_(u"Set map to full width (overrides MapWidth)"),
+        ),
+        default=True,
+    ),                                                                                                       
 
 
     atapi.IntegerField(
@@ -78,12 +91,15 @@ TTGoogleMapSchema = folder.ATFolderSchema.copy() + TTGoogleMapCoordinatesSchema.
         'MapType',
         storage=atapi.AnnotationStorage(),
         languageIndependent = True,
-        vocabulary = [("G_NORMAL_MAP","Normal"),("G_SATELLITE_MAP","Satellite"),("G_HYBRID_MAP","Hybrid")],
+        vocabulary = [("google.maps.MapTypeId.ROADMAP","Normal"),
+                      ("google.maps.MapTypeId.SATELLITE","Satellite"),
+                      ("google.maps.MapTypeId.HYBRID","Hybrid"),
+                      ("google.maps.MapTypeId.TERRAIN","Terrain")],
         widget=atapi.SelectionWidget(
             label=_(u"Map Type"),
             description=_(u"Select default map type"),
         ),
-        default="G_NORMAL_MAP",
+        default="google.maps.MapTypeId.ROADMAP",
         required=True,
     ),
     
@@ -123,17 +139,57 @@ TTGoogleMapSchema = folder.ATFolderSchema.copy() + TTGoogleMapCoordinatesSchema.
             label=_(u"Panoramio"),
             description=_(u"Show Panoramio button"),
         ),
-        default=True,
+        default=False,
     ),
-
-
+                                                                                                       
+                                                                                                       
+                                                                                                       
     atapi.BooleanField(
-        'LargeMapControl',
+        'Weather',
         storage=atapi.AnnotationStorage(),
         languageIndependent = True,
         widget=atapi.BooleanWidget(
-            label=_(u"Large Map Control"),
-            description=_(u"Large map control buttons"),
+            label=_(u"Weather"),
+            description=_(u"Show weather button"),
+        ),
+        default=False,
+    ),
+                                                                                                       
+                                                                                                       
+                                                                                                       
+    atapi.BooleanField(
+        'Traffic',
+        storage=atapi.AnnotationStorage(),
+        languageIndependent = True,
+        widget=atapi.BooleanWidget(
+            label=_(u"Traffic"),
+            description=_(u"Show traffic button"),
+        ),
+        default=False,
+    ),  
+                                                                                                       
+                                                                                                       
+                                                                                                       
+    atapi.BooleanField(
+        'Bicycle',
+        storage=atapi.AnnotationStorage(),
+        languageIndependent = True,
+        widget=atapi.BooleanWidget(
+            label=_(u"Bicycle"),
+            description=_(u"Show bicycle button"),
+        ),
+        default=False,
+    ),  
+                                                                                                       
+
+
+    atapi.BooleanField(
+        'StreetViewControl',
+        storage=atapi.AnnotationStorage(),
+        languageIndependent = True,
+        widget=atapi.BooleanWidget(
+            label=_(u"Street View Control"),
+            description=_(u"Street view map control button"),
         ),
         default=True,
     ),
@@ -204,6 +260,7 @@ TTGoogleMapSchema = folder.ATFolderSchema.copy() + TTGoogleMapCoordinatesSchema.
 TTGoogleMapSchema['title'].storage = atapi.AnnotationStorage()
 TTGoogleMapSchema['description'].storage = atapi.AnnotationStorage()
 
+
 schemata.finalizeATCTSchema(
     TTGoogleMapSchema,
     folderish=True,
@@ -225,6 +282,8 @@ class TTGoogleMap(folder.ATFolder, TTGoogleMapCoordinates):
     Text = atapi.ATFieldProperty('Text')
 
     MapWidth = atapi.ATFieldProperty('MapWidth')
+    
+    FullWidth = atapi.ATFieldProperty('FullWidth')
 
     MapHeight = atapi.ATFieldProperty('MapHeight')
 
@@ -237,8 +296,14 @@ class TTGoogleMap(folder.ATFolder, TTGoogleMapCoordinates):
     MarkerBoxHeight = atapi.ATFieldProperty('MarkerBoxHeight')
 
     Panoramio = atapi.ATFieldProperty('Panoramio')
+    
+    Weather = atapi.ATFieldProperty('Weather')
+    
+    Traffic = atapi.ATFieldProperty('Traffic')
+    
+    Bicycle = atapi.ATFieldProperty('Bicycle')    
 
-    LargeMapControl = atapi.ATFieldProperty('LargeMapControl')
+    StreetViewControl = atapi.ATFieldProperty('StreetViewControl')
 
     MapTypeControl = atapi.ATFieldProperty('MapTypeControl')
 
@@ -281,6 +346,4 @@ class TTGoogleMap(folder.ATFolder, TTGoogleMapCoordinates):
         
         return vocabulary
 
-   
-
-atapi.registerType(TTGoogleMap, PROJECTNAME)
+base.registerATCT(TTGoogleMap, PROJECTNAME)
