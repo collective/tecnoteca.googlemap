@@ -111,6 +111,11 @@ Installation
 Standard buildout installation, see docs/INSTALL.txt
 
 
+Support and issues
+---------------------------------------------------------------------------
+http://www.tecnoteca.com/en/contact
+
+
 Author
 ---------------------------------------------------------------------------
 Tecnoteca srl
