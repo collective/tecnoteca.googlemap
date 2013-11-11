@@ -4,6 +4,8 @@ from Products.CMFCore.permissions import View
 from zope.interface import implements
 from tecnoteca.googlemap.interfaces.views import IHelpersView
 from DateTime import DateTime
+from Products.CMFCore.utils import getToolByName
+from plone.memoize.view import memoize
 
 class HelpersView(BrowserView):
     """ Utility class """
@@ -52,19 +54,33 @@ class HelpersView(BrowserView):
     
     security.declareProtected(View,'getRelatedItemsHTML')
     def getRelatedItemsHTML(self, object):
-        output = ""        
-        if object.getRelatedItems() or object.getBRefs():
+        ctool = getToolByName(self.context, 'portal_catalog')
+        # backref items
+        query_br = self.query().copy()
+        query_br['getRawRelatedItems'] = object.UID()
+        items = ctool(query_br)
+        # related items
+        if object.getRawRelatedItems():
+            query_r = self.query().copy()
+            query_r['UID'] = object.getRawRelatedItems()
+            items += ctool(query_r)
+        output = ""
+        if items:
             output += "<ul>"
-            for relation in object.getRelatedItems(): # A>B relation
-                if relation and (not hasattr(relation, 'getLanguage') or relation.getLanguage()==context.REQUEST.get("Language","it")) and relation.expires() > DateTime():
-                    output += "<li>"
-                    output += "<a href='"+relation.absolute_url()+"' title='"+self.customEscape(relation.Title())+"'>"+self.customEscape(relation.Title())+"</a>"
-                    output += "</li>"
-            for relation in object.getBRefs(): # B>A relation
-                if relation and relation.expires() > DateTime():
-                    output += "<li>"
-                    output += "<a href='"+relation.absolute_url()+"' title='"+self.customEscape(relation.pretty_title_or_id())+"'>"+self.customEscape(relation.pretty_title_or_id())+"</a>"
-                    output += "</li>"
+            for item in items:
+                output += "<li>"
+                output += "<a href='%(url)s' title='%(title)s'>%(title)s</a>" % {'url': item.getURL(), 
+                                                                                 'title': item.pretty_title_or_id()}
+                output += "</li>"
             output += "</ul>"
         return output
-            
+    
+    @memoize
+    def query(self):
+        ptool = getToolByName(self.context, "portal_properties")
+        navtree = getattr(ptool, "navtree_properties")
+        query = dict(sort_on = 'sortable_title',
+                     expired = {'query': DateTime(), 'range': 'min'})
+        if navtree.getProperty('enable_wf_state_filtering', False):
+            query['review_state'] = navtree.getProperty('wf_states_to_show', ())
+        return query

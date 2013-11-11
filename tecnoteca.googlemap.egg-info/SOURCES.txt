@@ -30,6 +30,9 @@ tecnoteca/googlemap/browser/config.py
 tecnoteca/googlemap/browser/configure.zcml
 tecnoteca/googlemap/browser/controlpanel.py
 tecnoteca/googlemap/browser/logger.py
+tecnoteca/googlemap/browser/viewlet_ct_link.pt
+tecnoteca/googlemap/browser/viewlets.py
+tecnoteca/googlemap/browser/views.py
 tecnoteca/googlemap/content/__init__.py
 tecnoteca/googlemap/content/configure.zcml
 tecnoteca/googlemap/content/ttgooglemap.py
@@ -50,9 +53,12 @@ tecnoteca/googlemap/interfaces/ttgooglemapcoordinates.py
 tecnoteca/googlemap/interfaces/ttgooglemapmarker.py
 tecnoteca/googlemap/interfaces/ttgooglemappolygon.py
 tecnoteca/googlemap/interfaces/ttgooglemappolyline.py
+tecnoteca/googlemap/interfaces/views.py
 tecnoteca/googlemap/locales/tecnoteca.googlemap.pot
 tecnoteca/googlemap/locales/en/LC_MESSAGES/tecnoteca.googlemap.mo
 tecnoteca/googlemap/locales/en/LC_MESSAGES/tecnoteca.googlemap.po
+tecnoteca/googlemap/locales/fr/LC_MESSAGES/tecnoteca.googlemap.mo
+tecnoteca/googlemap/locales/fr/LC_MESSAGES/tecnoteca.googlemap.po
 tecnoteca/googlemap/locales/it/LC_MESSAGES/tecnoteca.googlemap.mo
 tecnoteca/googlemap/locales/it/LC_MESSAGES/tecnoteca.googlemap.po
 tecnoteca/googlemap/portlets/TTGeoReference.pt
@@ -68,7 +74,9 @@ tecnoteca/googlemap/profiles/default/portlets.xml
 tecnoteca/googlemap/profiles/default/rolemap.xml
 tecnoteca/googlemap/profiles/default/skins.xml
 tecnoteca/googlemap/profiles/default/tecnoteca.googlemap_various.txt
+tecnoteca/googlemap/profiles/default/tinymce.xml
 tecnoteca/googlemap/profiles/default/types.xml
+tecnoteca/googlemap/profiles/default/viewlets.xml
 tecnoteca/googlemap/profiles/default/types/TTGoogleMap.xml
 tecnoteca/googlemap/profiles/default/types/TTGoogleMapCategory.xml
 tecnoteca/googlemap/profiles/default/types/TTGoogleMapCategoryCT.xml
@@ -196,12 +204,10 @@ tecnoteca/googlemap/skins/TTGoogleMapImages/ttgooglemap_macrocategory.png
 tecnoteca/googlemap/skins/TTGoogleMapImages/ttgooglemap_map.png
 tecnoteca/googlemap/skins/TTGoogleMapImages/ttgooglemap_marker.png
 tecnoteca/googlemap/skins/TTGoogleMapImages/ttgooglemap_path.png
-tecnoteca/googlemap/skins/TTGoogleMapJS/egeoxml.js
 tecnoteca/googlemap/skins/TTGoogleMapJS/googlemap_functions.js
+tecnoteca/googlemap/skins/TTGoogleMapJS/googlemap_widget_functions.js
 tecnoteca/googlemap/skins/TTGoogleMapJS/markerclusterer.js
 tecnoteca/googlemap/skins/TTGoogleMapJS/markermanager.js
-tecnoteca/googlemap/skins/TTGoogleMapJS/pano_layer.js
-tecnoteca/googlemap/skins/TTGoogleMapJS/pano_maptypecontrol.js
 tecnoteca/googlemap/skins/TTGoogleMapScripts/TTGoogleMapCatContainers.py
 tecnoteca/googlemap/skins/TTGoogleMapScripts/TTGoogleMapCatIcons.py
 tecnoteca/googlemap/skins/TTGoogleMapScripts/TTGoogleMapCatSH.py

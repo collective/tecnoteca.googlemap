@@ -1,6 +1,9 @@
 Changelog
 =========
 
+Tecnoteca Google Map 1.2 - November 11, 2013
+	- getRelatedItems bug fix
+
 Tecnoteca Google Map 1.1 - October 8, 2013
     - GoogleMaps API v3
     - Georeference custom ContentTypes
