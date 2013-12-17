@@ -1,5 +1,0 @@
-setuptools
-Products.SmartColorWidget>=1.1.5
-
-[tests]
-zope.testing
