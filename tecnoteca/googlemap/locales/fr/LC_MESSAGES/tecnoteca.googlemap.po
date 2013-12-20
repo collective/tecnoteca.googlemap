@@ -27,7 +27,7 @@ msgstr "Icônes de marqueurs disponibles"
 #: ./skins/TTGoogleMapScripts/TTGoogleMapMain.py:54
 #: ./skins/TTGoogleMapScripts/TTGoogleMapMarco.py:56
 msgid "Bicycle"
-msgstr "Vèlo"
+msgstr "Vélo"
 
 #: ./content/ttgooglemap.py:112
 msgid "Cat Box Height"
@@ -56,7 +56,7 @@ msgstr "Ville"
 
 #: ./skins/TTGoogleMapViews/TTGoogleMapView.pt:58
 msgid "Close panel"
-msgstr "Fermé le paneau"
+msgstr "Fermer le panneau"
 
 #: ./content/ttgooglemapcategory.py:61
 msgid "Clusterer icon"
@@ -94,7 +94,7 @@ msgstr "Taille de la carte (largeur,hauteur px)"
 #: ./content/ttgooglemapcategory.py:50
 #: ./interfaces/ttgooglemapcategory.py:12
 msgid "Custom icon"
-msgstr "Icône personalisée"
+msgstr "Icône personnalisée"
 
 #: ./content/ttgooglemapcategory.py:72
 #: ./content/ttgooglemappolygon.py:43
@@ -122,7 +122,7 @@ msgstr "Localisation par défaut"
 
 #: ./browser/controlpanel.py:37
 msgid "Default location desc"
-msgstr "Localisation initial pour une nouvelle carte avec marqueur"
+msgstr "Localisation initiale pour une nouvelle carte avec marqueur"
 
 #: ./browser/controlpanel.py:41
 msgid "Default mapsize"
@@ -162,17 +162,17 @@ msgstr "Chemins codées"
 #: ./content/ttgooglemappolyline.py:81
 #: ./interfaces/ttgooglemappolygon.py:44
 msgid "Encoded levels"
-msgstr "Niveaux codées - <a href='http://code.google.com/apis/maps/documentation/polylineutility.html' target='_blank'>click here</a> pour en obtenir"
+msgstr "Niveaux codés - <a href='http://code.google.com/apis/maps/documentation/polylineutility.html' target='_blank'>click here</a> pour en obtenir"
 
 #: ./interfaces/ttgooglemappolygon.py:38
 #: ./interfaces/ttgooglemappolyline.py:32
 msgid "Encoded polyline"
-msgstr "Chemins codées"
+msgstr "Chemins codés"
 
 #: ./content/ttgooglemappolygon.py:94
 #: ./content/ttgooglemappolyline.py:69
 msgid "Encoded polyline value"
-msgstr "Valeurs des parcours codées - <a href='http://code.google.com/apis/maps/documentation/polylineutility.html' target='_blank'>click here</a> pour en obtenir"
+msgstr "Valeurs des parcours codés - <a href='http://code.google.com/apis/maps/documentation/polylineutility.html' target='_blank'>click here</a> pour en obtenir"
 
 #. Default: "Categories"
 #: ./skins/TTGoogleMapViews/TTGoogleMapView.pt:84
@@ -187,7 +187,7 @@ msgstr "Marqueurs"
 #. Default: "JavaScript must be enabled in order for you to use Google Maps.However, it seems JavaScript is either disabled or not supported by your browser. To view Google Maps, enable JavaScript by changing your browser options, and then try again."
 #: ./skins/TTGoogleMapViews/TTGoogleMapView.pt:113
 msgid "Frontend NoJavascript"
-msgstr "Javascript doit être activé afin d'utiliser des Cartes Google. Cependant, il semble que le Javascript est désactivé ou non supporté par votre navigateur. Pour voir des Cartes Google, activer le Javascript dans vos options du navigateur et ré-essayez."
+msgstr "Javascript doit être activé afin d'utiliser des Cartes Google. Cependant, il semble que le Javascript est désactivé ou non supporté par votre navigateur. Pour voir des Cartes Google, activez le Javascript dans vos options du navigateur et ré-essayez."
 
 #. Default: "Areas"
 #: ./skins/TTGoogleMapViews/TTGoogleMapView.pt:56
@@ -247,12 +247,12 @@ msgstr "Le geocode pour l'adresse donnée ou le parcours pour la direction donn�
 #: ./skins/TTGoogleMapScripts/TTGoogleMapMain.py:74
 #: ./skins/TTGoogleMapScripts/TTGoogleMapMarco.py:76
 msgid "G_GEO_UNKNOWN_ADDRESS"
-msgstr "Aucun emplacement géographique correspondant n'est trouvé pour l'adresse indiquée. Ceci peut être dû en raison du fait que l'adresse est relativement nouvelle ou peut être incorrect."
+msgstr "Aucun emplacement géographique correspondant n'est trouvé pour l'adresse indiquée. Ceci peut être dû en raison du fait que l'adresse est relativement nouvelle ou peut-être incorrecte."
 
 #: ./skins/TTGoogleMapScripts/TTGoogleMapMain.py:76
 #: ./skins/TTGoogleMapScripts/TTGoogleMapMarco.py:78
 msgid "G_GEO_UNKNOWN_DIRECTIONS"
-msgstr "L'objet GDIRECTIONS ne peut pas calculer des directions entre les points mentionnés dans la requête. Ceci est d'habitude parce qu'il n'y a aucun parcours disponible entre les deux points, ou parce que nous n'avons pas de données pour acheminer dans cette région."
+msgstr "L'objet GDIRECTIONS ne peut pas calculer des directions entre les points mentionnés dans la requête. Ceci arrive d'habitude parce qu'il n'y a aucun parcours disponible entre les deux points, ou parce que nous n'avons pas de données pour acheminer dans cette région."
 
 #: ./skins/TTGoogleMapViews/TTGoogleMapView.pt:150
 msgid "Get directions"
@@ -260,7 +260,7 @@ msgstr "Itinéraire"
 
 #: ./skins/TTGoogleMapViews/TTGoogleMapView.pt:127
 msgid "Get directions from"
-msgstr "Itinéraire à partir"
+msgstr "Itinéraire à partir de"
 
 #. Default: "Google Map Category"
 #: ./profiles/default/types/TTGoogleMapCategory.xml
@@ -270,7 +270,7 @@ msgstr "Catégorie de carte Google"
 #. Default: "Google Map Category Container"
 #: ./profiles/default/types/TTGoogleMapCategoryContainer.xml
 msgid "Google Map Category Container"
-msgstr "Conteneur de catégorie de carte Google"
+msgstr "Conteneur de catégories de carte Google"
 
 #. Default: "Google Map Category Content Type"
 #: ./profiles/default/types/TTGoogleMapCategoryCT.xml
@@ -298,7 +298,7 @@ msgstr "Chemins dans carte Google"
 
 #: ./portlets/TTGeoReference.py:27
 msgid "Google Map related markers"
-msgstr "Carte Google lié aux marqueurs"
+msgstr "Carte Google liée aux marqueurs"
 
 #: ./browser/controlpanel.py:29
 msgid "GoogleMap api keys"
@@ -408,7 +408,7 @@ msgstr "Ouvrir"
 
 #: ./content/ttgooglemap.py:226
 msgid "OpenBoxes"
-msgstr "Boîtes ouverte au démarrage"
+msgstr "Boîtes ouvertes au démarrage"
 
 #: ./content/ttgooglemappolygon.py:68
 #: ./interfaces/ttgooglemappolygon.py:24
@@ -577,7 +577,7 @@ msgstr "Pas de marqueur trouvé pour l'id"
 #: ./skins/TTGoogleMapScripts/TTGoogleMapMain.py:79
 #: ./skins/TTGoogleMapScripts/TTGoogleMapMarco.py:81
 msgid "TT_NO_MARKER_SELECTED"
-msgstr "Vous devez choisir le marqueur de destination avant, si aucun n'est disponible, ajoutez en un ou contactez votre administrateur de site pour le faire."
+msgstr "Vous devez choisir le marqueur de destination avant. Si aucun n'est disponible, ajoutez en un ou contactez votre administrateur de site pour le faire."
 
 #: ./content/ttgooglemap.py:33
 #: ./content/ttgooglemapmarker.py:29
