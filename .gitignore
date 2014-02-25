@@ -4,8 +4,6 @@ Paste-1.7.5.1-py2.7.egg/
 PasteDeploy-1.5.2-py2.7.egg/
 PasteScript-1.7.5-py2.7.egg/
 bin/
-bootstrap.py
-buildout.cfg
 develop-eggs/
 include/
 lib/
