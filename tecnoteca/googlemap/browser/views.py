@@ -19,7 +19,10 @@ class HelpersView(BrowserView):
         text = text.replace('"','\\"')
         text = text.replace("\r", "")
         text = text.replace("\n", "")
-        text = unicode(text, errors='ignore')
+        pp = getToolByName(self.context, 'portal_properties')
+        text = unicode(text,
+                       pp.site_properties.default_charset,
+                       errors='ignore')
         return text    
 
 
