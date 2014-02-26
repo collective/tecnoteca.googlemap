@@ -1,2 +1,6 @@
 recursive-include tecnoteca *
 global-exclude *pyc
+include *.py
+include buildout.cfg
+recursive-include docs *.GPL
+recursive-include docs *.txt
