@@ -173,9 +173,6 @@
 			<div id="g_directions" class="g_directions_placeholder"></div>
 		</tal:if>
 				
-        <div metal:use-macro="here/document_relateditems/macros/relatedItems">
-            show related items if they exist
-        </div>
 		
 		<div tal:replace="structure provider:plone.belowcontentbody" />
 
